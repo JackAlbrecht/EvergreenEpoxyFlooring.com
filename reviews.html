@@ -240,6 +240,42 @@
             color: #aaa;
         }
 
+        .reviews-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 2.5rem auto 0;
+        }
+
+        .reviews-highlight-card {
+            background: linear-gradient(180deg, #111 0%, #0d1a0d 100%);
+            border: 1px solid #1e3a1e;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .reviews-highlight-value {
+            color: #4ade80;
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.65rem;
+        }
+
+        .reviews-highlight-label {
+            color: #f0f0f0;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .reviews-highlight-copy {
+            color: #aaa;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -579,6 +615,10 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .reviews-highlights {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -650,7 +690,25 @@
     <!-- Reviews Section -->
     <section class="reviews">
         <div class="reviews-intro">
-            <p>We're proud of the relationships we've built with our customers. Here's what they have to say about working with Evergreen Epoxy Flooring.</p>
+            <p>We're proud of the relationships we've built with our customers. Here's what they have to say about working with Evergreen Epoxy Flooring, from communication and scheduling to prep quality and the finished look of the floor.</p>
+        </div>
+
+        <div class="reviews-highlights">
+            <div class="reviews-highlight-card">
+                <div class="reviews-highlight-value">4.9★</div>
+                <div class="reviews-highlight-label">Google Reputation</div>
+                <div class="reviews-highlight-copy">Strong public review signals help new homeowners and commercial buyers feel confident before they ever call.</div>
+            </div>
+            <div class="reviews-highlight-card">
+                <div class="reviews-highlight-value">200+</div>
+                <div class="reviews-highlight-label">Projects Completed</div>
+                <div class="reviews-highlight-copy">From garages and shops to commercial and government work, the review quality is backed by real job volume.</div>
+            </div>
+            <div class="reviews-highlight-card">
+                <div class="reviews-highlight-value">Owner-Led</div>
+                <div class="reviews-highlight-label">Hands-On Service</div>
+                <div class="reviews-highlight-copy">Many reviews call out direct communication, reliability, and attention to detail from start to finish.</div>
+            </div>
         </div>
 
         <div class="reviews-grid">

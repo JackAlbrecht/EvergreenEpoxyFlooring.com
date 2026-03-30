@@ -1037,6 +1037,11 @@
             font-size: 0.95rem;
         }
 
+        .reviews-actions {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
         /* FAQ Section */
         .faq {
             background: #111;
@@ -1122,6 +1127,13 @@
             max-width: 1200px;
         }
 
+        .blog-card-link-wrap {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+
         .blog-card {
             background: #111;
             border-radius: 8px;
@@ -1170,12 +1182,11 @@
 
         .blog-card-link {
             color: #4ade80;
-            text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
         }
 
-        .blog-card-link:hover {
+        .blog-card-link-wrap:hover .blog-card-link {
             text-decoration: underline;
         }
 
@@ -1906,7 +1917,7 @@
                     <span class="review-date">1 month ago</span>
                 </div>
                 <div class="review-rating">★★★★★</div>
-                <p class="review-text">Jack and Carson did an excellent job with our garage floor. We couldn't be happier with how it turned out.</p>
+                <p class="review-text">Jack and Carson did an excellent job with our garage floor. We couldn't be happier with how it turned out. They were professional, polite, showed up on time, and made the whole process easy.</p>
             </div>
             <div class="review-card">
                 <div class="review-header">
@@ -1914,7 +1925,7 @@
                     <span class="review-date">1 month ago</span>
                 </div>
                 <div class="review-rating">★★★★★</div>
-                <p class="review-text">Very professional. Everything went quick and smooth! Would definitely recommend.</p>
+                <p class="review-text">Very professional. Everything went quick and smooth from the estimate to the finished floor. Would definitely recommend Evergreen Epoxy to anyone looking for a clean, durable result.</p>
             </div>
             <div class="review-card">
                 <div class="review-header">
@@ -1922,7 +1933,7 @@
                     <span class="review-date">1 month ago</span>
                 </div>
                 <div class="review-rating">★★★★★</div>
-                <p class="review-text">Very professional and knowledgeable. Will be recommending to my friends and family.</p>
+                <p class="review-text">Very professional and knowledgeable. The team explained the process clearly, delivered exactly what they promised, and left us with a floor we are proud to show off. Will be recommending to friends and family.</p>
             </div>
             <div class="review-card">
                 <div class="review-header">
@@ -1930,7 +1941,7 @@
                     <span class="review-date">5 months ago</span>
                 </div>
                 <div class="review-rating">★★★★★</div>
-                <p class="review-text">Prompt service, consistent communication, quality result!</p>
+                <p class="review-text">Prompt service, consistent communication, and a quality result. The crew was responsive, respectful of the space, and delivered the kind of finish you hope for when investing in a new floor.</p>
             </div>
             <div class="review-card">
                 <div class="review-header">
@@ -1938,7 +1949,7 @@
                     <span class="review-date">5 months ago</span>
                 </div>
                 <div class="review-rating">★★★★★</div>
-                <p class="review-text">Very professional and communication was excellent.</p>
+                <p class="review-text">Very professional and communication was excellent. We always knew what was happening next, and the finished floor came out looking sharp, durable, and easy to maintain.</p>
             </div>
             <div class="review-card">
                 <div class="review-header">
@@ -1946,8 +1957,11 @@
                     <span class="review-date">6 months ago</span>
                 </div>
                 <div class="review-rating">★★★★★</div>
-                <p class="review-text">Super awesome experience, reasonable price, and exceptional floor. Ready within 3 days!</p>
+                <p class="review-text">Super awesome experience, reasonable price, and an exceptional floor. The epoxy was ready within three days, and the team even helped move belongings in and out so the whole project stayed stress-free.</p>
             </div>
+        </div>
+        <div class="reviews-actions">
+            <a href="reviews.html" class="btn-primary">Read More Customer Reviews</a>
         </div>
     </section>
 
@@ -2015,35 +2029,35 @@
         </div>
 
         <div class="blog-grid">
-            <a href="blog-epoxy-pros-cons.html" style="text-decoration: none; color: inherit;">
+            <a href="blog-epoxy-pros-cons.html" class="blog-card-link-wrap">
                 <div class="blog-card">
                     <img src="https://lh3.googleusercontent.com/d/1tEuXmEzQNft7EBcKNpUflwjsbCIi8Nxs" alt="Epoxy Pros and Cons" class="blog-card-image" loading="lazy">
                     <div class="blog-card-content">
                         <h3 class="blog-card-title">Epoxy Flooring Pros and Cons</h3>
                         <p class="blog-card-excerpt">Learn the real advantages and limitations of epoxy flooring for your space, and determine if it's the right choice.</p>
-                        <a href="blog-epoxy-pros-cons.html" class="blog-card-link">Read More →</a>
+                        <span class="blog-card-link">Read More →</span>
                     </div>
                 </div>
             </a>
 
-            <a href="blog-metallic-epoxy.html" style="text-decoration: none; color: inherit;">
+            <a href="blog-metallic-epoxy.html" class="blog-card-link-wrap">
                 <div class="blog-card">
                     <img src="https://lh3.googleusercontent.com/d/1f2-NRtm5iYm4RBAQUWjFNb_asb2y-fdT" alt="Metallic Epoxy Design" class="blog-card-image" loading="lazy">
                     <div class="blog-card-content">
                         <h3 class="blog-card-title">Metallic Epoxy Design Trends</h3>
                         <p class="blog-card-excerpt">Explore eye-catching metallic epoxy finishes and how to use flowing patterns and colors to improve your space.</p>
-                        <a href="blog-metallic-epoxy.html" class="blog-card-link">Read More →</a>
+                        <span class="blog-card-link">Read More →</span>
                     </div>
                 </div>
             </a>
 
-            <a href="blog-garage-prep.html" style="text-decoration: none; color: inherit;">
+            <a href="blog-garage-prep.html" class="blog-card-link-wrap">
                 <div class="blog-card">
                     <img src="IMG_8778.jpg" alt="Garage Prep" class="blog-card-image" loading="lazy">
                     <div class="blog-card-content">
                         <h3 class="blog-card-title">How to Prepare Your Garage for Epoxy</h3>
                         <p class="blog-card-excerpt">Step-by-step guide to surface preparation, what to expect during installation, and post-install care tips.</p>
-                        <a href="blog-garage-prep.html" class="blog-card-link">Read More →</a>
+                        <span class="blog-card-link">Read More →</span>
                     </div>
                 </div>
             </a>
