@@ -184,6 +184,21 @@
             width: auto;
         }
 
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .mobile-nav-title {
+            display: none;
+            color: #f0f0f0;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-align: center;
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -1365,8 +1380,34 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            nav {
+                justify-content: center;
+                padding: 0 4.5rem 0 1rem;
+                position: sticky;
+            }
+
+            .logo {
+                margin: 0 auto;
+            }
+
+            .logo img {
+                display: none;
+            }
+
+            .mobile-nav-title {
+                display: block;
+            }
+
+            .phone-btn {
+                display: none;
+            }
+
             .hamburger {
                 display: flex;
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
             }
 
             .nav-menu {
@@ -1567,7 +1608,7 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">
-            <a href="index.html"><img src="logo.png" alt="Evergreen Epoxy Flooring" loading="lazy"></a>
+            <a href="index.html"><img src="logo.png" alt="Evergreen Epoxy Flooring" loading="lazy"><span class="mobile-nav-title">Evergreen Epoxy Flooring</span></a>
         </div>
         <ul class="nav-menu">
             <li><a href="about.html">About Us</a></li>
@@ -1617,7 +1658,7 @@
                 <h1>Whatcom County's Top-Rated <span class="accent">Epoxy & Concrete Coating</span> Contractors</h1>
                 <p>Professional epoxy flooring and concrete coatings for Whatcom County and beyond. Residential, commercial & industrial — stunning, long-lasting results backed by industry-leading warranties. 200+ projects completed.</p>
                 <div class="button-group">
-                    <a href="#contact_form" class="btn-primary">Get Free Quote →</a>
+                    <a href="#quote_form" class="btn-primary">Get Free Quote →</a>
                     <a href="tel:(360)%20220-7631" class="btn-secondary">📞 Call (360) 220-7631</a>
                 </div>
             </div>
@@ -1653,7 +1694,7 @@
                 <li>Licensed & Bonded for Your Protection</li>
                 <li>Proven Excellence in Client Ratings</li>
             </ul>
-            <a href="#contact_form" class="btn-primary">Get A Free Estimate</a>
+            <a href="#quote_form" class="btn-primary">Get A Free Estimate</a>
             <p style="margin-top: 2rem; color: #4ade80; font-weight: 600;"><a href="tel:(360)%20220-7631" style="color: #4ade80; text-decoration: none;">Call or text anytime</a><br>(360) 220-7631</p>
         </div>
     </section>
@@ -1849,7 +1890,7 @@
             <h2>Ready for a New Floor?</h2>
             <p>Schedule your free estimate today. We'll visit your space, answer your questions, and provide a detailed quote with no obligation. Most residential projects are completed in just 2-3 days.</p>
             <div class="cta-buttons">
-                <a href="#contact_form" class="btn-cta">Get Your Free Estimate</a>
+                <a href="#quote_form" class="btn-cta">Get Your Free Estimate</a>
                 <a href="tel:(360)%20220-7631" class="btn-cta" style="background: transparent; border: 2px solid #4ade80; color: #4ade80;">📞 (360) 220-7631</a>
             </div>
             <p style="color: #4ade80; font-size: 0.85rem; margin-top: 1rem; font-weight: 600;">We respond within 24 hours &nbsp;•&nbsp; Licensed & bonded &nbsp;•&nbsp; No obligation</p>
@@ -2054,7 +2095,7 @@
             </div>
         </div>
 
-        <div class="contact-form">
+        <div class="contact-form" id="quote_form">
             <h3>Get Your Free Epoxy Flooring Estimate!</h3>
             <p style="color: #4ade80; font-size: 0.9rem; margin-bottom: 1rem; font-weight: 600;">✓ No obligation &nbsp;•&nbsp; ✓ Same-day response &nbsp;•&nbsp; ✓ 200+ projects completed &nbsp;•&nbsp; ✓ 4.9★ Google Rating</p>
             <iframe data-tally-src="https://tally.so/embed/oboarb?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&redirectUrl=https://evergreenepoxyflooring.com/thank-you.html" loading="lazy" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0" title="Get your free transformation quote today!"></iframe>
@@ -2227,7 +2268,7 @@
 <!-- Sticky Mobile CTA -->
 <div class="sticky-mobile-cta">
     <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
-    <a href="#contact_form" class="sticky-cta-btn sticky-cta-quote">Get Free Quote</a>
+    <a href="#quote_form" class="sticky-cta-btn sticky-cta-quote">Get Free Quote</a>
 </div>
 <style>
 .sticky-mobile-cta { display: none; }

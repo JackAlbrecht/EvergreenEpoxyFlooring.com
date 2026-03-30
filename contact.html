@@ -81,6 +81,21 @@
             width: auto;
         }
 
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .mobile-nav-title {
+            display: none;
+            color: #f0f0f0;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            text-align: center;
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -574,8 +589,34 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            nav {
+                justify-content: center;
+                padding: 0 4.5rem 0 1rem;
+                position: sticky;
+            }
+
+            .logo {
+                margin: 0 auto;
+            }
+
+            .logo img {
+                display: none;
+            }
+
+            .mobile-nav-title {
+                display: block;
+            }
+
+            .phone-btn {
+                display: none;
+            }
+
             .hamburger {
                 display: flex;
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
             }
 
             .nav-menu {
@@ -685,7 +726,7 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">
-            <a href="index.html"><img src="logo.png" alt="Evergreen Epoxy Flooring" loading="lazy"></a>
+            <a href="index.html"><img src="logo.png" alt="Evergreen Epoxy Flooring" loading="lazy"><span class="mobile-nav-title">Evergreen Epoxy Flooring</span></a>
         </div>
         <ul class="nav-menu">
             <li><a href="about.html">About Us</a></li>
