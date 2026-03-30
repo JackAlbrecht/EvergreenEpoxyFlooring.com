@@ -293,7 +293,7 @@
         }
 
         .cities-list li::before {
-            content: '→';
+            content: 'â';
             margin-right: 1rem;
             color: #4ade80;
             font-weight: bold;
@@ -645,7 +645,7 @@
                 <div class="section-label">OUR HOME BASE</div>
                 <h2>Bellingham & Whatcom County Epoxy & Concrete Coatings</h2>
                 <p>Whatcom County is where Evergreen Epoxy Flooring was born, and it remains our home base. With over 200 completed projects throughout the area, we have deep roots in this community and know the unique needs of homeowners and businesses here. We're fast, reliable, and dedicated to serving our neighbors with the highest quality epoxy flooring solutions.</p>
-                <p>From Bellingham to Ferndale, Lynden to Blaine, we're your local epoxy experts—licensed, bonded, and ready to transform your space.</p>
+                <p>From Bellingham to Ferndale, Lynden to Blaine, we're your local epoxy expertsâlicensed, bonded, and ready to transform your space.</p>
                 <ul class="cities-list">
                     <li><a href="epoxy-flooring-bellingham.html">Bellingham</a></li>
                     <li><a href="epoxy-flooring-ferndale.html">Ferndale</a></li>
@@ -699,7 +699,7 @@
                 <div class="section-label">ISLAND COMMUNITIES</div>
                 <h2>Island County Epoxy & Concrete Coatings</h2>
                 <p>Serving the island communities of Whidbey Island and Camano Island, we bring professional epoxy flooring solutions right to your doorstep. No matter if you're looking to update a home, business, or commercial space on the islands, our team is equipped to handle your project with the same quality and attention to detail you'd expect from Evergreen Epoxy Flooring.</p>
-                <p>Island living comes with unique challenges—we understand your needs and are committed to delivering results that exceed expectations.</p>
+                <p>Island living comes with unique challengesâwe understand your needs and are committed to delivering results that exceed expectations.</p>
                 <ul class="cities-list">
                     <li><a href="epoxy-flooring-oak-harbor.html">Oak Harbor</a></li>
                     <li><a href="epoxy-flooring-coupeville.html">Coupeville</a></li>
@@ -765,10 +765,10 @@
         </div>
 
         <div class="footer-bottom">
-            <div class="footer-bottom-text">Copyright © 2026 Evergreen Epoxy Flooring. All Rights Reserved.</div>
+            <div class="footer-bottom-text">Copyright Â© 2026 Evergreen Epoxy Flooring. All Rights Reserved.</div>
             <div class="footer-social">
                 <a href="https://www.facebook.com/p/Evergreen-Epoxy-Flooring-61568511347911/" title="Facebook">f</a>
-                <a href="https://www.instagram.com/evergreenepoxyflooring/" title="Instagram">📷</a>
+                <a href="https://www.instagram.com/evergreenepoxyflooring/" title="Instagram">ð·</a>
             </div>
         </div>
     </footer>
@@ -831,7 +831,7 @@
     </script>
 <!-- Sticky Mobile CTA -->
 <div class="sticky-mobile-cta">
-    <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
+    <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">ð Call Now</a>
     <a href="contact.html#contact_form" class="sticky-cta-btn sticky-cta-quote">Get Free Quote</a>
 </div>
 <style>
@@ -874,7 +874,30 @@
     }
     footer { padding-bottom: 80px !important; }
 }
-</style>
+
+        /* Fix unstyled links - ensure no browser-default blue links */
+        a {
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+
+        .cities-list a {
+            color: #4ade80;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .cities-list a:hover {
+            color: #22c55e;
+            text-decoration: underline;
+        }
+
+        .logo a,
+        .sticky-mobile-cta a {
+            color: inherit;
+        }
+
+        </style>
 </body>
 </html>
 
