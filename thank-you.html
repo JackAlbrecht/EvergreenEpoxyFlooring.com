@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Evergreen Epoxy Flooring</title>
+    <meta name="description" content="Thank you for contacting Evergreen Epoxy Flooring. We'll get back to you shortly.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://evergreenepoxyflooring.com/thank-you.html">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-padding-top: 80px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #0d1a0d;
+            border-bottom: 1px solid #1a3a1a;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-item > a:hover {
+            color: #4ade80;
+        }
+
+        .dropdown-toggle::after {
+            content: '▼';
+            font-size: 0.7rem;
+            margin-left: 0.3rem;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #0d1a0d;
+            border: 1px solid #1a3a1a;
+            min-width: 200px;
+            padding: 10px 0 0.5rem 0;
+            border-radius: 0.375rem;
+        }
+
+        .nav-item:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #f0f0f0;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #1a3a1a;
+            color: #4ade80;
+        }
+
+        .nav-phone {
+            background: linear-gradient(135deg, #16a34a, #4ade80);
+            color: #0a0a0a;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-phone:hover {
+            transform: scale(1.05);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #f0f0f0;
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: radial-gradient(ellipse at top, #0d2b0d 0%, #0a0a0a 60%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .checkmark-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background-color: #4ade80;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: white;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #f0f0f0;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            color: #4ade80;
+            font-weight: 600;
+            margin-top: 2rem;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-label {
+            color: #4ade80;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .gallery-card {
+            background-color: #111;
+            border: 1px solid #1e3a1e;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            border-color: #4ade80;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-card-label {
+            padding: 1.5rem;
+            font-weight: 600;
+            color: #f0f0f0;
+            text-align: center;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .star-rating {
+            font-size: 1.5rem;
+            color: #f5c518;
+            margin: 1rem 0;
+        }
+
+        .review-count {
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .review-card {
+            background-color: #111;
+            border: 1px solid #1e3a1e;
+            border-top: 3px solid #4ade80;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: #16a34a;
+        }
+
+        .review-stars {
+            color: #f5c518;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            color: #f0f0f0;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .review-author {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .review-avatar {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .review-date {
+            color: #777;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: radial-gradient(ellipse at center, #0d2b0d 0%, #0a0a0a 70%);
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .cta-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #f0f0f0;
+            font-weight: 700;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #22c55e, #4ade80);
+            color: #0a0a0a;
+            box-shadow: 0 4px 15px rgba(74, 222, 128, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #4ade80, #86efac);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(74, 222, 128, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #4ade80;
+            border: 2px solid #4ade80;
+        }
+
+        .btn-secondary:hover {
+            background-color: #4ade80;
+            color: #0a0a0a;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050e05;
+            border-top: 1px solid #1a3a1a;
+            padding: 3rem 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #f0f0f0;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #4ade80;
+        }
+
+        .footer-logo img {
+            height: 35px;
+            width: auto;
+            margin-bottom: 1rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #1a3a1a;
+            border-radius: 50%;
+            color: #4ade80;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: #4ade80;
+            color: #0a0a0a;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #1a3a1a;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: #0d1a0d;
+                flex-direction: column;
+                gap: 0;
+                border-bottom: 1px solid #1a3a1a;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-item {
+                width: 100%;
+                border-bottom: 1px solid #1a3a1a;
+            }
+
+            .nav-item > a {
+                padding: 1rem 2rem;
+                display: block;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                background-color: #0a0a0a;
+                border: none;
+                border-top: 1px solid #1a3a1a;
+            }
+
+            .nav-item.active .dropdown-content {
+                display: block;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+                line-height: 1.3;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            .btn-cta, .btn-primary, .btn {
+                width: 100%;
+                text-align: center;
+                min-height: 44px;
+            }
+
+            section {
+                padding-left: 1.25rem;
+                padding-right: 1.25rem;
+            }
+
+            .section-heading {
+                font-size: 1.6rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="Evergreen Epoxy Flooring">
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="services.html" class="dropdown-toggle">Services</a>
+                    <div class="dropdown-content">
+                        <a href="services.html#flake">Flake</a>
+                        <a href="services.html#solid">Solid</a>
+                        <a href="services.html#quartz">Quartz</a>
+                        <a href="services.html#metallic">Metallic</a>
+                        <a href="services.html#concrete">Concrete Overlay</a>
+                        <a href="services.html#countertops">Countertops</a>
+                        <a href="services.html">View All</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="service-areas.html" class="dropdown-toggle">Service Areas</a>
+                    <div class="dropdown-content">
+                        <a href="service-areas.html#whatcom">Whatcom County</a>
+                        <a href="service-areas.html#skagit">Skagit County</a>
+                        <a href="service-areas.html#island">Island County</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a href="reviews.html">Reviews</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://evergreenepoxytraining.com" target="_blank" style="color: #4ade80;">Training</a>
+                </li>
+            </ul>
+            <a href="tel:+13602207631" class="nav-phone">(360) 220-7631</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="checkmark-icon">✓</div>
+            <h1>Thank You for Reaching Out!</h1>
+            <p>We've received your request and will get back to you within 24 hours. In the meantime, take a look at some of our recent work below.</p>
+            <p class="hero-cta">Need to talk now? Call us at <a href="tel:+13602207631" style="color: #4ade80; text-decoration: none;">(360) 220-7631</a></p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="section-label">SEE OUR CRAFTSMANSHIP</div>
+        <h2 class="section-heading">Recent Projects</h2>
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <img src="https://lh3.googleusercontent.com/d/1GJ5mVnUwh9dEaqjmPncjFt8p-zgLrDcj" alt="Flake Garage Floor">
+                <div class="gallery-card-label">Flake Garage Floor</div>
+            </div>
+            <div class="gallery-card">
+                <img src="https://lh3.googleusercontent.com/d/1tEuXmEzQNft7EBcKNpUflwjsbCIi8Nxs" alt="Flake Floor">
+                <div class="gallery-card-label">Flake Floor</div>
+            </div>
+            <div class="gallery-card">
+                <img src="https://lh3.googleusercontent.com/d/1f2-NRtm5iYm4RBAQUWjFNb_asb2y-fdT" alt="Metallic Epoxy">
+                <div class="gallery-card-label">Metallic Epoxy</div>
+            </div>
+            <div class="gallery-card">
+                <img src="https://lh3.googleusercontent.com/d/1KcQybLHl_YNceuNkHFBdSB6xxzECunfB" alt="Epoxy Countertop">
+                <div class="gallery-card-label">Epoxy Countertop</div>
+            </div>
+            <div class="gallery-card">
+                <img src="IMG_8778.jpg" alt="Concrete Overlay">
+                <div class="gallery-card-label">Concrete Overlay</div>
+            </div>
+            <div class="gallery-card">
+                <img src="https://lh3.googleusercontent.com/d/1u2XSKDK3Ic6NubSMQ5QYl9LYHgYDKrs-" alt="Bathroom Coating">
+                <div class="gallery-card-label">Bathroom Coating</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="reviews-header">
+            <div class="section-label">WHAT OUR CLIENTS SAY</div>
+            <h2 class="section-heading">Real Reviews from Real Customers</h2>
+            <div class="star-rating">★★★★★</div>
+            <div class="review-count">4.9 out of 5 (31 reviews)</div>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Jack and Carson did an excellent job with our garage floor. We couldn't be happier with how it turned out."</p>
+                <div class="review-author"><span class="review-avatar" style="background: #4285F4;">S</span> Sue Bateman</div>
+                <div class="review-date">1 month ago</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Very professional. Everything went quick and smooth! Would definitely recommend."</p>
+                <div class="review-author"><span class="review-avatar" style="background: #EA4335;">J</span> Jake Denessen</div>
+                <div class="review-date">1 month ago</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Very professional and knowledgeable. Will be recommending to my friends and family."</p>
+                <div class="review-author"><span class="review-avatar" style="background: #34A853;">M</span> Madison Muder</div>
+                <div class="review-date">1 month ago</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Prompt service, consistent communication, quality result!"</p>
+                <div class="review-author"><span class="review-avatar" style="background: #FBBC05;">M</span> Max Eddy</div>
+                <div class="review-date">5 months ago</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Very professional and communication was excellent."</p>
+                <div class="review-author"><span class="review-avatar" style="background: #4285F4;">B</span> Bryan Wood</div>
+                <div class="review-date">5 months ago</div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">"Super awesome experience, reasonable price, and exceptional floor. Ready within 3 days!"</p>
+                <div class="review-author"><span class="review-avatar" style="background: #EA4335;">J</span> Jeremy Dixon</div>
+                <div class="review-date">6 months ago</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <h2>Ready to See What We Can Do for Your Space?</h2>
+            <div class="cta-buttons">
+                <a href="services.html" class="btn btn-primary">View Our Services</a>
+                <a href="tel:+13602207631" class="btn btn-secondary">Call Us Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="Evergreen Epoxy Flooring">
+                    </div>
+                    <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 1rem;">Professional epoxy flooring and coatings for residential and commercial spaces.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com" class="social-link" target="_blank">f</a>
+                        <a href="https://instagram.com" class="social-link" target="_blank">@</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html#flake">Flake Epoxy</a></li>
+                        <li><a href="services.html#solid">Solid Epoxy</a></li>
+                        <li><a href="services.html#quartz">Quartz Epoxy</a></li>
+                        <li><a href="services.html#metallic">Metallic Epoxy</a></li>
+                        <li><a href="services.html#concrete">Concrete Overlay</a></li>
+                        <li><a href="services.html#countertops">Countertops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="index.html">About Us</a></li>
+                        <li><a href="service-areas.html">Service Areas</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="tel:+13602207631">(360) 220-7631</a></li>
+                        <li><a href="mailto:info@evergreenepoxyflooring.com">info@evergreenepoxyflooring.com</a></li>
+                        <li style="color: #aaa; margin-top: 1rem; font-size: 0.9rem;">Whatcom, Skagit & Island Counties, WA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Evergreen Epoxy Flooring. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Don't close menu when clicking dropdown parent links on mobile
+                if (window.innerWidth <= 768 && link.parentElement.classList.contains('nav-item') && link.querySelector('.dropdown-toggle')) {
+                    return;
+                }
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.nav-item.active').forEach(d => d.classList.remove('active'));
+            });
+        });
+
+        // Mobile dropdown functionality
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            const toggle = item.querySelector('.dropdown-toggle');
+            if (toggle) {
+                toggle.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Close other open dropdowns
+                        navItems.forEach(otherItem => {
+                            if (otherItem !== item) otherItem.classList.remove('active');
+                        });
+                        item.classList.toggle('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
