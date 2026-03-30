@@ -652,7 +652,7 @@
         }
 
         .benefits-list li::before {
-            content: '•';
+            content: 'â¢';
             position: absolute;
             left: 0;
             color: #4ade80;
@@ -1124,19 +1124,19 @@
         <h2>Why Clients in Skagit County Choose Evergreen Epoxy</h2>
         <div class="reviews-grid">
             <div class="review-card">
-                <div class="review-stars">★★★★★</div>
+                <div class="review-stars">âââââ</div>
                 <p class="review-text">"Evergreen Epoxy completely transformed our garage. The team was professional, on-time, and the floor looks incredible. We couldn't be happier!"</p>
-                <p class="review-author">— Local Client, Burlington, WA</p>
+                <p class="review-author">â Local Client, Burlington, WA</p>
             </div>
             <div class="review-card">
-                <div class="review-stars">★★★★★</div>
+                <div class="review-stars">âââââ</div>
                 <p class="review-text">"Best investment we made for our home. The epoxy floor in our basement looks amazing and has made the space feel so much more finished. Highly recommend!"</p>
-                <p class="review-author">— Property Owner, Skagit County</p>
+                <p class="review-author">â Property Owner, Skagit County</p>
             </div>
             <div class="review-card">
-                <div class="review-stars">★★★★★</div>
+                <div class="review-stars">âââââ</div>
                 <p class="review-text">"We used Evergreen Epoxy for our commercial space. Their expertise, warranty, and attention to detail set them apart. Can't ask for better service!"</p>
-                <p class="review-author">— Business Owner, Burlington</p>
+                <p class="review-author">â Business Owner, Burlington</p>
             </div>
         </div>
     </section>
@@ -1259,10 +1259,10 @@
         </div>
 
         <div class="footer-bottom">
-            <div class="footer-bottom-text">Copyright © 2026 Evergreen Epoxy Flooring. All Rights Reserved.</div>
+            <div class="footer-bottom-text">Copyright Â© 2026 Evergreen Epoxy Flooring. All Rights Reserved.</div>
             <div class="footer-social">
                 <a href="https://www.facebook.com/p/Evergreen-Epoxy-Flooring-61568511347911/" title="Facebook">f</a>
-                <a href="https://www.instagram.com/evergreenepoxyflooring/" title="Instagram">📷</a>
+                <a href="https://www.instagram.com/evergreenepoxyflooring/" title="Instagram">ð·</a>
             </div>
         </div>
     </footer>
@@ -1333,7 +1333,7 @@
     </script>
 <!-- Sticky Mobile CTA -->
 <div class="sticky-mobile-cta">
-    <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
+    <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">ð Call Now</a>
     <a href="contact.html#contact_form" class="sticky-cta-btn sticky-cta-quote">Get Free Quote</a>
 </div>
 <style>
@@ -1376,7 +1376,12 @@
     }
     footer { padding-bottom: 80px !important; }
 }
-</style>
+
+        /* Fix unstyled links - no browser-default blue */
+        a { color: #f0f0f0; text-decoration: none; }
+        a:hover { color: #4ade80; }
+        .logo a, .sticky-mobile-cta a { color: inherit; }
+        </style>
 </body>
 </html>
 

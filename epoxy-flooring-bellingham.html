@@ -1019,19 +1019,19 @@
         <h2 class="section-title">What Bellingham Customers Say</h2>
         <div class="reviews-grid">
             <div class="review-card">
-                <div class="stars">★★★★★ 5.0 Stars</div>
+                <div class="stars">âââââ 5.0 Stars</div>
                 <p class="review-text">"Fantastic work! The team transformed our garage into something we're really proud of. Professional, clean work site, and they stuck to the timeline. Highly recommend!"</p>
                 <div class="review-author">- Sarah M., Bellingham</div>
             </div>
 
             <div class="review-card">
-                <div class="stars">★★★★★ 5.0 Stars</div>
+                <div class="stars">âââââ 5.0 Stars</div>
                 <p class="review-text">"Best decision we made. The epoxy flooring in our home looks incredible and is so easy to clean. The quality is superior to what we expected. Thanks, Evergreen!"</p>
                 <div class="review-author">- John D., Sehome</div>
             </div>
 
             <div class="review-card">
-                <div class="stars">★★★★★ 5.0 Stars</div>
+                <div class="stars">âââââ 5.0 Stars</div>
                 <p class="review-text">"Owner-operated and it shows. They were punctual, professional, and answered every question I had. The garage floor looks amazing and the coating is holding up perfectly."</p>
                 <div class="review-author">- Lisa P., Fairhaven</div>
             </div>
@@ -1156,10 +1156,10 @@
         </div>
 
         <div class="footer-bottom">
-            <div class="footer-bottom-text">Copyright © 2026 Evergreen Epoxy Flooring. All Rights Reserved.</div>
+            <div class="footer-bottom-text">Copyright Â© 2026 Evergreen Epoxy Flooring. All Rights Reserved.</div>
             <div class="footer-social">
                 <a href="https://www.facebook.com/p/Evergreen-Epoxy-Flooring-61568511347911/" title="Facebook">f</a>
-                <a href="https://www.instagram.com/evergreenepoxyflooring/" title="Instagram">📷</a>
+                <a href="https://www.instagram.com/evergreenepoxyflooring/" title="Instagram">ð·</a>
             </div>
         </div>
     </footer>
@@ -1235,12 +1235,12 @@
 
             // Toggle current FAQ
             answer.classList.toggle('active');
-            toggle.textContent = answer.classList.contains('active') ? '−' : '+';
+            toggle.textContent = answer.classList.contains('active') ? 'â' : '+';
         }
     </script>
 <!-- Sticky Mobile CTA -->
 <div class="sticky-mobile-cta">
-    <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
+    <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">ð Call Now</a>
     <a href="contact.html#contact_form" class="sticky-cta-btn sticky-cta-quote">Get Free Quote</a>
 </div>
 <style>
@@ -1283,7 +1283,12 @@
     }
     footer { padding-bottom: 80px !important; }
 }
-</style>
+
+        /* Fix unstyled links - no browser-default blue */
+        a { color: #f0f0f0; text-decoration: none; }
+        a:hover { color: #4ade80; }
+        .logo a, .sticky-mobile-cta a { color: inherit; }
+        </style>
 </body>
 </html>
 
