@@ -771,10 +771,38 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            nav {
+                justify-content: center;
+                padding: 0 1rem;
+                position: sticky;
+            }
+            .logo {
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1001;
+            }
+            .logo img {
+                display: block;
+                height: 38px;
+                width: auto;
+            }
+            .phone-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.6rem 0.85rem;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
             .hamburger {
                 display: flex;
+                position: absolute;
+                right: 1rem;
+                top: 50%;
+                transform: translateY(-50%);
             }
-
             .nav-menu {
                 position: absolute;
                 top: 70px;
@@ -1330,3 +1358,5 @@
 </style>
 </body>
 </html>
+
+
