@@ -342,6 +342,35 @@
             color: #f0f0f0;
         }
 
+        .stealth-link {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .stealth-link:hover {
+            color: #6ee7b7;
+        }
+
+        .hover-note {
+            color: #9ca3af;
+            text-align: center;
+            margin: 0 2rem 2rem;
+            font-size: 0.95rem;
+        }
+
+        .subpage-links {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.25rem;
+            display: grid;
+            gap: 0.55rem;
+        }
+
+        .subpage-links li {
+            color: #d1d5db;
+        }
+
         .service-card p {
             color: #aaa;
             margin-bottom: 1.25rem;
@@ -994,12 +1023,13 @@
 
     <!-- Facility Types -->
     <section class="services-section">
+        <p class="hover-note">Hover a facility type name to open its dedicated page.</p>
         <div class="services-grid">
 
             <div class="service-card" id="fire-stations">
                 <div class="service-icon">&#128658;</div>
                 <div class="section-label">EMERGENCY SERVICES</div>
-                <h2>Fire Stations</h2>
+                <h2><a class="stealth-link" href="fire-station-flooring.html">Fire Stations</a></h2>
                 <p>Apparatus bays take more abuse than almost any floor in existence. Heavy rigs rolling in and out, hydraulic fluid dripping, diesel fuel spills, decon washdowns, and thermal shock from trucks coming in off calls. Our epoxy systems are built for exactly this.</p>
                 <ul class="benefits-list">
                     <li>Rated for 80,000+ lb apparatus traffic</li>
@@ -1008,13 +1038,12 @@
                     <li>Easy decontamination after hazmat calls</li>
                     <li>Covers bays, living quarters, kitchens, and gyms</li>
                 </ul>
-                <a href="contact.html#contact_form" class="btn-cta">Get a Quote</a>
             </div>
 
             <div class="service-card" id="police-stations">
                 <div class="service-icon">&#128110;</div>
                 <div class="section-label">LAW ENFORCEMENT</div>
-                <h2>Police Stations</h2>
+                <h2><a class="stealth-link" href="police-station-flooring.html">Police Stations</a></h2>
                 <p>A police station never closes. Booking areas, processing rooms, dispatch centers, evidence storage, locker rooms, and sally ports all need flooring that handles constant wear without looking run down. Our seamless epoxy makes cleaning fast and keeps your facility looking sharp 24/7.</p>
                 <ul class="benefits-list">
                     <li>Handles 24/7 foot and vehicle traffic</li>
@@ -1023,13 +1052,12 @@
                     <li>Impact and abrasion resistant</li>
                     <li>Covers sally ports, garages, and interior spaces</li>
                 </ul>
-                <a href="contact.html#contact_form" class="btn-cta">Get a Quote</a>
             </div>
 
             <div class="service-card" id="government-buildings">
                 <div class="service-icon">&#127963;</div>
                 <div class="section-label">PUBLIC BUILDINGS</div>
-                <h2>Courthouses, City Halls & Community Centers</h2>
+                <h2><a class="stealth-link" href="government-building-flooring.html">Courthouses, City Halls & Community Centers</a></h2>
                 <p>Public buildings see thousands of visitors and need to look professional while holding up to heavy use for decades. Our epoxy and concrete coating systems replace cracked tile, worn VCT, and stained carpet with a single seamless surface that costs less to maintain over its lifetime than any alternative.</p>
                 <ul class="benefits-list">
                     <li>Outlasts tile, VCT, and carpet by 3-5x</li>
@@ -1038,13 +1066,12 @@
                     <li>Professional finish for high-visibility spaces</li>
                     <li>Phased installation to minimize disruption</li>
                 </ul>
-                <a href="contact.html#contact_form" class="btn-cta">Get a Quote</a>
             </div>
 
             <div class="service-card" id="public-works">
                 <div class="service-icon">&#9881;</div>
                 <div class="section-label">MUNICIPAL OPERATIONS</div>
-                <h2>Public Works & Utility Facilities</h2>
+                <h2><a class="stealth-link" href="public-works-flooring.html">Public Works & Utility Facilities</a></h2>
                 <p>Maintenance shops, vehicle storage buildings, water treatment plants, and public works yards deal with harsh chemicals, heavy machinery, and tough conditions daily. Our epoxy creates a sealed, impervious surface that protects your concrete investment and keeps workers safe.</p>
                 <ul class="benefits-list">
                     <li>Chemical and solvent resistant</li>
@@ -1053,13 +1080,12 @@
                     <li>Meets OSHA safety standards</li>
                     <li>15-20+ year lifespan with minimal upkeep</li>
                 </ul>
-                <a href="contact.html#contact_form" class="btn-cta">Get a Quote</a>
             </div>
 
             <div class="service-card" id="navy-base-facilities">
                 <div class="service-icon">&#9875;</div>
                 <div class="section-label">DEFENSE SUPPORT</div>
-                <h2>Navy Base & Secure Facility Spaces</h2>
+                <h2><a class="stealth-link" href="navy-base-flooring.html">Navy Base & Secure Facility Spaces</a></h2>
                 <p>For leadership and facilities teams connected to Naval Air Station Whidbey Island, we can scope durable flooring systems for support buildings, maintenance areas, utility rooms, fleet spaces, and other high-wear operational environments. The goal is a cleaner, more durable, easier-to-maintain floor system that performs under constant use.</p>
                 <ul class="benefits-list">
                     <li>Options for maintenance bays, utility rooms, and support spaces</li>
@@ -1068,7 +1094,11 @@
                     <li>Professional finish for command, admin, and support areas</li>
                     <li>Strong fit for Island County and Whidbey-area facility scopes</li>
                 </ul>
-                <a href="contact.html#contact_form" class="btn-cta">Request a Facility Review</a>
+                <ul class="subpage-links">
+                    <li><a class="stealth-link" href="nas-whidbey-island-flooring.html">NAS Whidbey Island Flooring</a></li>
+                    <li><a class="stealth-link" href="navy-maintenance-bay-flooring.html">Navy Maintenance Bay Flooring</a></li>
+                    <li><a class="stealth-link" href="navy-support-building-flooring.html">Navy Support Building Flooring</a></li>
+                </ul>
             </div>
 
         </div>
