@@ -1727,19 +1727,8 @@
                 <h2>Instant Epoxy Flooring Price Calculator</h2>
                 <p class="calc-subtitle">Answer a few quick questions and get a ballpark estimate for your project. No commitment, no waiting.</p>
             </div>
-            <div class="calc-step" id="calc-step-1">
-                <div class="calc-step-label">Step 1: What type of floor system are you interested in?</div>
-                <div class="calc-option-grid">
-                    <button class="calc-option-btn" data-type="flake" data-low="6" data-high="10"><img src="https://lh3.googleusercontent.com/d/1p15IWRkrpvIj3PymrwoLgI5daL1KM2QQ" alt="Flake Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Flake Floors</div></button>
-                    <button class="calc-option-btn" data-type="quartz" data-low="12" data-high="16"><img src="quartz floors.jpg" alt="Quartz Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Quartz Floors</div></button>
-                    <button class="calc-option-btn" data-type="metallic" data-low="14" data-high="25"><img src="https://lh3.googleusercontent.com/d/1f2-NRtm5iYm4RBAQUWjFNb_asb2y-fdT" alt="Metallic Epoxy" class="calc-option-img" loading="lazy"><div class="calc-option-label">Metallic Epoxy</div></button>
-                    <button class="calc-option-btn" data-type="solid" data-low="14" data-high="15"><img src="IMG_1755.jpg" alt="Solid Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Solid Floors</div></button>
-                    <button class="calc-option-btn" data-type="overlay" data-low="4" data-high="7"><img src="IMG_8778.jpg" alt="Concrete Overlay" class="calc-option-img" loading="lazy"><div class="calc-option-label">Concrete Overlay</div></button>
-                    <button class="calc-option-btn" data-type="countertops" data-low="50" data-high="100"><img src="https://lh3.googleusercontent.com/d/1KcQybLHl_YNceuNkHFBdSB6xxzECunfB" alt="Countertops" class="calc-option-img" loading="lazy"><div class="calc-option-label">Countertops</div></button>
-                </div>
-            </div>
-            <div class="calc-step" id="calc-step-2" style="display:none;">
-                <div class="calc-step-label">Step 2: What kind of space is this for?</div>
+            <div class="calc-step" id="calc-step-1" style="display: block;">
+                <div class="calc-step-label">Step 1: What Kind of Space Is This For?</div>
                 <div class="calc-option-grid">
                     <button class="calc-option-btn calc-space-btn" data-space="Residential"><img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Residential_Garage_Scene_5_1500x1500.jpg" alt="Residential" class="calc-option-img" loading="lazy"><div class="calc-option-label">Residential</div></button>
                     <button class="calc-option-btn calc-space-btn" data-space="Commercial"><img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Grocery_Store_1200x1200.jpg" alt="Commercial" class="calc-option-img" loading="lazy"><div class="calc-option-label">Commercial</div></button>
@@ -1750,41 +1739,54 @@
                 </div>
                 <button class="calc-back-btn" onclick="calcGoBack(1)">&#8592; Back</button>
             </div>
+            <div class="calc-step" id="calc-step-2" style="display:none">
+                <div class="calc-step-label">Step 2: What Type of Floor System Are You Interested In?</div>
+                <div class="calc-option-grid">
+                    <button class="calc-option-btn" data-type="flake" data-low="6" data-high="10"><img src="https://lh3.googleusercontent.com/d/1p15IWRkrpvIj3PymrwoLgI5daL1KM2QQ" alt="Flake Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Flake Floors</div></button>
+                    <button class="calc-option-btn" data-type="quartz" data-low="12" data-high="16"><img src="quartz floors.jpg" alt="Quartz Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Quartz Floors</div></button>
+                    <button class="calc-option-btn" data-type="metallic" data-low="14" data-high="25"><img src="https://lh3.googleusercontent.com/d/1f2-NRtm5iYm4RBAQUWjFNb_asb2y-fdT" alt="Metallic Epoxy" class="calc-option-img" loading="lazy"><div class="calc-option-label">Metallic Epoxy</div></button>
+                    <button class="calc-option-btn" data-type="solid" data-low="14" data-high="15"><img src="IMG_1755.jpg" alt="Solid Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Solid Floors</div></button>
+                    <button class="calc-option-btn" data-type="overlay" data-low="4" data-high="7"><img src="IMG_8778.jpg" alt="Concrete Overlay" class="calc-option-img" loading="lazy"><div class="calc-option-label">Concrete Overlay</div></button>
+                    <button class="calc-option-btn" data-type="countertops" data-low="50" data-high="100"><img src="https://lh3.googleusercontent.com/d/1KcQybLHl_YNceuNkHFBdSB6xxzECunfB" alt="Countertops" class="calc-option-img" loading="lazy"><div class="calc-option-label">Countertops</div></button>
+                </div>
+            </div>
             <div class="calc-step" id="calc-step-3" style="display:none;">
                 <div class="calc-step-label">Step 3: How many square feet is your space?</div>
                 <div class="calc-selected-info" id="calc-selected-info"></div>
                 <div class="sqft-input-row">
                     <div class="sqft-input-wrap"><input type="number" id="calc-sqft" class="calc-input" placeholder="e.g. 450" min="1" max="100000" inputmode="numeric"><span class="sqft-unit">sq ft</span></div>
-                    <button class="calc-btn-primary" onclick="calcShowEstimate()">See My Estimate</button>
+                    <button class="calc-btn-primary" onclick="calcGoToForm()">Next</button>
                 </div>
                 <button class="calc-back-btn" onclick="calcGoBack(2)">&#8592; Back</button>
             </div>
-            <div class="calc-step" id="calc-step-4" style="display:none;">
-                <div class="calc-result-card">
-                    <div class="calc-result-label">Your Estimated Price Range</div>
-                    <div class="calc-result-price" id="calc-result-price"></div>
-                    <div class="calc-result-details" id="calc-result-details"></div>
-                    <div class="calc-result-note">This is a ballpark estimate. Final pricing depends on floor condition, prep work needed, and project details.</div>
+            <div class="calc-step" id="calc-step-4" style="display:none">
+                <div style="text-align:center; margin-bottom:2rem;">
+                    <p class="calc-step-label" style="color:#4ade80; font-size:0.85rem; font-weight:600; letter-spacing:2px; margin-bottom:0.5rem;">ALMOST THERE!</p>
+                    <h3 style="color:#fff; font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">Your Estimate is Ready</h3>
+                    <p style="color:#999; font-size:0.95rem;">Enter your info below to see your ballpark price range.</p>
                 </div>
-                <div class="calc-lead-form">
-                    <div class="calc-lead-header">Want an exact quote? We will get back to you within 24 hours.</div>
-                    <div class="calc-form-grid">
-                        <input type="text" id="calc-name" class="calc-input" placeholder="Your Name" required>
-                        <input type="email" id="calc-email" class="calc-input" placeholder="Email Address" required>
-                        <input type="tel" id="calc-phone" class="calc-input" placeholder="Phone Number" required>
-                        <button class="calc-btn-primary calc-submit-btn" id="calc-submit-btn" onclick="calcSubmitLead()">Get My Exact Quote</button>
+                <div style="background:#111; border:1px solid #1e3a1e; border-radius:12px; padding:2rem; max-width:600px; margin:0 auto;">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+                        <input type="text" id="calc-name" class="calc-input" placeholder="Your Name" style="background:#0a0a0a; border:1px solid #1e3a1e; color:#fff; padding:0.85rem 1rem; border-radius:8px; font-size:0.95rem; font-family:inherit;">
+                        <input type="email" id="calc-email" class="calc-input" placeholder="Email Address" style="background:#0a0a0a; border:1px solid #1e3a1e; color:#fff; padding:0.85rem 1rem; border-radius:8px; font-size:0.95rem; font-family:inherit;">
                     </div>
+                    <input type="tel" id="calc-phone" class="calc-input" placeholder="Phone Number" style="background:#0a0a0a; border:1px solid #1e3a1e; color:#fff; padding:0.85rem 1rem; border-radius:8px; font-size:0.95rem; width:calc(50% - 0.5rem); margin-bottom:1rem; font-family:inherit;">
+                    <button id="calc-submit-btn" onclick="calcSubmitLead()" style="width:100%; background:linear-gradient(135deg,#22c55e,#4ade80); color:#0a0a0a; border:none; padding:1rem; border-radius:8px; font-size:1.1rem; font-weight:700; cursor:pointer; font-family:inherit;">See My Estimate</button>
+                    <p style="color:#666; font-size:0.75rem; margin-top:0.75rem; text-align:center; line-height:1.5;">By submitting your information, you consent to being contacted by Evergreen Epoxy Flooring via phone, email, or text regarding your estimate and our services. We respect your privacy and will never share your information with third parties.</p>
                 </div>
-                <button class="calc-back-btn" onclick="calcGoBack(3)">&#8592; Back</button>
-            
-                <p style="color:#666; font-size:0.75rem; margin-top:0.75rem; text-align:center; line-height:1.5;">By submitting your information, you consent to being contacted by Evergreen Epoxy Flooring via phone, email, or text regarding your estimate and our services. We respect your privacy and will never share your information with third parties.</p>
+                <p style="text-align:center; margin-top:1.5rem;"><a href="javascript:void(0)" onclick="calcGoBack(3)" style="color:#4ade80; text-decoration:none; font-size:0.9rem;">&larr; Back</a></p>
             </div>
-            <div class="calc-step" id="calc-step-5" style="display:none;">
-                <div class="calc-thankyou">
-                    <div class="calc-thankyou-icon">&#10003;</div>
-                    <h3>Thank You!</h3>
-                    <p>We received your info and will reach out within 24 hours with a detailed quote.</p>
-                    <a href="tel:(360)%20220-7631" class="calc-btn-primary" style="display:inline-block; margin-top:1rem;">Call (360) 220-7631</a>
+            <div class="calc-step" id="calc-step-5" style="display:none">
+                <div style="text-align:center; margin-bottom:2rem;">
+                    <p class="calc-step-label" style="color:#4ade80; font-size:0.85rem; font-weight:600; letter-spacing:2px; margin-bottom:0.5rem;">YOUR ESTIMATED PRICE RANGE</p>
+                    <p id="calc-result-price" style="font-size:3rem; font-weight:700; color:#4ade80; margin:0.5rem 0;"></p>
+                    <p id="calc-result-details" style="color:#ccc; font-size:1.05rem; margin-bottom:0.5rem;"></p>
+                    <p style="color:#777; font-size:0.85rem; font-style:italic;">This is a ballpark estimate. Final pricing depends on floor condition, prep work needed, and project details.</p>
+                </div>
+                <div style="max-width:500px; margin:0 auto; text-align:center;">
+                    <p style="color:#fff; font-size:1.2rem; font-weight:600; margin-bottom:1rem;">Speak to a Professional</p>
+                    <a href="tel:(360)%20220-7631" style="display:block; width:100%; background:linear-gradient(135deg,#22c55e,#4ade80); color:#0a0a0a; text-decoration:none; padding:1rem; border-radius:8px; font-size:1.2rem; font-weight:700; text-align:center; margin-bottom:1rem;">Call Now: (360) 220-7631</a>
+                    <p style="color:#999; font-size:0.9rem;">We will also follow up with you within 24 hours.</p>
                 </div>
             </div>
         </div>
@@ -2385,11 +2387,11 @@
         var calcData = {type:'',typeName:'',space:'',low:0,high:0,sqft:0};
         function calcShowStep(n){for(var i=1;i<=5;i++){var el=document.getElementById('calc-step-'+i);if(el)el.style.display=i===n?'block':'none';}}
         function calcGoBack(n){calcShowStep(n);}
-        document.querySelectorAll('#calc-step-1 .calc-option-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('#calc-step-1 .calc-option-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');calcData.type=btn.dataset.type;calcData.typeName=btn.querySelector('.calc-option-label').textContent;calcData.low=parseFloat(btn.dataset.low);calcData.high=parseFloat(btn.dataset.high);calcShowStep(2);});});
-        document.querySelectorAll('.calc-space-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.calc-space-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');calcData.space=btn.dataset.space;document.getElementById('calc-selected-info').textContent=calcData.typeName+' for '+calcData.space+' Space';document.getElementById('calc-sqft').value='';calcShowStep(3);document.getElementById('calc-sqft').focus();});});
-        document.getElementById('calc-sqft').addEventListener('keydown',function(e){if(e.key==='Enter')calcShowEstimate();});
-        function calcShowEstimate(){var sqft=parseInt(document.getElementById('calc-sqft').value);if(!sqft||sqft<1){document.getElementById('calc-sqft').style.borderColor='#ef4444';return;}calcData.sqft=sqft;var lowTotal=calcData.low*sqft;var highTotal=calcData.high*sqft;document.getElementById('calc-result-price').textContent=String.fromCharCode(36)+lowTotal.toLocaleString()+' - '+String.fromCharCode(36)+highTotal.toLocaleString();document.getElementById('calc-result-details').textContent=calcData.typeName+' for your '+calcData.space+' space';calcShowStep(4);}
-        function calcSubmitLead(){var name=document.getElementById('calc-name').value.trim();var email=document.getElementById('calc-email').value.trim();var phone=document.getElementById('calc-phone').value.trim();if(!name||!email||!phone){if(!name)document.getElementById('calc-name').style.borderColor='#ef4444';if(!email)document.getElementById('calc-email').style.borderColor='#ef4444';if(!phone)document.getElementById('calc-phone').style.borderColor='#ef4444';return;}var btn=document.getElementById('calc-submit-btn');btn.textContent='Sending...';btn.disabled=true;btn.style.opacity='0.7';var fd=new FormData();fd.append('name',name);fd.append('email',email);fd.append('phone',phone);fd.append('source','Calculator Lead');fd.append('floor_type',calcData.typeName);fd.append('space_type',calcData.space);fd.append('square_footage',calcData.sqft);fd.append('estimate_low',String.fromCharCode(36)+(calcData.low*calcData.sqft).toLocaleString());fd.append('estimate_high',String.fromCharCode(36)+(calcData.high*calcData.sqft).toLocaleString());fd.append('_subject','CALCULATOR LEAD: '+calcData.typeName+' - '+calcData.space);fd.append('_template','table');fetch('https://formsubmit.co/ajax/sales@evergreenepoxyflooring.com',{method:'POST',body:fd}).then(function(){calcShowStep(5);}).catch(function(){calcShowStep(5);});}
+        document.querySelectorAll('.calc-space-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.calc-space-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');calcData.space=btn.dataset.space;calcShowStep(2);});});
+        document.querySelectorAll('#calc-step-2 .calc-option-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('#calc-step-2 .calc-option-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');calcData.type=btn.dataset.type;calcData.typeName=btn.querySelector('.calc-option-label').textContent;calcData.low=parseFloat(btn.dataset.low);calcData.high=parseFloat(btn.dataset.high);document.getElementById('calc-selected-info').textContent=calcData.typeName+' for '+calcData.space+' Space';document.getElementById('calc-sqft').value='';calcShowStep(3);document.getElementById('calc-sqft').focus();});});
+        document.getElementById('calc-sqft').addEventListener('keydown',function(e){if(e.key==='Enter')calcGoToForm();});
+        function calcGoToForm(){var sqft=parseInt(document.getElementById('calc-sqft').value);if(!sqft||sqft<1){document.getElementById('calc-sqft').style.borderColor='#ef4444';return;}calcData.sqft=sqft;calcShowStep(4);}
+        function calcSubmitLead(){var name=document.getElementById('calc-name').value.trim();var email=document.getElementById('calc-email').value.trim();var phone=document.getElementById('calc-phone').value.trim();if(!name||!email||!phone){if(!name)document.getElementById('calc-name').style.borderColor='#ef4444';if(!email)document.getElementById('calc-email').style.borderColor='#ef4444';if(!phone)document.getElementById('calc-phone').style.borderColor='#ef4444';return;}var btn=document.getElementById('calc-submit-btn');btn.textContent='Loading...';btn.disabled=true;btn.style.opacity='0.7';var lowTotal=calcData.low*calcData.sqft;var highTotal=calcData.high*calcData.sqft;var fd=new FormData();fd.append('name',name);fd.append('email',email);fd.append('phone',phone);fd.append('source','Calculator Lead');fd.append('floor_type',calcData.typeName);fd.append('space_type',calcData.space);fd.append('square_footage',calcData.sqft);fd.append('estimate_low',String.fromCharCode(36)+lowTotal.toLocaleString());fd.append('estimate_high',String.fromCharCode(36)+highTotal.toLocaleString());fd.append('_subject','CALCULATOR LEAD: '+calcData.typeName+' - '+calcData.space);fd.append('_template','table');fetch('https://formsubmit.co/ajax/sales@evergreenepoxyflooring.com',{method:'POST',body:fd}).then(function(){document.getElementById('calc-result-price').textContent=String.fromCharCode(36)+lowTotal.toLocaleString()+' - '+String.fromCharCode(36)+highTotal.toLocaleString();document.getElementById('calc-result-details').textContent=calcData.typeName+' for your '+calcData.space+' space';calcShowStep(5);}).catch(function(){document.getElementById('calc-result-price').textContent=String.fromCharCode(36)+lowTotal.toLocaleString()+' - '+String.fromCharCode(36)+highTotal.toLocaleString();document.getElementById('calc-result-details').textContent=calcData.typeName+' for your '+calcData.space+' space';calcShowStep(5);});}
         document.querySelectorAll('.calc-input').forEach(function(input){input.addEventListener('focus',function(){this.style.borderColor='#4ade80';});input.addEventListener('blur',function(){this.style.borderColor='#1e3a1e';});});
     </script>
 <!-- Sticky Mobile CTA -->
