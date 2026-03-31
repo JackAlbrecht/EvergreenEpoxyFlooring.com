@@ -1830,7 +1830,15 @@
                 <h2>Instant Epoxy Flooring Price Calculator</h2>
                 <p class="calc-subtitle">Answer a few quick questions and get a ballpark estimate for your project. No commitment, no waiting.</p>
             </div>
-            <div class="calc-step" id="calc-step-1" style="display: block;">
+            <div class="calc-step" id="calc-step-0" style="text-align:center;">
+                <div style="margin-bottom:2rem;">
+                    <p class="calc-step-label" style="margin-bottom:0.5rem;">INSTANT ESTIMATE</p>
+                    <h3 style="color:#fff; font-size:1.5rem; font-weight:700; margin-bottom:1rem;">Get Your Ballpark Price in Under 60 Seconds</h3>
+                    <p style="color:#999; font-size:0.95rem; max-width:500px; margin:0 auto 2rem;">Answer a few quick questions about your project and we\u2019ll give you an instant price range. No commitment, no waiting.</p>
+                </div>
+                <button class="calc-btn-primary" onclick="calcShowStep(1)" style="font-size:1.1rem; padding:1rem 3rem;">Begin Now</button>
+            </div>
+            <div class="calc-step" id="calc-step-1" style="display:none;">
                 <div class="calc-step-label">Step 1: What Kind of Space Is This For?</div>
                 <div class="calc-option-grid">
                     <button class="calc-option-btn calc-space-btn" data-space="Residential"><img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Residential_Garage_Scene_5_1500x1500.jpg" alt="Residential" class="calc-option-img" loading="lazy"><div class="calc-option-label">Residential</div></button>
@@ -1840,7 +1848,7 @@
                     <button class="calc-option-btn calc-space-btn" data-space="Outdoor"><img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Outdoor_Patio_1200x1200.jpg" alt="Outdoor" class="calc-option-img" loading="lazy"><div class="calc-option-label">Outdoor</div></button>
                     <button class="calc-option-btn calc-space-btn" data-space="Government"><img src="img 6677.jpg" alt="Government" class="calc-option-img" loading="lazy"><div class="calc-option-label">Government</div></button>
                 </div>
-                <button class="calc-back-btn" onclick="calcGoBack(1)">&#8592; Back</button>
+                <button class="calc-back-btn" onclick="calcGoBack(0)">&#8592; Back</button>
             </div>
             <div class="calc-step" id="calc-step-2" style="display:none">
                 <div class="calc-step-label">Step 2: What Type of Floor System Are You Interested In?</div>
@@ -2488,13 +2496,13 @@
 
         // === Instant Quote Calculator ===
         var calcData = {type:'',typeName:'',space:'',low:0,high:0,sqft:0};
-        function calcShowStep(n){for(var i=1;i<=5;i++){var el=document.getElementById('calc-step-'+i);if(el)el.style.display=i===n?'block':'none';}}
+        function calcShowStep(n){for(var i=0;i<=5;i++){var el=document.getElementById('calc-step-'+i);if(el)el.style.display=i===n?'block':'none';}}
         function calcGoBack(n){calcShowStep(n);}
         document.querySelectorAll('.calc-space-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.calc-space-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');calcData.space=btn.dataset.space;calcShowStep(2);});});
         document.querySelectorAll('#calc-step-2 .calc-option-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('#calc-step-2 .calc-option-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');calcData.type=btn.dataset.type;calcData.typeName=btn.querySelector('.calc-option-label').textContent;calcData.low=parseFloat(btn.dataset.low);calcData.high=parseFloat(btn.dataset.high);document.getElementById('calc-selected-info').textContent=calcData.typeName+' for '+calcData.space+' Space';document.getElementById('calc-sqft').value='';calcShowStep(3);document.getElementById('calc-sqft').focus();});});
         document.getElementById('calc-sqft').addEventListener('keydown',function(e){if(e.key==='Enter')calcGoToForm();});
         function calcGoToForm(){var sqft=parseInt(document.getElementById('calc-sqft').value);if(!sqft||sqft<1){document.getElementById('calc-sqft').style.borderColor='#ef4444';return;}calcData.sqft=sqft;calcShowStep(4);}
-        function calcSubmitLead(){var name=document.getElementById('calc-name').value.trim();var email=document.getElementById('calc-email').value.trim();var phone=document.getElementById('calc-phone').value.trim();if(!name||!email||!phone){if(!name)document.getElementById('calc-name').style.borderColor='#ef4444';if(!email)document.getElementById('calc-email').style.borderColor='#ef4444';if(!phone)document.getElementById('calc-phone').style.borderColor='#ef4444';return;}var btn=document.getElementById('calc-submit-btn');btn.textContent='Loading...';btn.disabled=true;btn.style.opacity='0.7';var lowTotal=calcData.low*calcData.sqft;var highTotal=calcData.high*calcData.sqft;var fd=new FormData();fd.append('name',name);fd.append('email',email);fd.append('phone',phone);fd.append('source','Calculator Lead');fd.append('floor_type',calcData.typeName);fd.append('space_type',calcData.space);fd.append('square_footage',calcData.sqft);fd.append('estimate_low',String.fromCharCode(36)+lowTotal.toLocaleString());fd.append('estimate_high',String.fromCharCode(36)+highTotal.toLocaleString());fd.append('_subject','CALCULATOR LEAD: '+calcData.typeName+' - '+calcData.space);fd.append('_template','table');fetch('https://formsubmit.co/ajax/sales@evergreenepoxyflooring.com',{method:'POST',body:fd}).then(function(){document.getElementById('calc-result-price').textContent=String.fromCharCode(36)+lowTotal.toLocaleString()+' - '+String.fromCharCode(36)+highTotal.toLocaleString();document.getElementById('calc-result-details').textContent=calcData.typeName+' for your '+calcData.space+' space';calcShowStep(5);}).catch(function(){document.getElementById('calc-result-price').textContent=String.fromCharCode(36)+lowTotal.toLocaleString()+' - '+String.fromCharCode(36)+highTotal.toLocaleString();document.getElementById('calc-result-details').textContent=calcData.typeName+' for your '+calcData.space+' space';calcShowStep(5);});}
+        function calcSubmitLead(){var name=document.getElementById('calc-name').value.trim();var email=document.getElementById('calc-email').value.trim();var phone=document.getElementById('calc-phone').value.trim();if(!name||!email||!phone){if(!name)document.getElementById('calc-name').style.borderColor='#ef4444';if(!email)document.getElementById('calc-email').style.borderColor='#ef4444';if(!phone)document.getElementById('calc-phone').style.borderColor='#ef4444';return;}var btn=document.getElementById('calc-submit-btn');btn.textContent='Loading...';btn.disabled=true;btn.style.opacity='0.7';var lowTotal=calcData.low*calcData.sqft;var highTotal=calcData.high*calcData.sqft;var fd=new FormData();fd.append('name',name);fd.append('email',email);fd.append('phone',phone);fd.append('source','Calculator Lead');fd.append('floor_type',calcData.typeName);fd.append('space_type',calcData.space);fd.append('square_footage',calcData.sqft);fd.append('estimate_low',String.fromCharCode(36)+lowTotal.toLocaleString());fd.append('estimate_high',String.fromCharCode(36)+highTotal.toLocaleString());fd.append('_subject','CALCULATOR LEAD: '+calcData.typeName+' - '+calcData.space);fd.append('_template','table');fetch('https://formsubmit.co/ajax/evergreenepoxyflooring@gmail.com',{method:'POST',body:fd}).then(function(){document.getElementById('calc-result-price').textContent=String.fromCharCode(36)+lowTotal.toLocaleString()+' - '+String.fromCharCode(36)+highTotal.toLocaleString();document.getElementById('calc-result-details').textContent=calcData.typeName+' for your '+calcData.space+' space';calcShowStep(5);}).catch(function(){document.getElementById('calc-result-price').textContent=String.fromCharCode(36)+lowTotal.toLocaleString()+' - '+String.fromCharCode(36)+highTotal.toLocaleString();document.getElementById('calc-result-details').textContent=calcData.typeName+' for your '+calcData.space+' space';calcShowStep(5);});}
         document.querySelectorAll('.calc-input').forEach(function(input){input.addEventListener('focus',function(){this.style.borderColor='#4ade80';});input.addEventListener('blur',function(){this.style.borderColor='#1e3a1e';});});
     </script>
 <!-- Sticky Mobile CTA -->
@@ -2734,7 +2742,7 @@
  + (calcData.high * calcData.sqft).toLocaleString());
             fd.append('_subject', 'Quote Calculator Lead: ' + calcData.typeName + ' - ' + calcData.space);
             fd.append('_template', 'table');
-            fetch('https://formsubmit.co/ajax/sales@evergreenepoxyflooring.com', { method: 'POST', body: fd })
+            fetch('https://formsubmit.co/ajax/evergreenepoxyflooring@gmail.com', { method: 'POST', body: fd })
             .then(function() { calcShowStep(5); }).catch(function() { calcShowStep(5); });
         }
         document.querySelectorAll('.calc-input').forEach(function(input) {
