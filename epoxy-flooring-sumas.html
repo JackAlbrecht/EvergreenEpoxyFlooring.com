@@ -430,7 +430,177 @@
         .service-card a:hover {
             color: #22c55e;
         }
+        /* Homepage Space & Service Sections */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
 
+        .section-header p {
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services {
+            background: radial-gradient(ellipse at top, #0d2b0d 0%, #0a0a0a 60%);
+            padding: 5rem 2rem;
+        }
+
+        .services .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 0;
+            max-width: 1200px;
+        }
+
+        .services .service-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #1e3a1e;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            height: 250px;
+            display: block;
+            text-decoration: none;
+            background: #111;
+        }
+
+        .services .service-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .services .service-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .service-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2rem 1.5rem;
+            color: white;
+        }
+
+        .service-card-overlay h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0;
+        }
+
+        .service-center {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .spaces {
+            background: #0a0a0a;
+            padding: 5rem 2rem;
+        }
+
+        .spaces .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .spaces .section-header h2 span {
+            color: #4ade80;
+        }
+
+        .spaces-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .space-card {
+            background: #111;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #1e3a1e;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .space-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(74, 222, 128, 0.15);
+        }
+
+        .space-card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .space-card-body {
+            padding: 1.5rem;
+        }
+
+        .space-card-body h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            margin-bottom: 0.75rem;
+        }
+
+        .space-card-body p {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .space-card-cta {
+            background: linear-gradient(135deg, #0d2b0d 0%, #111 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #1e3a1e;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .space-card-cta h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #f0f0f0;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .space-card-cta p {
+            color: #aaa;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .space-card-cta .btn-outline {
+            display: inline-block;
+            border: 2px solid #4ade80;
+            color: #4ade80;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .space-card-cta .btn-outline:hover {
+            background: #4ade80;
+            color: #0a0a0a;
+        }
         /* Areas Section */
         .areas-section {
             padding: 5rem 2rem;
@@ -910,9 +1080,12 @@
             .service-item:nth-child(even) {
                 direction: ltr;
             }
-
-            .services-grid {
+            .spaces-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .space-card-cta {
+                padding: 2rem 1.5rem;
             }
 
             .areas-grid {
@@ -1022,62 +1195,120 @@
             </div>
         </div>
     </section>
-
-    <!-- Services Grid -->
-    <section class="neon-section">
-        <div style="padding: 5rem 2rem; text-align: center;">
-            <h2>Flooring Services in Sumas</h2>
-            <p style="color: #aaa; font-size: 1.1rem; margin-bottom: 3rem; max-width: 760px; margin-left: auto; margin-right: auto;">We install residential, commercial, institutional, industrial, outdoor, and government epoxy flooring systems in Sumas with durable finishes designed for Pacific Northwest homes, businesses, and public facilities.</p>
+    <!-- Enhancing Every Space -->
+    <section class="spaces">
+        <div class="section-header">
+            <div class="section-label">ELEVATING SPACES ACROSS WHATCOM COUNTY</div>
+            <h2><span>Enhancing</span> Every Space</h2>
+            <p>From home garages to grocery stores and warehouses - we deliver premium epoxy flooring for every environment.</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Residential_Garage_Scene_5_1500x1500.jpg" alt="Residential Epoxy Flooring in Sumas" loading="lazy">
-                <div class="service-card-content">
+
+        <div class="spaces-grid">
+            <a href="residential.html" class="space-card" style="text-decoration:none; color:inherit;">
+                <img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Residential_Garage_Scene_5_1500x1500.jpg" alt="Residential Flooring" class="space-card-img" loading="lazy">
+                <div class="space-card-body">
                     <h3>Residential Flooring</h3>
-                    <p>Upgrade garages, basements, living areas, and hobby spaces in Sumas with seamless epoxy flooring that is easy to clean and built to last.</p>
-                    <a href="residential.html">Learn More</a>
+                    <p>Elevate the look and function of your garage, basement, or living space with a durable, custom epoxy floor that lasts for years.</p>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Grocery_Store_1200x1200.jpg" alt="Commercial Epoxy Flooring in Sumas" loading="lazy">
-                <div class="service-card-content">
+            </a>
+            <a href="commercial.html" class="space-card" style="text-decoration:none; color:inherit;">
+                <img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Grocery_Store_1200x1200.jpg" alt="Commercial Flooring" class="space-card-img" loading="lazy">
+                <div class="space-card-body">
                     <h3>Commercial Flooring</h3>
-                    <p>Create polished, low-maintenance floors for retail, restaurant, office, and customer-facing spaces throughout Sumas.</p>
-                    <a href="commercial.html">Learn More</a>
+                    <p>Create functional and aesthetically pleasing spaces for retail stores, grocery stores, restaurants, and offices with seamless epoxy flooring.</p>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_School_Common_Area_FB_4106_Shale_1200x1200.jpg" alt="Institutional Epoxy Flooring in Sumas" loading="lazy">
-                <div class="service-card-content">
+            </a>
+            <a href="institutional.html" class="space-card" style="text-decoration:none; color:inherit;">
+                <img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_School_Common_Area_FB_4106_Shale_1200x1200.jpg" alt="Institutional Flooring" class="space-card-img" loading="lazy">
+                <div class="space-card-body">
                     <h3>Institutional Flooring</h3>
-                    <p>Protect schools, medical spaces, churches, and other high-traffic facilities in Sumas with attractive, hard-wearing resinous flooring.</p>
-                    <a href="institutional.html">Learn More</a>
+                    <p>Seamless protection with endless design possibilities for schools, hospitals, government buildings, and other high-traffic facilities.</p>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Manufacturing_Facility_1200x1200.jpg" alt="Industrial Epoxy Flooring in Sumas" loading="lazy">
-                <div class="service-card-content">
+            </a>
+        </div>
+
+        <div class="spaces-grid">
+            <a href="industrial.html" class="space-card" style="text-decoration:none; color:inherit;">
+                <img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Manufacturing_Facility_1200x1200.jpg" alt="Industrial Flooring" class="space-card-img" loading="lazy">
+                <div class="space-card-body">
                     <h3>Industrial Flooring</h3>
-                    <p>Handle forklifts, equipment, moisture, and demanding production environments with industrial-grade epoxy flooring installed in Sumas.</p>
-                    <a href="industrial.html">Learn More</a>
+                    <p>Heavy-duty epoxy solutions built to withstand forklifts, chemical spills, and constant foot traffic in warehouses and manufacturing plants.</p>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Outdoor_Patio_1200x1200.jpg" alt="Outdoor Epoxy Surfaces in Sumas" loading="lazy">
-                <div class="service-card-content">
+            </a>
+            <a href="outdoor.html" class="space-card" style="text-decoration:none; color:inherit;">
+                <img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Outdoor_Patio_1200x1200.jpg" alt="Outdoor Surfaces" class="space-card-img" loading="lazy">
+                <div class="space-card-body">
                     <h3>Outdoor Surfaces</h3>
-                    <p>Refresh patios, walkways, pool surrounds, and exterior gathering areas in Sumas with UV-resistant coating systems made for the elements.</p>
-                    <a href="outdoor.html">Learn More</a>
+                    <p>Enhance your patios, walkways, and outdoor areas with UV-resistant epoxy coatings that stand up to the Pacific Northwest weather.</p>
                 </div>
-            </div>
-            <div class="service-card">
-                <img src="img 6677.jpg" alt="Government and Municipal Flooring in Sumas" loading="lazy">
-                <div class="service-card-content">
+            </a>
+            <a href="government.html" class="space-card" style="text-decoration:none; color:inherit;">
+                <img src="img 6677.jpg" alt="Government & Municipal Flooring" class="space-card-img" loading="lazy">
+                <div class="space-card-body">
                     <h3>Government & Municipal</h3>
-                    <p>Support city, county, and mission-critical facilities in Sumas with durable flooring systems for public buildings, stations, and secure spaces.</p>
-                    <a href="government.html">Learn More</a>
+                    <p>Durable, high-performance epoxy flooring for fire stations, police stations, and government buildings that demand reliability and easy maintenance.</p>
                 </div>
+            </a>
+        </div>
+
+        <div class="spaces-cta-row" style="text-align:center; margin-top:2rem;">
+            <div class="space-card-cta">
+                <h3>Ready to Transform Your Space?</h3>
+                <p>No matter the size or type of project, we have the right solution for you.</p>
+                <a href="contact.html" class="btn-outline">Get Your Free Estimate</a>
             </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="section-header">
+            <div class="section-label">OUR SERVICES</div>
+            <h2>Epoxy Flooring & Concrete Coating Services for Every Need</h2>
+            <p>We specialize in a full range of epoxy flooring and concrete coating solutions designed to protect and beautify your space - residential, commercial, and industrial.</p>
+        </div>
+
+        <div class="services-grid">
+            <a href="services.html#flake" class="service-card">
+                <img src="https://lh3.googleusercontent.com/d/1p15IWRkrpvIj3PymrwoLgI5daL1KM2QQ" alt="Flake Floors" loading="lazy">
+                <div class="service-card-overlay">
+                    <h3>Flake Floors</h3>
+                </div>
+            </a>
+            <a href="services.html#solid" class="service-card">
+                <img src="IMG_1755.jpg" alt="Solid Floors" loading="lazy">
+                <div class="service-card-overlay">
+                    <h3>Solid Floors</h3>
+                </div>
+            </a>
+            <a href="services.html#quartz" class="service-card">
+                <img src="quartz floors.jpg" alt="Quartz Floors" loading="lazy">
+                <div class="service-card-overlay">
+                    <h3>Quartz Floors</h3>
+                </div>
+            </a>
+            <a href="services.html#metallic" class="service-card">
+                <img src="https://lh3.googleusercontent.com/d/1f2-NRtm5iYm4RBAQUWjFNb_asb2y-fdT" alt="Metallic Epoxy" loading="lazy">
+                <div class="service-card-overlay">
+                    <h3>Metallic Epoxy Floors</h3>
+                </div>
+            </a>
+            <a href="services.html#overlay" class="service-card">
+                <img src="IMG_8778.jpg" alt="Concrete Overlay" loading="lazy">
+                <div class="service-card-overlay">
+                    <h3>Concrete Overlay System</h3>
+                </div>
+            </a>
+            <a href="services.html#countertops" class="service-card">
+                <img src="https://lh3.googleusercontent.com/d/1KcQybLHl_YNceuNkHFBdSB6xxzECunfB" alt="Countertops" loading="lazy">
+                <div class="service-card-overlay">
+                    <h3>Countertops</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="service-center">
+            <a href="services.html" class="btn-primary">View All Services</a>
         </div>
     </section>
 <!-- Sumas & Whatcom County Areas -->
