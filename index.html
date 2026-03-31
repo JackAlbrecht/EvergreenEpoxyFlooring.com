@@ -1604,26 +1604,20 @@
             }
         }
 
-        /* === Quote Calculator === */
-        .quote-calc {
-            background: linear-gradient(180deg, #0a0a0a 0%, #0d1a0d 100%);
-            padding: 5rem 2rem;
-            border-top: 1px solid #1e3a1e;
-            border-bottom: 1px solid #1e3a1e;
-        }
-        .calc-container { max-width: 800px; margin: 0 auto; }
+                /* === Quote Calculator === */
+        .quote-calc { background: linear-gradient(180deg, #0a0a0a 0%, #0d1a0d 100%); padding: 5rem 2rem; border-top: 1px solid #1e3a1e; border-bottom: 1px solid #1e3a1e; }
+        .calc-container { max-width: 900px; margin: 0 auto; }
         .calc-header { text-align: center; margin-bottom: 2.5rem; }
         .calc-header h2 { color: #f0f0f0; font-size: 2.2rem; font-weight: 700; margin-bottom: 0.75rem; }
         .calc-subtitle { color: #aaa; font-size: 1rem; max-width: 600px; margin: 0 auto; }
         .calc-step-label { color: #4ade80; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.25rem; text-align: center; }
-        .floor-type-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-        .floor-type-btn { background: #111; border: 1px solid #1e3a1e; border-radius: 10px; padding: 1.5rem 1rem; cursor: pointer; text-align: center; transition: all 0.25s ease; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-        .floor-type-btn:hover { border-color: #4ade80; background: #0d1a0d; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(74, 222, 128, 0.1); }
-        .floor-type-btn.active { border-color: #4ade80; background: #0d1a0d; box-shadow: 0 0 0 2px #4ade80; }
-        .floor-type-icon { font-size: 1.8rem; color: #4ade80; line-height: 1; }
-        .floor-type-name { color: #f0f0f0; font-size: 1rem; font-weight: 600; }
-        .floor-type-range { color: #888; font-size: 0.8rem; }
-        .calc-selected-type { text-align: center; color: #4ade80; font-weight: 600; font-size: 1.05rem; margin-bottom: 1.5rem; }
+        .calc-option-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .calc-option-btn { background: #111; border: 1px solid #1e3a1e; border-radius: 10px; overflow: hidden; cursor: pointer; transition: all 0.25s ease; text-align: center; }
+        .calc-option-btn:hover { border-color: #4ade80; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(74, 222, 128, 0.1); }
+        .calc-option-btn.active { border-color: #4ade80; box-shadow: 0 0 0 2px #4ade80; }
+        .calc-option-img { width: 100%; height: 120px; object-fit: cover; display: block; }
+        .calc-option-label { padding: 0.75rem 0.5rem; color: #f0f0f0; font-size: 0.95rem; font-weight: 600; }
+        .calc-selected-info { text-align: center; color: #4ade80; font-weight: 600; font-size: 1.05rem; margin-bottom: 1.5rem; }
         .sqft-input-row { display: flex; gap: 1rem; justify-content: center; align-items: center; max-width: 500px; margin: 0 auto; }
         .sqft-input-wrap { position: relative; flex: 1; }
         .calc-input { width: 100%; padding: 1rem 1.25rem; background: #111; border: 1px solid #1e3a1e; border-radius: 8px; color: #f0f0f0; font-size: 1.05rem; outline: none; transition: border-color 0.2s; box-sizing: border-box; }
@@ -1647,8 +1641,7 @@
         .calc-thankyou-icon { width: 64px; height: 64px; background: #16a34a; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff; margin-bottom: 1.25rem; }
         .calc-thankyou h3 { color: #f0f0f0; font-size: 1.6rem; margin-bottom: 0.75rem; }
         .calc-thankyou p { color: #aaa; font-size: 1rem; max-width: 480px; margin: 0 auto; line-height: 1.6; }
-        @media (max-width: 768px) { .floor-type-grid { grid-template-columns: repeat(2, 1fr); } .sqft-input-row { flex-direction: column; } .calc-form-grid { grid-template-columns: 1fr; } .calc-result-price { font-size: 2rem; } .calc-header h2 { font-size: 1.6rem; } }
-
+        @media (max-width: 768px) { .calc-option-grid { grid-template-columns: repeat(2, 1fr); } .sqft-input-row { flex-direction: column; } .calc-form-grid { grid-template-columns: 1fr; } .calc-result-price { font-size: 2rem; } .calc-header h2 { font-size: 1.6rem; } .calc-option-img { height: 90px; } }
     </style>
 </head>
 <body>
@@ -1732,29 +1725,41 @@
             <div class="calc-header">
                 <div class="section-label">GET YOUR ESTIMATE IN SECONDS</div>
                 <h2>Instant Epoxy Flooring Price Calculator</h2>
-                <p class="calc-subtitle">Select your floor type and enter your square footage for a ballpark estimate. No commitment, no waiting.</p>
+                <p class="calc-subtitle">Answer a few quick questions and get a ballpark estimate for your project. No commitment, no waiting.</p>
             </div>
             <div class="calc-step" id="calc-step-1">
-                <div class="calc-step-label">Step 1: Choose Your Floor Type</div>
-                <div class="floor-type-grid">
-                    <button class="floor-type-btn" data-type="flake" data-low="6" data-high="10"><span class="floor-type-icon">&#9670;</span><span class="floor-type-name">Flake Floors</span><span class="floor-type-range">$6 \u2013 $10 /sq ft</span></button>
-                    <button class="floor-type-btn" data-type="quartz" data-low="12" data-high="16"><span class="floor-type-icon">&#9671;</span><span class="floor-type-name">Quartz Floors</span><span class="floor-type-range">$12 \u2013 $16 /sq ft</span></button>
-                    <button class="floor-type-btn" data-type="metallic" data-low="14" data-high="25"><span class="floor-type-icon">&#10022;</span><span class="floor-type-name">Metallic Epoxy</span><span class="floor-type-range">$14 \u2013 $25 /sq ft</span></button>
-                    <button class="floor-type-btn" data-type="solid" data-low="14" data-high="15"><span class="floor-type-icon">&#9632;</span><span class="floor-type-name">Solid Floors</span><span class="floor-type-range">$14 \u2013 $15 /sq ft</span></button>
-                    <button class="floor-type-btn" data-type="overlay" data-low="4" data-high="7"><span class="floor-type-icon">&#9638;</span><span class="floor-type-name">Concrete Overlay</span><span class="floor-type-range">$4 \u2013 $7 /sq ft</span></button>
-                    <button class="floor-type-btn" data-type="countertops" data-low="50" data-high="100"><span class="floor-type-icon">&#9644;</span><span class="floor-type-name">Countertops</span><span class="floor-type-range">$50 \u2013 $100 /sq ft</span></button>
+                <div class="calc-step-label">Step 1: What type of floor system are you interested in?</div>
+                <div class="calc-option-grid">
+                    <button class="calc-option-btn" data-type="flake" data-low="6" data-high="10"><img src="https://lh3.googleusercontent.com/d/1p15IWRkrpvIj3PymrwoLgI5daL1KM2QQ" alt="Flake Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Flake Floors</div></button>
+                    <button class="calc-option-btn" data-type="quartz" data-low="12" data-high="16"><img src="quartz floors.jpg" alt="Quartz Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Quartz Floors</div></button>
+                    <button class="calc-option-btn" data-type="metallic" data-low="14" data-high="25"><img src="https://lh3.googleusercontent.com/d/1f2-NRtm5iYm4RBAQUWjFNb_asb2y-fdT" alt="Metallic Epoxy" class="calc-option-img" loading="lazy"><div class="calc-option-label">Metallic Epoxy</div></button>
+                    <button class="calc-option-btn" data-type="solid" data-low="14" data-high="15"><img src="IMG_1755.jpg" alt="Solid Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Solid Floors</div></button>
+                    <button class="calc-option-btn" data-type="overlay" data-low="4" data-high="7"><img src="IMG_8778.jpg" alt="Concrete Overlay" class="calc-option-img" loading="lazy"><div class="calc-option-label">Concrete Overlay</div></button>
+                    <button class="calc-option-btn" data-type="countertops" data-low="50" data-high="100"><img src="https://lh3.googleusercontent.com/d/1KcQybLHl_YNceuNkHFBdSB6xxzECunfB" alt="Countertops" class="calc-option-img" loading="lazy"><div class="calc-option-label">Countertops</div></button>
                 </div>
             </div>
             <div class="calc-step" id="calc-step-2" style="display:none;">
-                <div class="calc-step-label">Step 2: Enter Your Square Footage</div>
-                <div class="calc-selected-type" id="calc-selected-type"></div>
-                <div class="sqft-input-row">
-                    <div class="sqft-input-wrap"><input type="number" id="calc-sqft" class="calc-input" placeholder="e.g. 450" min="1" max="100000" inputmode="numeric"><span class="sqft-unit">sq ft</span></div>
-                    <button class="calc-btn-primary" id="calc-estimate-btn" onclick="calcShowEstimate()">See My Estimate</button>
+                <div class="calc-step-label">Step 2: What kind of space is this for?</div>
+                <div class="calc-option-grid">
+                    <button class="calc-option-btn calc-space-btn" data-space="Residential"><img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Residential_Garage_Scene_5_1500x1500.jpg" alt="Residential" class="calc-option-img" loading="lazy"><div class="calc-option-label">Residential</div></button>
+                    <button class="calc-option-btn calc-space-btn" data-space="Commercial"><img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Grocery_Store_1200x1200.jpg" alt="Commercial" class="calc-option-img" loading="lazy"><div class="calc-option-label">Commercial</div></button>
+                    <button class="calc-option-btn calc-space-btn" data-space="Industrial"><img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Manufacturing_Facility_1200x1200.jpg" alt="Industrial" class="calc-option-img" loading="lazy"><div class="calc-option-label">Industrial</div></button>
+                    <button class="calc-option-btn calc-space-btn" data-space="Institutional"><img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_School_Common_Area_FB_4106_Shale_1200x1200.jpg" alt="Institutional" class="calc-option-img" loading="lazy"><div class="calc-option-label">Institutional</div></button>
+                    <button class="calc-option-btn calc-space-btn" data-space="Outdoor"><img src="https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Outdoor_Patio_1200x1200.jpg" alt="Outdoor" class="calc-option-img" loading="lazy"><div class="calc-option-label">Outdoor</div></button>
+                    <button class="calc-option-btn calc-space-btn" data-space="Government"><img src="img 6677.jpg" alt="Government" class="calc-option-img" loading="lazy"><div class="calc-option-label">Government</div></button>
                 </div>
-                <button class="calc-back-btn" onclick="calcGoBack(1)">&#8592; Change floor type</button>
+                <button class="calc-back-btn" onclick="calcGoBack(1)">&#8592; Back</button>
             </div>
             <div class="calc-step" id="calc-step-3" style="display:none;">
+                <div class="calc-step-label">Step 3: How many square feet is your space?</div>
+                <div class="calc-selected-info" id="calc-selected-info"></div>
+                <div class="sqft-input-row">
+                    <div class="sqft-input-wrap"><input type="number" id="calc-sqft" class="calc-input" placeholder="e.g. 450" min="1" max="100000" inputmode="numeric"><span class="sqft-unit">sq ft</span></div>
+                    <button class="calc-btn-primary" onclick="calcShowEstimate()">See My Estimate</button>
+                </div>
+                <button class="calc-back-btn" onclick="calcGoBack(2)">&#8592; Back</button>
+            </div>
+            <div class="calc-step" id="calc-step-4" style="display:none;">
                 <div class="calc-result-card">
                     <div class="calc-result-label">Your Estimated Price Range</div>
                     <div class="calc-result-price" id="calc-result-price"></div>
@@ -1762,7 +1767,7 @@
                     <div class="calc-result-note">This is a ballpark estimate. Final pricing depends on floor condition, prep work needed, and project details.</div>
                 </div>
                 <div class="calc-lead-form">
-                    <div class="calc-lead-header">Want an exact quote? We'll get back to you within 24 hours.</div>
+                    <div class="calc-lead-header">Want an exact quote? We will get back to you within 24 hours.</div>
                     <div class="calc-form-grid">
                         <input type="text" id="calc-name" class="calc-input" placeholder="Your Name" required>
                         <input type="email" id="calc-email" class="calc-input" placeholder="Email Address" required>
@@ -1770,13 +1775,13 @@
                         <button class="calc-btn-primary calc-submit-btn" id="calc-submit-btn" onclick="calcSubmitLead()">Get My Exact Quote</button>
                     </div>
                 </div>
-                <button class="calc-back-btn" onclick="calcGoBack(2)">&#8592; Change square footage</button>
+                <button class="calc-back-btn" onclick="calcGoBack(3)">&#8592; Back</button>
             </div>
-            <div class="calc-step" id="calc-step-4" style="display:none;">
+            <div class="calc-step" id="calc-step-5" style="display:none;">
                 <div class="calc-thankyou">
                     <div class="calc-thankyou-icon">&#10003;</div>
                     <h3>Thank You!</h3>
-                    <p>We received your info and will reach out within 24 hours with a detailed quote. If you'd like to talk sooner, give us a call.</p>
+                    <p>We received your info and will reach out within 24 hours with a detailed quote.</p>
                     <a href="tel:(360)%20220-7631" class="calc-btn-primary" style="display:inline-block; margin-top:1rem;">Call (360) 220-7631</a>
                 </div>
             </div>
@@ -2373,140 +2378,44 @@
 
 
 
+
         // === Instant Quote Calculator ===
-        var calcData = { type: '', typeName: '', low: 0, high: 0, sqft: 0 };
-        document.querySelectorAll('.floor-type-btn').forEach(function(btn) {
+        var calcData = { type: '', typeName: '', space: '', low: 0, high: 0, sqft: 0 };
+        function calcShowStep(n) {
+            for (var i = 1; i <= 5; i++) { var el = document.getElementById('calc-step-' + i); if (el) el.style.display = i === n ? 'block' : 'none'; }
+        }
+        function calcGoBack(n) { calcShowStep(n); }
+        document.querySelectorAll('#calc-step-1 .calc-option-btn').forEach(function(btn) {
             btn.addEventListener('click', function() {
-                document.querySelectorAll('.floor-type-btn').forEach(function(b) { b.classList.remove('active'); });
+                document.querySelectorAll('#calc-step-1 .calc-option-btn').forEach(function(b) { b.classList.remove('active'); });
                 btn.classList.add('active');
                 calcData.type = btn.dataset.type;
-                calcData.typeName = btn.querySelector('.floor-type-name').textContent;
+                calcData.typeName = btn.querySelector('.calc-option-label').textContent;
                 calcData.low = parseFloat(btn.dataset.low);
                 calcData.high = parseFloat(btn.dataset.high);
-                document.getElementById('calc-step-1').style.display = 'none';
-                document.getElementById('calc-step-2').style.display = 'block';
-                document.getElementById('calc-selected-type').textContent = calcData.typeName + ' \u2014 
-<!-- Sticky Mobile CTA -->
-<div class="sticky-mobile-cta">
-    <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
-    <a href="#quote_form" class="sticky-cta-btn sticky-cta-quote">Get Free Quote</a>
-</div>
-<style>
-.sticky-mobile-cta { display: none; }
-@media (max-width: 768px) {
-    .sticky-mobile-cta {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: #0d1a0d;
-        padding: 0.75rem;
-        gap: 0.75rem;
-        z-index: 9999;
-        box-shadow: 0 -4px 15px rgba(0,0,0,0.4);
-        border-top: 2px solid #16a34a;
-    }
-    .sticky-cta-btn {
-        flex: 1;
-        padding: 0.85rem;
-        text-align: center;
-        color: white;
-        text-decoration: none;
-        font-weight: 700;
-        border-radius: 6px;
-        font-size: 0.95rem;
-    }
-    .sticky-cta-call {
-        background: transparent;
-        border: 2px solid #4ade80;
-        color: #4ade80;
-    }
-    .sticky-cta-quote {
-        background: linear-gradient(135deg, #22c55e, #4ade80);
-        border: none;
-        color: #0a0a0a;
-        box-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
-        font-weight: 700;
-    }
-    footer { padding-bottom: 80px !important; }
-}
-</style>
-</body>
-</html>
-<!-- deploy 1774706364 -->
-
-
-
-
- + calcData.low + ' to 
-<!-- Sticky Mobile CTA -->
-<div class="sticky-mobile-cta">
-    <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
-    <a href="#quote_form" class="sticky-cta-btn sticky-cta-quote">Get Free Quote</a>
-</div>
-<style>
-.sticky-mobile-cta { display: none; }
-@media (max-width: 768px) {
-    .sticky-mobile-cta {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: #0d1a0d;
-        padding: 0.75rem;
-        gap: 0.75rem;
-        z-index: 9999;
-        box-shadow: 0 -4px 15px rgba(0,0,0,0.4);
-        border-top: 2px solid #16a34a;
-    }
-    .sticky-cta-btn {
-        flex: 1;
-        padding: 0.85rem;
-        text-align: center;
-        color: white;
-        text-decoration: none;
-        font-weight: 700;
-        border-radius: 6px;
-        font-size: 0.95rem;
-    }
-    .sticky-cta-call {
-        background: transparent;
-        border: 2px solid #4ade80;
-        color: #4ade80;
-    }
-    .sticky-cta-quote {
-        background: linear-gradient(135deg, #22c55e, #4ade80);
-        border: none;
-        color: #0a0a0a;
-        box-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
-        font-weight: 700;
-    }
-    footer { padding-bottom: 80px !important; }
-}
-</style>
-</body>
-</html>
-<!-- deploy 1774706364 -->
-
-
-
-
- + calcData.high + ' per sq ft';
+                calcShowStep(2);
+            });
+        });
+        document.querySelectorAll('.calc-space-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.calc-space-btn').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                calcData.space = btn.dataset.space;
+                document.getElementById('calc-selected-info').textContent = calcData.typeName + ' for ' + calcData.space + ' Space';
                 document.getElementById('calc-sqft').value = '';
+                calcShowStep(3);
                 document.getElementById('calc-sqft').focus();
             });
         });
-        document.getElementById('calc-sqft').addEventListener('keydown', function(e) { if (e.key === 'Enter') { calcShowEstimate(); } });
+        document.getElementById('calc-sqft').addEventListener('keydown', function(e) { if (e.key === 'Enter') calcShowEstimate(); });
         function calcShowEstimate() {
             var sqft = parseInt(document.getElementById('calc-sqft').value);
-            if (!sqft || sqft < 1) { document.getElementById('calc-sqft').style.borderColor = '#ef4444'; document.getElementById('calc-sqft').placeholder = 'Please enter a number'; return; }
-            document.getElementById('calc-sqft').style.borderColor = '#1e3a1e';
+            if (!sqft || sqft < 1) { document.getElementById('calc-sqft').style.borderColor = '#ef4444'; return; }
             calcData.sqft = sqft;
             var lowTotal = calcData.low * sqft;
             var highTotal = calcData.high * sqft;
             document.getElementById('calc-result-price').textContent = '
+    </script>
 <!-- Sticky Mobile CTA -->
 <div class="sticky-mobile-cta">
     <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
@@ -2560,7 +2469,8 @@
 
 
 
- + lowTotal.toLocaleString() + ' \u2014 
+ + lowTotal.toLocaleString() + ' - 
+    </script>
 <!-- Sticky Mobile CTA -->
 <div class="sticky-mobile-cta">
     <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
@@ -2615,123 +2525,8 @@
 
 
  + highTotal.toLocaleString();
-            document.getElementById('calc-result-details').textContent = calcData.typeName + ' \u00b7 ' + sqft.toLocaleString() + ' sq ft \u00b7 
-<!-- Sticky Mobile CTA -->
-<div class="sticky-mobile-cta">
-    <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
-    <a href="#quote_form" class="sticky-cta-btn sticky-cta-quote">Get Free Quote</a>
-</div>
-<style>
-.sticky-mobile-cta { display: none; }
-@media (max-width: 768px) {
-    .sticky-mobile-cta {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: #0d1a0d;
-        padding: 0.75rem;
-        gap: 0.75rem;
-        z-index: 9999;
-        box-shadow: 0 -4px 15px rgba(0,0,0,0.4);
-        border-top: 2px solid #16a34a;
-    }
-    .sticky-cta-btn {
-        flex: 1;
-        padding: 0.85rem;
-        text-align: center;
-        color: white;
-        text-decoration: none;
-        font-weight: 700;
-        border-radius: 6px;
-        font-size: 0.95rem;
-    }
-    .sticky-cta-call {
-        background: transparent;
-        border: 2px solid #4ade80;
-        color: #4ade80;
-    }
-    .sticky-cta-quote {
-        background: linear-gradient(135deg, #22c55e, #4ade80);
-        border: none;
-        color: #0a0a0a;
-        box-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
-        font-weight: 700;
-    }
-    footer { padding-bottom: 80px !important; }
-}
-</style>
-</body>
-</html>
-<!-- deploy 1774706364 -->
-
-
-
-
- + calcData.low + '\u2013
-<!-- Sticky Mobile CTA -->
-<div class="sticky-mobile-cta">
-    <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
-    <a href="#quote_form" class="sticky-cta-btn sticky-cta-quote">Get Free Quote</a>
-</div>
-<style>
-.sticky-mobile-cta { display: none; }
-@media (max-width: 768px) {
-    .sticky-mobile-cta {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: #0d1a0d;
-        padding: 0.75rem;
-        gap: 0.75rem;
-        z-index: 9999;
-        box-shadow: 0 -4px 15px rgba(0,0,0,0.4);
-        border-top: 2px solid #16a34a;
-    }
-    .sticky-cta-btn {
-        flex: 1;
-        padding: 0.85rem;
-        text-align: center;
-        color: white;
-        text-decoration: none;
-        font-weight: 700;
-        border-radius: 6px;
-        font-size: 0.95rem;
-    }
-    .sticky-cta-call {
-        background: transparent;
-        border: 2px solid #4ade80;
-        color: #4ade80;
-    }
-    .sticky-cta-quote {
-        background: linear-gradient(135deg, #22c55e, #4ade80);
-        border: none;
-        color: #0a0a0a;
-        box-shadow: 0 0 12px rgba(74, 222, 128, 0.3);
-        font-weight: 700;
-    }
-    footer { padding-bottom: 80px !important; }
-}
-</style>
-</body>
-</html>
-<!-- deploy 1774706364 -->
-
-
-
-
- + calcData.high + '/sq ft';
-            document.getElementById('calc-step-2').style.display = 'none';
-            document.getElementById('calc-step-3').style.display = 'block';
-        }
-        function calcGoBack(step) {
-            document.getElementById('calc-step-1').style.display = step === 1 ? 'block' : 'none';
-            document.getElementById('calc-step-2').style.display = step === 2 ? 'block' : 'none';
-            document.getElementById('calc-step-3').style.display = 'none';
-            document.getElementById('calc-step-4').style.display = 'none';
+            document.getElementById('calc-result-details').textContent = calcData.typeName + ' for your ' + calcData.space + ' space';
+            calcShowStep(4);
         }
         function calcSubmitLead() {
             var name = document.getElementById('calc-name').value.trim();
@@ -2742,8 +2537,10 @@
             btn.textContent = 'Sending...'; btn.disabled = true; btn.style.opacity = '0.7';
             var fd = new FormData();
             fd.append('name', name); fd.append('email', email); fd.append('phone', phone);
-            fd.append('floor_type', calcData.typeName); fd.append('square_footage', calcData.sqft);
+            fd.append('floor_type', calcData.typeName); fd.append('space_type', calcData.space);
+            fd.append('square_footage', calcData.sqft);
             fd.append('estimate_low', '
+    </script>
 <!-- Sticky Mobile CTA -->
 <div class="sticky-mobile-cta">
     <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
@@ -2799,6 +2596,7 @@
 
  + (calcData.low * calcData.sqft).toLocaleString());
             fd.append('estimate_high', '
+    </script>
 <!-- Sticky Mobile CTA -->
 <div class="sticky-mobile-cta">
     <a href="tel:(360)%20220-7631" class="sticky-cta-btn sticky-cta-call">📞 Call Now</a>
@@ -2853,17 +2651,15 @@
 
 
  + (calcData.high * calcData.sqft).toLocaleString());
-            fd.append('_subject', 'New Quote Calculator Lead: ' + calcData.typeName + ' - ' + calcData.sqft + ' sq ft');
+            fd.append('_subject', 'Quote Calculator Lead: ' + calcData.typeName + ' - ' + calcData.space);
             fd.append('_template', 'table');
             fetch('https://formsubmit.co/ajax/sales@evergreenepoxyflooring.com', { method: 'POST', body: fd })
-            .then(function() { document.getElementById('calc-step-3').style.display='none'; document.getElementById('calc-step-4').style.display='block'; })
-            .catch(function() { document.getElementById('calc-step-3').style.display='none'; document.getElementById('calc-step-4').style.display='block'; });
+            .then(function() { calcShowStep(5); }).catch(function() { calcShowStep(5); });
         }
         document.querySelectorAll('.calc-input').forEach(function(input) {
             input.addEventListener('focus', function() { this.style.borderColor = '#4ade80'; });
             input.addEventListener('blur', function() { this.style.borderColor = '#1e3a1e'; });
         });
-
         // Contact form handled by Netlify Forms
     </script>
 <!-- Sticky Mobile CTA -->
