@@ -1755,6 +1755,8 @@
         }
 
     </style>
+    <link href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -2117,6 +2119,188 @@
             <a href="service-areas.html" class="btn-primary">View All Service Areas</a>
         </div>
     </section>
+
+<!-- Interactive Project Map Section -->
+    <section class="proj-map-section" id="projectMap">
+        <style>
+            .proj-map-section{background:linear-gradient(180deg,#0a0a0a 0%,#0d1a0d 50%,#0a0a0a 100%);padding:5rem 0;overflow:hidden}
+            .proj-map-section .section-label{color:#4ade80;font-weight:600;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;text-align:center;display:block;margin-bottom:.5rem}
+            .proj-map-section h2{text-align:center;font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:.75rem}
+            .proj-map-section .section-sub{text-align:center;color:#999;max-width:600px;margin:0 auto 2.5rem;font-size:1rem;line-height:1.6}
+            .proj-map-wrap{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+            .proj-map-box{width:100%;height:550px;border-radius:16px;overflow:hidden;border:1px solid rgba(74,222,128,.15);position:relative;box-shadow:0 0 40px rgba(74,222,128,.05)}
+            #projMap{width:100%;height:100%}
+            .pm-legend{position:absolute;top:12px;left:12px;background:rgba(10,10,10,.92);backdrop-filter:blur(8px);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px 16px;z-index:10;font-size:.8rem}
+            .pm-legend h4{color:#4ade80;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-family:'Inter',sans-serif}
+            .pm-li{display:flex;align-items:center;gap:8px;margin-bottom:4px;color:#bbb;font-family:'Inter',sans-serif}
+            .pm-ld{width:10px;height:10px;border-radius:50%;border:2px solid #fff;flex-shrink:0}
+
+            .pm{width:18px;height:18px;border-radius:50%;border:2.5px solid #fff;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+            .pm:hover{transform:scale(1.35);box-shadow:0 0 14px rgba(74,222,128,.5)}
+            .pm-f{background:#22c55e}.pm-s{background:#3b82f6}.pm-m{background:#a855f7}.pm-q{background:#f59e0b}.pm-o{background:#ef4444}.pm-c{background:#06b6d4}
+            .proj-map-section .maplibregl-popup-content{background:#141414!important;border:1px solid rgba(74,222,128,.2)!important;border-radius:12px!important;padding:0!important;box-shadow:0 8px 32px rgba(0,0,0,.6)!important;max-width:280px!important;overflow:hidden}
+            .proj-map-section .maplibregl-popup-tip{border-top-color:#141414!important}
+            .proj-map-section .maplibregl-popup-close-button{color:#999!important;font-size:18px!important;right:6px!important;top:6px!important;background:rgba(0,0,0,.5)!important;border-radius:50%!important;width:24px!important;height:24px!important;display:flex!important;align-items:center!important;justify-content:center!important;z-index:10}
+            .pp-img{width:100%;height:150px;object-fit:cover;display:block}
+            .pp-body{padding:12px 14px}
+            .pp-tag{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:4px;margin-bottom:6px;font-family:'Inter',sans-serif}
+            .pp-tag.flake{background:rgba(34,197,94,.15);color:#4ade80}
+            .pp-tag.solid{background:rgba(59,130,246,.15);color:#60a5fa}
+            .pp-tag.metallic{background:rgba(168,85,247,.15);color:#c084fc}
+            .pp-tag.quartz{background:rgba(245,158,11,.15);color:#fbbf24}
+            .pp-tag.overlay{background:rgba(239,68,68,.15);color:#f87171}
+            .pp-tag.countertop{background:rgba(6,182,212,.15);color:#22d3ee}
+            .pp-city{color:#fff;font-weight:700;font-size:.95rem;margin-bottom:4px;font-family:'Inter',sans-serif}
+            .pp-desc{color:#999;font-size:.8rem;line-height:1.5;font-family:'Inter',sans-serif}
+            .pm-controls{position:absolute;bottom:16px;right:16px;display:flex;flex-direction:column;gap:4px;z-index:10}
+            .pm-controls button{width:36px;height:36px;background:rgba(10,10,10,.9);border:1px solid rgba(74,222,128,.2);border-radius:8px;color:#ccc;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+            .pm-controls button:hover{background:rgba(74,222,128,.15);color:#4ade80}
+            @media(max-width:768px){
+                .proj-map-section{padding:3rem 0}
+                .proj-map-section h2{font-size:1.75rem}
+                .proj-map-box{height:400px;border-radius:10px}
+                .pm-legend{display:none}
+            }
+        </style>
+
+        <span class="section-label">Our Work</span>
+        <h2>Completed Projects</h2>
+        <p class="section-sub">Explore our completed epoxy flooring projects across Whatcom, Skagit, and Island County.</p>
+        <div class="proj-map-wrap">
+            <div class="proj-map-box">
+                <div id="projMap"></div>
+                <div class="pm-legend">
+                    <h4>Floor Systems</h4>
+                    <div class="pm-li"><div class="pm-ld pm-f"></div> Flake Floor</div>
+                    <div class="pm-li"><div class="pm-ld pm-s"></div> Solid Epoxy</div>
+                    <div class="pm-li"><div class="pm-ld pm-m"></div> Metallic Epoxy</div>
+                    <div class="pm-li"><div class="pm-ld pm-q"></div> Quartz Floor</div>
+                    <div class="pm-li"><div class="pm-ld pm-o"></div> Concrete Overlay</div>
+                    <div class="pm-li"><div class="pm-ld pm-c"></div> Countertop</div>
+                </div>
+                <div class="pm-controls">
+                    <button onclick="window.projMap.zoomIn({duration:300})" aria-label="Zoom in">+</button>
+                    <button onclick="window.projMap.zoomOut({duration:300})" aria-label="Zoom out">&minus;</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        (function(){
+        var projects=[
+            {lat:48.7605,lng:-122.4912,city:"Bellingham",system:"flake",desc:"Full-broadcast flake garage floor for a 3-car residential garage. Custom earth-tone blend with polyaspartic topcoat."},
+            {lat:48.7432,lng:-122.4651,city:"Bellingham",system:"metallic",desc:"Stunning pearl and silver metallic epoxy in a downtown salon. High-gloss finish with incredible depth and movement."},
+            {lat:48.7710,lng:-122.4530,city:"Bellingham",system:"solid",desc:"Charcoal solid epoxy for a home gym and workshop. Clean, seamless finish with excellent chemical resistance."},
+            {lat:48.7380,lng:-122.4980,city:"Bellingham",system:"quartz",desc:"Commercial quartz system for a veterinary clinic lobby. Slip-resistant, sanitary, and built to handle heavy foot traffic."},
+            {lat:48.7560,lng:-122.4420,city:"Bellingham",system:"flake",desc:"Residential garage flake floor with a custom green and gray blend. Completed in just 2 days."},
+            {lat:48.8530,lng:-122.5820,city:"Ferndale",system:"flake",desc:"2.5-car garage flake floor in a classic black and white chip blend. Durable polyaspartic topcoat applied."},
+            {lat:48.8390,lng:-122.5990,city:"Ferndale",system:"solid",desc:"Light gray solid epoxy for a residential laundry room and mudroom. Seamless and easy to maintain."},
+            {lat:48.8510,lng:-122.6050,city:"Ferndale",system:"overlay",desc:"Concrete overlay system for a deteriorating patio. Restored to a beautiful, textured surface."},
+            {lat:48.8440,lng:-122.5780,city:"Ferndale",system:"metallic",desc:"Copper metallic epoxy for a man cave and entertainment room. One-of-a-kind flowing patterns."},
+            {lat:48.8570,lng:-122.5930,city:"Ferndale",system:"flake",desc:"Standard 2-car garage flake floor with tan and brown blend. Budget-friendly with lasting durability."},
+            {lat:48.9530,lng:-122.4430,city:"Lynden",system:"flake",desc:"Agricultural shop floor coated with heavy-duty flake system. Built to handle equipment and chemical exposure."},
+            {lat:48.9400,lng:-122.4610,city:"Lynden",system:"quartz",desc:"Quartz broadcast floor for a dairy processing facility. USDA-compliant, antimicrobial, and slip-resistant."},
+            {lat:48.9510,lng:-122.4680,city:"Lynden",system:"solid",desc:"Warehouse solid epoxy in safety gray. 10,000 sq ft completed over a weekend to minimize downtime."},
+            {lat:48.9380,lng:-122.4400,city:"Lynden",system:"flake",desc:"Residential garage and workshop combo. Full-flake coverage with a military-grade polyaspartic seal."},
+            {lat:48.9490,lng:-122.4550,city:"Lynden",system:"overlay",desc:"Concrete overlay on a cracked and pitted shop floor. Surface fully restored and sealed."},
+            {lat:49.0010,lng:-122.7380,city:"Blaine",system:"flake",desc:"Garage flake floor for a waterfront home. Marine-grade coating to handle moisture and salt exposure."},
+            {lat:48.9870,lng:-122.7550,city:"Blaine",system:"metallic",desc:"Ocean blue metallic epoxy for a basement living area. Dramatic swirls and a glass-like finish."},
+            {lat:48.9960,lng:-122.7600,city:"Blaine",system:"solid",desc:"Commercial solid epoxy for a small retail shop. Clean white finish with high-traffic durability."},
+            {lat:48.9890,lng:-122.7350,city:"Blaine",system:"flake",desc:"Detached workshop flake floor with a classic granite look. Resistant to hot tire pickup and stains."},
+            {lat:49.0030,lng:-122.7510,city:"Blaine",system:"countertop",desc:"Leggari epoxy countertop pour for a kitchen remodel. White marble look with subtle gold veining."},
+            {lat:48.9260,lng:-122.3350,city:"Everson",system:"flake",desc:"Farm shop flake floor designed for heavy equipment. Extra-thick base coat for maximum impact resistance."},
+            {lat:48.9140,lng:-122.3510,city:"Everson",system:"solid",desc:"Solid color epoxy in a commercial kitchen. Seamless, food-safe, and built for daily washdowns."},
+            {lat:48.9230,lng:-122.3570,city:"Everson",system:"quartz",desc:"Quartz system for an auto detailing shop. Chemical-resistant and easy to keep spotlessly clean."},
+            {lat:48.9170,lng:-122.3380,city:"Everson",system:"flake",desc:"Residential 2-car garage with a blue and gray flake blend. Completed in 2 days start to finish."},
+            {lat:48.9290,lng:-122.3460,city:"Everson",system:"overlay",desc:"Driveway concrete overlay to repair extensive cracking. Decorative finish with integrated sealer."},
+
+            {lat:48.4280,lng:-122.3250,city:"Mount Vernon",system:"flake",desc:"Large commercial warehouse flake floor. 8,000 sq ft of heavy-duty coating with forklift-rated durability."},
+            {lat:48.4150,lng:-122.3420,city:"Mount Vernon",system:"metallic",desc:"Metallic epoxy showroom floor for a car dealership. High-gloss charcoal with silver accents."},
+            {lat:48.4240,lng:-122.3480,city:"Mount Vernon",system:"solid",desc:"Residential basement solid epoxy conversion. Transformed a damp concrete basement into a clean living space."},
+            {lat:48.4170,lng:-122.3210,city:"Mount Vernon",system:"quartz",desc:"Restaurant kitchen quartz floor. Slip-resistant under wet conditions with seamless cove base."},
+            {lat:48.4310,lng:-122.3380,city:"Mount Vernon",system:"flake",desc:"3-car garage flake floor with a premium autumn blend. Includes full crack repair and diamond grinding."},
+            {lat:48.5190,lng:-122.6040,city:"Anacortes",system:"flake",desc:"Marina workshop flake floor built to handle boat maintenance chemicals and heavy foot traffic."},
+            {lat:48.5070,lng:-122.6210,city:"Anacortes",system:"solid",desc:"Solid epoxy for a commercial fish processing facility. FDA-compliant coating with antimicrobial properties."},
+            {lat:48.5150,lng:-122.6270,city:"Anacortes",system:"metallic",desc:"Jade green metallic epoxy for a boutique retail space. Eye-catching floor that draws customers in."},
+            {lat:48.5090,lng:-122.6060,city:"Anacortes",system:"flake",desc:"Residential garage and utility room. Full-broadcast flake with a UV-stable polyaspartic topcoat."},
+            {lat:48.5220,lng:-122.6180,city:"Anacortes",system:"countertop",desc:"Epoxy countertop pour for a bathroom vanity. Deep black base with white and gold metallic veining."},
+            {lat:48.4820,lng:-122.3170,city:"Burlington",system:"flake",desc:"Industrial shop flake floor for an agricultural equipment dealer. Extreme durability for daily heavy use."},
+            {lat:48.4690,lng:-122.3330,city:"Burlington",system:"solid",desc:"Gym and fitness center solid epoxy. Rubber-fleck integrated coating for shock absorption and grip."},
+            {lat:48.4780,lng:-122.3390,city:"Burlington",system:"quartz",desc:"Grocery store quartz flooring system. Beautiful terrazzo look with commercial-grade performance."},
+            {lat:48.4710,lng:-122.3180,city:"Burlington",system:"flake",desc:"Residential garage conversion with storage area. Chip floor in a coastal blue and white blend."},
+            {lat:48.4840,lng:-122.3290,city:"Burlington",system:"overlay",desc:"Concrete overlay for a loading dock area. Heavy-duty surface restoration with anti-slip texture."},
+            {lat:48.5130,lng:-122.2280,city:"Sedro-Woolley",system:"flake",desc:"Barn conversion flake floor for an event venue. Durable coating that handles heavy foot traffic and spills."},
+            {lat:48.5010,lng:-122.2440,city:"Sedro-Woolley",system:"solid",desc:"Fire station apparatus bay solid epoxy. High-visibility safety markings integrated into the coating."},
+            {lat:48.5090,lng:-122.2500,city:"Sedro-Woolley",system:"metallic",desc:"Pearl white metallic for a bridal boutique. Luminous, elegant floor that photographs beautifully."},
+            {lat:48.5040,lng:-122.2300,city:"Sedro-Woolley",system:"flake",desc:"Home workshop and hobby room. Custom flake blend chosen to match the home interior palette."},
+            {lat:48.5120,lng:-122.2410,city:"Sedro-Woolley",system:"quartz",desc:"Quartz flooring for a school cafeteria. Meets all institutional safety and hygiene requirements."},
+            {lat:48.3980,lng:-122.4880,city:"La Conner",system:"metallic",desc:"Art gallery metallic epoxy in swirling silver and white. Creates a modern, gallery-worthy foundation."},
+            {lat:48.3860,lng:-122.5040,city:"La Conner",system:"flake",desc:"Waterfront vacation rental garage. Flake floor that impresses guests and handles constant use."},
+            {lat:48.3950,lng:-122.5080,city:"La Conner",system:"solid",desc:"Wine tasting room solid epoxy in deep burgundy. Elegant, seamless finish that sets the mood."},
+            {lat:48.3890,lng:-122.4900,city:"La Conner",system:"flake",desc:"Residential workshop with an oversized door bay. Heavy-duty flake system for boats and equipment."},
+            {lat:48.3960,lng:-122.4820,city:"La Conner",system:"countertop",desc:"Outdoor kitchen countertop epoxy pour. UV-stable formula designed for Pacific Northwest weather."},
+
+            {lat:48.3000,lng:-122.6340,city:"Oak Harbor",system:"flake",desc:"Military family garage flake floor. Clean, professional look with extreme durability for daily use."},
+            {lat:48.2860,lng:-122.6520,city:"Oak Harbor",system:"solid",desc:"Solid epoxy for a dental office. Hygienic, seamless surface that meets medical facility standards."},
+            {lat:48.2970,lng:-122.6570,city:"Oak Harbor",system:"metallic",desc:"Charcoal and teal metallic for a home theater room. Rich, dramatic floor with incredible depth."},
+            {lat:48.2890,lng:-122.6370,city:"Oak Harbor",system:"flake",desc:"Detached RV garage with full-broadcast flake. Extra-wide format designed for large vehicle storage."},
+            {lat:48.3020,lng:-122.6480,city:"Oak Harbor",system:"quartz",desc:"Veterinary hospital quartz floor. Antimicrobial, chemical-resistant, and easy to sanitize daily."},
+            {lat:48.2260,lng:-122.6780,city:"Coupeville",system:"flake",desc:"Historic home garage update with a heritage-toned flake blend. Modern protection with classic style."},
+            {lat:48.2140,lng:-122.6940,city:"Coupeville",system:"solid",desc:"Bed and breakfast commercial kitchen. Solid epoxy in warm gray with integrated cove base."},
+            {lat:48.2220,lng:-122.6990,city:"Coupeville",system:"metallic",desc:"Copper and bronze metallic for a custom home basement. Warm, inviting floor with unique patterns."},
+            {lat:48.2160,lng:-122.6800,city:"Coupeville",system:"flake",desc:"Workshop and studio space. Flake floor with high chemical resistance for art supply and solvent use."},
+            {lat:48.2280,lng:-122.6880,city:"Coupeville",system:"overlay",desc:"Outdoor patio concrete overlay. Decorative stamp pattern with UV-resistant sealer coat."},
+            {lat:48.0460,lng:-122.3980,city:"Langley",system:"metallic",desc:"Ocean-inspired metallic epoxy for a seaside cottage. Blues and greens that mimic Puget Sound waters."},
+            {lat:48.0340,lng:-122.4150,city:"Langley",system:"flake",desc:"Residential garage and garden shed combo. Full-flake coverage with an earthy forest blend."},
+            {lat:48.0420,lng:-122.4200,city:"Langley",system:"solid",desc:"Artist studio solid epoxy in bright white. Maximum light reflection for the perfect creative space."},
+            {lat:48.0370,lng:-122.4010,city:"Langley",system:"flake",desc:"Vacation home garage done in coastal sand tones. Ready for the owner return each season."},
+            {lat:48.0490,lng:-122.4100,city:"Langley",system:"countertop",desc:"Farmhouse kitchen countertop pour. Rustic marble effect with warm cream and brown tones."},
+            {lat:48.1940,lng:-122.5210,city:"Camano Island",system:"flake",desc:"Waterfront home garage flake floor. Marine-grade coating system resistant to salt and moisture."},
+            {lat:48.1800,lng:-122.5390,city:"Camano Island",system:"solid",desc:"Home office and studio conversion. Clean white solid epoxy that brightens the entire room."},
+            {lat:48.1910,lng:-122.5440,city:"Camano Island",system:"metallic",desc:"Silver stream metallic for an open-concept living space. Flowing, liquid-metal look throughout."},
+            {lat:48.1830,lng:-122.5240,city:"Camano Island",system:"flake",desc:"3-car detached garage with blue and charcoal flake blend. Includes hot-tire resistant topcoat."},
+            {lat:48.1960,lng:-122.5350,city:"Camano Island",system:"quartz",desc:"Home brewery floor with quartz broadcast. Chemical-proof, easy to hose down, built for brewing."},
+            {lat:47.9810,lng:-122.3450,city:"Clinton",system:"flake",desc:"Residential garage near the ferry terminal. Flake floor in nautical navy and white chip blend."},
+            {lat:47.9690,lng:-122.3610,city:"Clinton",system:"solid",desc:"Small business warehouse solid epoxy. Light gray with high-visibility safety lane markings."},
+            {lat:47.9770,lng:-122.3660,city:"Clinton",system:"metallic",desc:"Midnight blue metallic for a home bar and lounge. Deep, luxurious floor with subtle shimmer."},
+            {lat:47.9720,lng:-122.3470,city:"Clinton",system:"flake",desc:"Hobby workshop and woodworking shop. Extra-thick flake coating for dropped-tool impact resistance."},
+            {lat:47.9840,lng:-122.3560,city:"Clinton",system:"overlay",desc:"Carport concrete overlay. Weather-resistant coating with anti-slip aggregate for wet conditions."}
+        ];
+
+        var sysImg={
+            flake:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Residential_Garage_Scene_5_1500x1500.jpg",
+            solid:"IMG_3204%20(1).jpg",
+            metallic:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Grocery_Store_1200x1200.jpg",
+            quartz:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Manufacturing_Facility_1200x1200.jpg",
+            overlay:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_School_Common_Area_FB_4106_Shale_1200x1200.jpg",
+            countertop:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Residential_Garage_Scene_5_1500x1500.jpg"
+        };
+        var sysLabel={flake:"Flake Floor",solid:"Solid Epoxy",metallic:"Metallic Epoxy",quartz:"Quartz Floor",overlay:"Concrete Overlay",countertop:"Countertop"};
+        var mc={flake:"pm-f",solid:"pm-s",metallic:"pm-m",quartz:"pm-q",overlay:"pm-o",countertop:"pm-c"};
+
+        window.projMap=new maplibregl.Map({
+            container:'projMap',
+            style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+            center:[-122.48,48.45],
+            zoom:8.2,
+            minZoom:7,
+            maxZoom:14,
+            attributionControl:false
+        });
+        window.projMap.addControl(new maplibregl.AttributionControl({compact:true}),'bottom-left');
+        window.projMap.on('load',function(){
+            projects.forEach(function(p){
+                var el=document.createElement('div');
+                el.className='pm '+mc[p.system];
+                var popup=new maplibregl.Popup({offset:14,closeButton:true,maxWidth:'280px'})
+                    .setHTML('<img class="pp-img" src="'+sysImg[p.system]+'" alt="'+sysLabel[p.system]+' in '+p.city+'" loading="lazy" onerror="this.style.display=\'none\'"><div class="pp-body"><div class="pp-tag '+p.system+'">'+sysLabel[p.system]+'</div><div class="pp-city">'+p.city+'</div><div class="pp-desc">'+p.desc+'</div></div>');
+                new maplibregl.Marker({element:el}).setLngLat([p.lng,p.lat]).setPopup(popup).addTo(window.projMap);
+            });
+        });
+        })();
+        </script>
+    </section>
+
 
     <!-- CTA Section -->
     <section class="cta">
