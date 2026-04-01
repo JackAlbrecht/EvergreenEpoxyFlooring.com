@@ -2183,84 +2183,90 @@
         <script>
         (function(){
         var projects=[
-            {lat:48.7605,lng:-122.4912,city:"Bellingham",system:"flake",desc:"Full-broadcast flake garage floor for a 3-car residential garage. Custom earth-tone blend with polyaspartic topcoat."},
-            {lat:48.7432,lng:-122.4651,city:"Bellingham",system:"metallic",desc:"Stunning pearl and silver metallic epoxy in a downtown salon. High-gloss finish with incredible depth and movement."},
-            {lat:48.7710,lng:-122.4530,city:"Bellingham",system:"solid",desc:"Charcoal solid epoxy for a home gym and workshop. Clean, seamless finish with excellent chemical resistance."},
-            {lat:48.7380,lng:-122.4980,city:"Bellingham",system:"quartz",desc:"Commercial quartz system for a veterinary clinic lobby. Slip-resistant, sanitary, and built to handle heavy foot traffic."},
-            {lat:48.7560,lng:-122.4420,city:"Bellingham",system:"flake",desc:"Residential garage flake floor with a custom green and gray blend. Completed in just 2 days."},
-            {lat:48.8530,lng:-122.5820,city:"Ferndale",system:"flake",desc:"2.5-car garage flake floor in a classic black and white chip blend. Durable polyaspartic topcoat applied."},
-            {lat:48.8390,lng:-122.5990,city:"Ferndale",system:"solid",desc:"Light gray solid epoxy for a residential laundry room and mudroom. Seamless and easy to maintain."},
-            {lat:48.8510,lng:-122.6050,city:"Ferndale",system:"overlay",desc:"Concrete overlay system for a deteriorating patio. Restored to a beautiful, textured surface."},
-            {lat:48.8440,lng:-122.5780,city:"Ferndale",system:"metallic",desc:"Copper metallic epoxy for a man cave and entertainment room. One-of-a-kind flowing patterns."},
-            {lat:48.8570,lng:-122.5930,city:"Ferndale",system:"flake",desc:"Standard 2-car garage flake floor with tan and brown blend. Budget-friendly with lasting durability."},
-            {lat:48.9530,lng:-122.4430,city:"Lynden",system:"flake",desc:"Agricultural shop floor coated with heavy-duty flake system. Built to handle equipment and chemical exposure."},
-            {lat:48.9400,lng:-122.4610,city:"Lynden",system:"quartz",desc:"Quartz broadcast floor for a dairy processing facility. USDA-compliant, antimicrobial, and slip-resistant."},
-            {lat:48.9510,lng:-122.4680,city:"Lynden",system:"solid",desc:"Warehouse solid epoxy in safety gray. 10,000 sq ft completed over a weekend to minimize downtime."},
-            {lat:48.9380,lng:-122.4400,city:"Lynden",system:"flake",desc:"Residential garage and workshop combo. Full-flake coverage with a military-grade polyaspartic seal."},
-            {lat:48.9490,lng:-122.4550,city:"Lynden",system:"overlay",desc:"Concrete overlay on a cracked and pitted shop floor. Surface fully restored and sealed."},
-            {lat:49.0010,lng:-122.7380,city:"Blaine",system:"flake",desc:"Garage flake floor for a waterfront home. Marine-grade coating to handle moisture and salt exposure."},
-            {lat:48.9870,lng:-122.7550,city:"Blaine",system:"metallic",desc:"Ocean blue metallic epoxy for a basement living area. Dramatic swirls and a glass-like finish."},
-            {lat:48.9960,lng:-122.7600,city:"Blaine",system:"solid",desc:"Commercial solid epoxy for a small retail shop. Clean white finish with high-traffic durability."},
-            {lat:48.9890,lng:-122.7350,city:"Blaine",system:"flake",desc:"Detached workshop flake floor with a classic granite look. Resistant to hot tire pickup and stains."},
-            {lat:49.0030,lng:-122.7510,city:"Blaine",system:"countertop",desc:"Leggari epoxy countertop pour for a kitchen remodel. White marble look with subtle gold veining."},
-            {lat:48.9260,lng:-122.3350,city:"Everson",system:"flake",desc:"Farm shop flake floor designed for heavy equipment. Extra-thick base coat for maximum impact resistance."},
-            {lat:48.9140,lng:-122.3510,city:"Everson",system:"solid",desc:"Solid color epoxy in a commercial kitchen. Seamless, food-safe, and built for daily washdowns."},
-            {lat:48.9230,lng:-122.3570,city:"Everson",system:"quartz",desc:"Quartz system for an auto detailing shop. Chemical-resistant and easy to keep spotlessly clean."},
-            {lat:48.9170,lng:-122.3380,city:"Everson",system:"flake",desc:"Residential 2-car garage with a blue and gray flake blend. Completed in 2 days start to finish."},
-            {lat:48.9290,lng:-122.3460,city:"Everson",system:"overlay",desc:"Driveway concrete overlay to repair extensive cracking. Decorative finish with integrated sealer."},
+    // ===== WHATCOM COUNTY =====
+    // Bellingham
+    {lat:48.7605,lng:-122.4912,city:"Bellingham",system:"flake",desc:"Midnight flake system in a large 3-car residential garage."},
+    {lat:48.7432,lng:-122.4651,city:"Bellingham",system:"flake",desc:"Midnight flake coating on a spacious residential garage."},
+    {lat:48.7710,lng:-122.4530,city:"Bellingham",system:"flake",desc:"Kodiak flake finish in a large residential garage."},
+    {lat:48.7380,lng:-122.4980,city:"Bellingham",system:"flake",desc:"Kodiak flake system for an oversized garage floor."},
+    {lat:48.7560,lng:-122.4420,city:"Bellingham",system:"metallic",desc:"Silver and black metallic epoxy in a local barbershop."},
 
-            {lat:48.4280,lng:-122.3250,city:"Mount Vernon",system:"flake",desc:"Large commercial warehouse flake floor. 8,000 sq ft of heavy-duty coating with forklift-rated durability."},
-            {lat:48.4150,lng:-122.3420,city:"Mount Vernon",system:"metallic",desc:"Metallic epoxy showroom floor for a car dealership. High-gloss charcoal with silver accents."},
-            {lat:48.4240,lng:-122.3480,city:"Mount Vernon",system:"solid",desc:"Residential basement solid epoxy conversion. Transformed a damp concrete basement into a clean living space."},
-            {lat:48.4170,lng:-122.3210,city:"Mount Vernon",system:"quartz",desc:"Restaurant kitchen quartz floor. Slip-resistant under wet conditions with seamless cove base."},
-            {lat:48.4310,lng:-122.3380,city:"Mount Vernon",system:"flake",desc:"3-car garage flake floor with a premium autumn blend. Includes full crack repair and diamond grinding."},
-            {lat:48.5190,lng:-122.6040,city:"Anacortes",system:"flake",desc:"Marina workshop flake floor built to handle boat maintenance chemicals and heavy foot traffic."},
-            {lat:48.5070,lng:-122.6210,city:"Anacortes",system:"solid",desc:"Solid epoxy for a commercial fish processing facility. FDA-compliant coating with antimicrobial properties."},
-            {lat:48.5150,lng:-122.6270,city:"Anacortes",system:"metallic",desc:"Jade green metallic epoxy for a boutique retail space. Eye-catching floor that draws customers in."},
-            {lat:48.5090,lng:-122.6060,city:"Anacortes",system:"flake",desc:"Residential garage and utility room. Full-broadcast flake with a UV-stable polyaspartic topcoat."},
-            {lat:48.5220,lng:-122.6180,city:"Anacortes",system:"countertop",desc:"Epoxy countertop pour for a bathroom vanity. Deep black base with white and gold metallic veining."},
-            {lat:48.4820,lng:-122.3170,city:"Burlington",system:"flake",desc:"Industrial shop flake floor for an agricultural equipment dealer. Extreme durability for daily heavy use."},
-            {lat:48.4690,lng:-122.3330,city:"Burlington",system:"solid",desc:"Gym and fitness center solid epoxy. Rubber-fleck integrated coating for shock absorption and grip."},
-            {lat:48.4780,lng:-122.3390,city:"Burlington",system:"quartz",desc:"Grocery store quartz flooring system. Beautiful terrazzo look with commercial-grade performance."},
-            {lat:48.4710,lng:-122.3180,city:"Burlington",system:"flake",desc:"Residential garage conversion with storage area. Chip floor in a coastal blue and white blend."},
-            {lat:48.4840,lng:-122.3290,city:"Burlington",system:"overlay",desc:"Concrete overlay for a loading dock area. Heavy-duty surface restoration with anti-slip texture."},
-            {lat:48.5130,lng:-122.2280,city:"Sedro-Woolley",system:"flake",desc:"Barn conversion flake floor for an event venue. Durable coating that handles heavy foot traffic and spills."},
-            {lat:48.5010,lng:-122.2440,city:"Sedro-Woolley",system:"solid",desc:"Fire station apparatus bay solid epoxy. High-visibility safety markings integrated into the coating."},
-            {lat:48.5090,lng:-122.2500,city:"Sedro-Woolley",system:"metallic",desc:"Pearl white metallic for a bridal boutique. Luminous, elegant floor that photographs beautifully."},
-            {lat:48.5040,lng:-122.2300,city:"Sedro-Woolley",system:"flake",desc:"Home workshop and hobby room. Custom flake blend chosen to match the home interior palette."},
-            {lat:48.5120,lng:-122.2410,city:"Sedro-Woolley",system:"quartz",desc:"Quartz flooring for a school cafeteria. Meets all institutional safety and hygiene requirements."},
-            {lat:48.3980,lng:-122.4880,city:"La Conner",system:"metallic",desc:"Art gallery metallic epoxy in swirling silver and white. Creates a modern, gallery-worthy foundation."},
-            {lat:48.3860,lng:-122.5040,city:"La Conner",system:"flake",desc:"Waterfront vacation rental garage. Flake floor that impresses guests and handles constant use."},
-            {lat:48.3950,lng:-122.5080,city:"La Conner",system:"solid",desc:"Wine tasting room solid epoxy in deep burgundy. Elegant, seamless finish that sets the mood."},
-            {lat:48.3890,lng:-122.4900,city:"La Conner",system:"flake",desc:"Residential workshop with an oversized door bay. Heavy-duty flake system for boats and equipment."},
-            {lat:48.3960,lng:-122.4820,city:"La Conner",system:"countertop",desc:"Outdoor kitchen countertop epoxy pour. UV-stable formula designed for Pacific Northwest weather."},
+    // Ferndale
+    {lat:48.8530,lng:-122.5820,city:"Ferndale",system:"flake",desc:"Mountain fog flake floor in a residential garage."},
+    {lat:48.8390,lng:-122.5990,city:"Ferndale",system:"flake",desc:"Mountain fog flake coating on a standard garage."},
+    {lat:48.8510,lng:-122.6050,city:"Ferndale",system:"flake",desc:"Riverbed flake garage floor with custom striping."},
+    {lat:48.8440,lng:-122.5780,city:"Ferndale",system:"metallic",desc:"Black and turquoise metallic epoxy in a residential garage."},
 
-            {lat:48.3000,lng:-122.6340,city:"Oak Harbor",system:"flake",desc:"Military family garage flake floor. Clean, professional look with extreme durability for daily use."},
-            {lat:48.2860,lng:-122.6520,city:"Oak Harbor",system:"solid",desc:"Solid epoxy for a dental office. Hygienic, seamless surface that meets medical facility standards."},
-            {lat:48.2970,lng:-122.6570,city:"Oak Harbor",system:"metallic",desc:"Charcoal and teal metallic for a home theater room. Rich, dramatic floor with incredible depth."},
-            {lat:48.2890,lng:-122.6370,city:"Oak Harbor",system:"flake",desc:"Detached RV garage with full-broadcast flake. Extra-wide format designed for large vehicle storage."},
-            {lat:48.3020,lng:-122.6480,city:"Oak Harbor",system:"quartz",desc:"Veterinary hospital quartz floor. Antimicrobial, chemical-resistant, and easy to sanitize daily."},
-            {lat:48.2260,lng:-122.6780,city:"Coupeville",system:"flake",desc:"Historic home garage update with a heritage-toned flake blend. Modern protection with classic style."},
-            {lat:48.2140,lng:-122.6940,city:"Coupeville",system:"solid",desc:"Bed and breakfast commercial kitchen. Solid epoxy in warm gray with integrated cove base."},
-            {lat:48.2220,lng:-122.6990,city:"Coupeville",system:"metallic",desc:"Copper and bronze metallic for a custom home basement. Warm, inviting floor with unique patterns."},
-            {lat:48.2160,lng:-122.6800,city:"Coupeville",system:"flake",desc:"Workshop and studio space. Flake floor with high chemical resistance for art supply and solvent use."},
-            {lat:48.2280,lng:-122.6880,city:"Coupeville",system:"overlay",desc:"Outdoor patio concrete overlay. Decorative stamp pattern with UV-resistant sealer coat."},
-            {lat:48.0460,lng:-122.3980,city:"Langley",system:"metallic",desc:"Ocean-inspired metallic epoxy for a seaside cottage. Blues and greens that mimic Puget Sound waters."},
-            {lat:48.0340,lng:-122.4150,city:"Langley",system:"flake",desc:"Residential garage and garden shed combo. Full-flake coverage with an earthy forest blend."},
-            {lat:48.0420,lng:-122.4200,city:"Langley",system:"solid",desc:"Artist studio solid epoxy in bright white. Maximum light reflection for the perfect creative space."},
-            {lat:48.0370,lng:-122.4010,city:"Langley",system:"flake",desc:"Vacation home garage done in coastal sand tones. Ready for the owner return each season."},
-            {lat:48.0490,lng:-122.4100,city:"Langley",system:"countertop",desc:"Farmhouse kitchen countertop pour. Rustic marble effect with warm cream and brown tones."},
-            {lat:48.1940,lng:-122.5210,city:"Camano Island",system:"flake",desc:"Waterfront home garage flake floor. Marine-grade coating system resistant to salt and moisture."},
-            {lat:48.1800,lng:-122.5390,city:"Camano Island",system:"solid",desc:"Home office and studio conversion. Clean white solid epoxy that brightens the entire room."},
-            {lat:48.1910,lng:-122.5440,city:"Camano Island",system:"metallic",desc:"Silver stream metallic for an open-concept living space. Flowing, liquid-metal look throughout."},
-            {lat:48.1830,lng:-122.5240,city:"Camano Island",system:"flake",desc:"3-car detached garage with blue and charcoal flake blend. Includes hot-tire resistant topcoat."},
-            {lat:48.1960,lng:-122.5350,city:"Camano Island",system:"quartz",desc:"Home brewery floor with quartz broadcast. Chemical-proof, easy to hose down, built for brewing."},
-            {lat:47.9810,lng:-122.3450,city:"Clinton",system:"flake",desc:"Residential garage near the ferry terminal. Flake floor in nautical navy and white chip blend."},
-            {lat:47.9690,lng:-122.3610,city:"Clinton",system:"solid",desc:"Small business warehouse solid epoxy. Light gray with high-visibility safety lane markings."},
-            {lat:47.9770,lng:-122.3660,city:"Clinton",system:"metallic",desc:"Midnight blue metallic for a home bar and lounge. Deep, luxurious floor with subtle shimmer."},
-            {lat:47.9720,lng:-122.3470,city:"Clinton",system:"flake",desc:"Hobby workshop and woodworking shop. Extra-thick flake coating for dropped-tool impact resistance."},
-            {lat:47.9840,lng:-122.3560,city:"Clinton",system:"overlay",desc:"Carport concrete overlay. Weather-resistant coating with anti-slip aggregate for wet conditions."}
-        ];
+    // Lynden
+    {lat:48.9530,lng:-122.4430,city:"Lynden",system:"flake",desc:"Daredevil custom flake blend in a large garage."},
+    {lat:48.9400,lng:-122.4610,city:"Lynden",system:"flake",desc:"Desert storm flake finish on a residential patio."},
+    {lat:48.9510,lng:-122.4680,city:"Lynden",system:"solid",desc:"Ash gray solid epoxy on a 10,000 sq ft commercial floor."},
+    {lat:48.9380,lng:-122.4400,city:"Lynden",system:"flake",desc:"Custom quartzite flake on a large courtyard area."},
+
+    // Blaine
+    {lat:49.0010,lng:-122.7380,city:"Blaine",system:"flake",desc:"Mountain fog flake system in a residential garage."},
+    {lat:48.9870,lng:-122.7550,city:"Blaine",system:"flake",desc:"Midnight flake coating in a 2-car garage."},
+    {lat:48.9960,lng:-122.7600,city:"Blaine",system:"solid",desc:"Ash gray solid epoxy in a residential garage."},
+
+    // Everson
+    {lat:48.9260,lng:-122.3350,city:"Everson",system:"flake",desc:"Midnight flake floor in a residential garage."},
+    {lat:48.9140,lng:-122.3510,city:"Everson",system:"flake",desc:"Kodiak flake coating in a large shop space."},
+    {lat:48.9230,lng:-122.3570,city:"Everson",system:"flake",desc:"Ghost flake system in a residential shop."},
+    {lat:48.9170,lng:-122.3380,city:"Everson",system:"flake",desc:"Moonrock flake finish in a residential garage."},
+
+    // ===== SKAGIT COUNTY =====
+    // Mount Vernon
+    {lat:48.4280,lng:-122.3250,city:"Mount Vernon",system:"flake",desc:"Midnight flake floor in a standard 2-car garage."},
+    {lat:48.4150,lng:-122.3420,city:"Mount Vernon",system:"flake",desc:"Mountain fog flake coating in a residential garage."},
+    {lat:48.4240,lng:-122.3480,city:"Mount Vernon",system:"flake",desc:"Winter ash flake finish on a residential patio."},
+    {lat:48.4170,lng:-122.3210,city:"Mount Vernon",system:"flake",desc:"Gravel flake system in a residential garage."},
+
+    // Anacortes
+    {lat:48.5190,lng:-122.6040,city:"Anacortes",system:"flake",desc:"Dusk flake coating in a residential garage."},
+    {lat:48.5070,lng:-122.6210,city:"Anacortes",system:"flake",desc:"Custom firehouse flake in a commercial space."},
+    {lat:48.5150,lng:-122.6270,city:"Anacortes",system:"flake",desc:"Mountain fog flake on a patio and garage combo."},
+
+    // Burlington
+    {lat:48.4820,lng:-122.3170,city:"Burlington",system:"flake",desc:"Dusk flake with double topcoat in a residential garage."},
+    {lat:48.4690,lng:-122.3330,city:"Burlington",system:"overlay",desc:"Concrete overlay system on a driveway and walkway."},
+    {lat:48.4780,lng:-122.3390,city:"Burlington",system:"flake",desc:"Full-broadcast flake floor in a residential garage."},
+    {lat:48.4710,lng:-122.3180,city:"Burlington",system:"flake",desc:"Custom brown flake system on a residential patio."},
+
+    // Sedro-Woolley
+    {lat:48.5130,lng:-122.2280,city:"Sedro-Woolley",system:"metallic",desc:"Large-format metallic epoxy floor installation."},
+    {lat:48.5010,lng:-122.2440,city:"Sedro-Woolley",system:"solid",desc:"Ash gray solid epoxy floor coating."},
+    {lat:48.5090,lng:-122.2500,city:"Sedro-Woolley",system:"overlay",desc:"Concrete overlay system on a residential patio."},
+
+    // La Conner
+    {lat:48.3980,lng:-122.4880,city:"La Conner",system:"flake",desc:"Winter cabin flake floor in a residential garage."},
+    {lat:48.3860,lng:-122.5040,city:"La Conner",system:"flake",desc:"Dusk flake system in a large residential garage."},
+    {lat:48.3950,lng:-122.5080,city:"La Conner",system:"flake",desc:"Riverbed flake coating in a residential garage."},
+
+    // ===== ISLAND COUNTY =====
+    // Oak Harbor
+    {lat:48.3000,lng:-122.6340,city:"Oak Harbor",system:"flake",desc:"Mountain fog flake floor in a residential garage."},
+    {lat:48.2860,lng:-122.6520,city:"Oak Harbor",system:"flake",desc:"Mountain fog flake in a large residential garage."},
+    {lat:48.2970,lng:-122.6570,city:"Oak Harbor",system:"flake",desc:"Stealth flake system in a residential garage."},
+
+    // Coupeville
+    {lat:48.2260,lng:-122.6780,city:"Coupeville",system:"solid",desc:"Ash gray solid epoxy patch and floor repair."},
+    {lat:48.2140,lng:-122.6940,city:"Coupeville",system:"metallic",desc:"Pink, purple, and black metallic epoxy garage floor."},
+    {lat:48.2220,lng:-122.6990,city:"Coupeville",system:"flake",desc:"Double topcoat mountain fog flake garage floor."},
+
+    // Langley
+    {lat:48.0460,lng:-122.3980,city:"Langley",system:"flake",desc:"City court red custom flake in a residential garage."},
+    {lat:48.0340,lng:-122.4150,city:"Langley",system:"flake",desc:"Mountain fog flake garage floor with trim detail."},
+    {lat:48.0420,lng:-122.4200,city:"Langley",system:"metallic",desc:"Silver metallic matte finish on residential flooring."},
+
+    // Camano Island
+    {lat:48.1940,lng:-122.5210,city:"Camano Island",system:"flake",desc:"Riverbed flake coating in a residential garage."},
+    {lat:48.1800,lng:-122.5390,city:"Camano Island",system:"flake",desc:"Domino custom flake with yellow safety lines in a firehouse."},
+
+    // Clinton
+    {lat:47.9810,lng:-122.3450,city:"Clinton",system:"overlay",desc:"Concrete overlay on exterior stairs and retaining wall."},
+    {lat:47.9690,lng:-122.3610,city:"Clinton",system:"solid",desc:"Solid epoxy coating on a concrete pad."},
+    {lat:47.9770,lng:-122.3660,city:"Clinton",system:"flake",desc:"Full-broadcast flake floor in a residential garage."}
+];
 
         var sysImg={
             flake:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Residential_Garage_Scene_5_1500x1500.jpg",
