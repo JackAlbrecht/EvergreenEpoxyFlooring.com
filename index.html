@@ -2137,7 +2137,7 @@
 
             .pm{width:18px;height:18px;border-radius:50%;border:2.5px solid #fff;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(0,0,0,.4)}
             .pm:hover{transform:scale(1.35);box-shadow:0 0 14px rgba(74,222,128,.5)}
-            .pm-f{background:#22c55e}.pm-s{background:#3b82f6}.pm-m{background:#a855f7}.pm-q{background:#f59e0b}.pm-o{background:#ef4444}.pm-c{background:#06b6d4}
+            .pm-pin{background:#22c55e}
             .proj-map-section .maplibregl-popup-content{background:#141414!important;border:1px solid rgba(74,222,128,.2)!important;border-radius:12px!important;padding:0!important;box-shadow:0 8px 32px rgba(0,0,0,.6)!important;max-width:280px!important;overflow:hidden}
             .proj-map-section .maplibregl-popup-tip{border-top-color:#141414!important}
             .proj-map-section .maplibregl-popup-close-button{color:#999!important;font-size:18px!important;right:6px!important;top:6px!important;background:rgba(0,0,0,.5)!important;border-radius:50%!important;width:24px!important;height:24px!important;display:flex!important;align-items:center!important;justify-content:center!important;z-index:10}
@@ -2170,13 +2170,8 @@
             <div class="proj-map-box">
                 <div id="projMap"></div>
                 <div class="pm-legend">
-                    <h4>Floor Systems</h4>
-                    <div class="pm-li"><div class="pm-ld pm-f"></div> Flake Floor</div>
-                    <div class="pm-li"><div class="pm-ld pm-s"></div> Solid Epoxy</div>
-                    <div class="pm-li"><div class="pm-ld pm-m"></div> Metallic Epoxy</div>
-                    <div class="pm-li"><div class="pm-ld pm-q"></div> Quartz Floor</div>
-                    <div class="pm-li"><div class="pm-ld pm-o"></div> Concrete Overlay</div>
-                    <div class="pm-li"><div class="pm-ld pm-c"></div> Countertop</div>
+                    <h4>Project Map</h4>
+                    <div class="pm-li"><div class="pm-ld pm-pin"></div> Completed Project</div>
                 </div>
                 <div class="pm-controls">
                     <button onclick="window.projMap.zoomIn({duration:300})" aria-label="Zoom in">+</button>
@@ -2288,13 +2283,15 @@
             attributionControl:false
         });
         window.projMap.addControl(new maplibregl.AttributionControl({compact:true}),'bottom-left');
-        window.projMap.on('load',function(){
+        window.projMap.on('style.load',function(){
             projects.forEach(function(p){
                 var el=document.createElement('div');
-                el.className='pm '+mc[p.system];
-                var popup=new maplibregl.Popup({offset:14,closeButton:true,maxWidth:'280px'})
-                    .setHTML('<img class="pp-img" src="'+sysImg[p.system]+'" alt="'+sysLabel[p.system]+' in '+p.city+'" loading="lazy" onerror="this.style.display=\'none\'"><div class="pp-body"><div class="pp-tag '+p.system+'">'+sysLabel[p.system]+'</div><div class="pp-city">'+p.city+'</div><div class="pp-desc">'+p.desc+'</div></div>');
-                new maplibregl.Marker({element:el}).setLngLat([p.lng,p.lat]).setPopup(popup).addTo(window.projMap);
+                el.className='pm pm-pin';
+                var popup=new maplibregl.Popup({offset:14,closeButton:false,maxWidth:'260px',closeOnClick:true});
+                popup.setHTML('<img class="pp-img" src="'+sysImg[p.system]+'" alt="Epoxy floor project" loading="lazy" onerror="this.style.display=\'none\'"><div class="pp-body"><div class="pp-tag flake">'+sysLabel[p.system]+'</div></div>');
+                var marker=new maplibregl.Marker({element:el}).setLngLat([p.lng,p.lat]).setPopup(popup).addTo(window.projMap);
+                el.addEventListener('mouseenter',function(){if(!popup.isOpen())marker.togglePopup();});
+                el.addEventListener('mouseleave',function(){if(popup.isOpen())marker.togglePopup();});
             });
         });
         })();
