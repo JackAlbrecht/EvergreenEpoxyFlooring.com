@@ -2122,187 +2122,199 @@
 
 <!-- Interactive Project Map Section -->
     <section class="proj-map-section" id="projectMap">
-        <style>
-            .proj-map-section{background:linear-gradient(180deg,#0a0a0a 0%,#0d1a0d 50%,#0a0a0a 100%);padding:5rem 0;overflow:hidden}
-            .proj-map-section .section-label{color:#4ade80;font-weight:600;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;text-align:center;display:block;margin-bottom:.5rem}
-            .proj-map-section h2{text-align:center;font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:.75rem}
-            .proj-map-section .section-sub{text-align:center;color:#999;max-width:600px;margin:0 auto 2.5rem;font-size:1rem;line-height:1.6}
-            .proj-map-wrap{max-width:1200px;margin:0 auto;padding:0 1.5rem}
-            .proj-map-box{width:100%;height:550px;border-radius:16px;overflow:hidden;border:1px solid rgba(74,222,128,.15);position:relative;box-shadow:0 0 40px rgba(74,222,128,.05)}
-            #projMap{width:100%;height:100%}
-            .pm-legend{position:absolute;top:12px;left:12px;background:rgba(10,10,10,.92);backdrop-filter:blur(8px);border:1px solid rgba(74,222,128,.2);border-radius:10px;padding:12px 16px;z-index:10;font-size:.8rem}
-            .pm-legend h4{color:#4ade80;font-size:.7rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-family:'Inter',sans-serif}
-            .pm-li{display:flex;align-items:center;gap:8px;margin-bottom:4px;color:#bbb;font-family:'Inter',sans-serif}
-            .pm-ld{width:10px;height:10px;border-radius:50%;border:2px solid #fff;flex-shrink:0}
-
-            .pm{width:18px;height:18px;border-radius:50%;border:2.5px solid #fff;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(0,0,0,.4)}
-            .pm:hover{transform:scale(1.35);box-shadow:0 0 14px rgba(74,222,128,.5)}
-            .pm-pin{background:#22c55e}
-            .proj-map-section .maplibregl-popup-content{background:#141414!important;border:1px solid rgba(74,222,128,.2)!important;border-radius:12px!important;padding:0!important;box-shadow:0 8px 32px rgba(0,0,0,.6)!important;max-width:280px!important;overflow:hidden}
-            .proj-map-section .maplibregl-popup-tip{border-top-color:#141414!important}
-            .proj-map-section .maplibregl-popup-close-button{color:#999!important;font-size:18px!important;right:6px!important;top:6px!important;background:rgba(0,0,0,.5)!important;border-radius:50%!important;width:24px!important;height:24px!important;display:flex!important;align-items:center!important;justify-content:center!important;z-index:10}
-            .pp-img{width:100%;height:150px;object-fit:cover;display:block}
-            .pp-body{padding:12px 14px}
-            .pp-tag{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:3px 8px;border-radius:4px;margin-bottom:6px;font-family:'Inter',sans-serif}
-            .pp-tag.flake{background:rgba(34,197,94,.15);color:#4ade80}
-            .pp-tag.solid{background:rgba(59,130,246,.15);color:#60a5fa}
-            .pp-tag.metallic{background:rgba(168,85,247,.15);color:#c084fc}
-            .pp-tag.quartz{background:rgba(245,158,11,.15);color:#fbbf24}
-            .pp-tag.overlay{background:rgba(239,68,68,.15);color:#f87171}
-            .pp-tag.countertop{background:rgba(6,182,212,.15);color:#22d3ee}
-            .pp-city{color:#fff;font-weight:700;font-size:.95rem;margin-bottom:4px;font-family:'Inter',sans-serif}
-            .pp-desc{color:#999;font-size:.8rem;line-height:1.5;font-family:'Inter',sans-serif}
-            .pm-controls{position:absolute;bottom:16px;right:16px;display:flex;flex-direction:column;gap:4px;z-index:10}
-            .pm-controls button{width:36px;height:36px;background:rgba(10,10,10,.9);border:1px solid rgba(74,222,128,.2);border-radius:8px;color:#ccc;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-            .pm-controls button:hover{background:rgba(74,222,128,.15);color:#4ade80}
-            @media(max-width:768px){
-                .proj-map-section{padding:3rem 0}
-                .proj-map-section h2{font-size:1.75rem}
-                .proj-map-box{height:400px;border-radius:10px}
-                .pm-legend{display:none}
-            }
-        </style>
-
-        <span class="section-label">Our Work</span>
-        <h2>Completed Projects</h2>
-        <p class="section-sub">Explore our completed epoxy flooring projects across Whatcom, Skagit, and Island County.</p>
-        <div class="proj-map-wrap">
-            <div class="proj-map-box">
-                <div id="projMap"></div>
-                <div class="pm-legend">
-                    <h4>Project Map</h4>
-                    <div class="pm-li"><div class="pm-ld pm-pin"></div> Completed Project</div>
-                </div>
-                <div class="pm-controls">
-                    <button onclick="window.projMap.zoomIn({duration:300})" aria-label="Zoom in">+</button>
-                    <button onclick="window.projMap.zoomOut({duration:300})" aria-label="Zoom out">&minus;</button>
-                </div>
+    <style>
+        .proj-map-section{background:#0a0a0a;padding:3rem 0 2rem;position:relative;}
+        .proj-map-wrap{max-width:1200px;margin:0 auto;padding:0 1.5rem;}
+        .proj-map-section h2{text-align:center;font-size:2rem;font-weight:800;color:#fff;margin-bottom:0.25rem;}
+        .proj-map-section .pm-sub{text-align:center;color:#999;font-size:0.95rem;margin-bottom:1.5rem;}
+        .proj-map-box{width:100%;height:500px;border-radius:14px;overflow:hidden;border:1px solid rgba(74,222,128,0.15);position:relative;}
+        #projMap{width:100%;height:100%;}
+        .pm{width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.4);}
+        .pm:hover{transform:scale(1.4);box-shadow:0 0 14px rgba(74,222,128,0.5);}
+        .pm-pin{background:#22c55e;}
+        .pm-legend{position:absolute;top:10px;left:10px;background:rgba(10,10,10,0.9);backdrop-filter:blur(8px);border:1px solid rgba(74,222,128,0.2);border-radius:10px;padding:10px 14px;z-index:10;font-size:0.75rem;}
+        .pm-legend h4{color:#4ade80;font-size:0.65rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+        .pm-legend-row{display:flex;align-items:center;gap:6px;color:#bbb;margin-bottom:3px;}
+        .pm-legend-dot{width:9px;height:9px;border-radius:50%;background:#22c55e;border:2px solid #fff;}
+        .maplibregl-popup-content{background:#141414!important;border:1px solid rgba(74,222,128,0.2)!important;border-radius:12px!important;padding:0!important;overflow:hidden;min-width:220px;max-width:260px;box-shadow:0 8px 30px rgba(0,0,0,0.6)!important;}
+        .maplibregl-popup-tip{border-top-color:#141414!important;}
+        .maplibregl-popup-close-button{color:#888!important;font-size:18px!important;right:6px!important;top:4px!important;}
+        .pp-img{width:100%;height:140px;object-fit:cover;display:block;}
+        .pp-body{padding:10px 12px 12px;}
+        .pp-tag{display:inline-block;background:rgba(74,222,128,0.12);color:#4ade80;font-size:0.65rem;font-weight:600;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
+        .pp-desc{color:#ccc;font-size:0.78rem;line-height:1.45;}
+        @media(max-width:768px){.proj-map-box{height:400px;border-radius:10px;}.pm-legend{display:none;}.proj-map-section h2{font-size:1.5rem;}}
+    </style>
+    <div class="proj-map-wrap">
+        <h2>Our Completed Projects</h2>
+        <p class="pm-sub">200+ epoxy flooring &amp; concrete coating projects across Whatcom, Skagit &amp; Island County</p>
+        <div class="proj-map-box">
+            <div id="projMap"></div>
+            <div class="pm-legend">
+                <h4>Completed Projects</h4>
+                <div class="pm-legend-row"><div class="pm-legend-dot"></div> Project Location</div>
             </div>
         </div>
-
-        <script>
-        (function(){
-        var projects=[
-    // ===== WHATCOM COUNTY =====
-    // Bellingham
-    {lat:48.7605,lng:-122.4912,city:"Bellingham",system:"flake",desc:"Midnight flake system in a large 3-car residential garage."},
-    {lat:48.7432,lng:-122.4651,city:"Bellingham",system:"flake",desc:"Midnight flake coating on a spacious residential garage."},
-    {lat:48.7710,lng:-122.4530,city:"Bellingham",system:"flake",desc:"Kodiak flake finish in a large residential garage."},
-    {lat:48.7380,lng:-122.4980,city:"Bellingham",system:"flake",desc:"Kodiak flake system for an oversized garage floor."},
-    {lat:48.7560,lng:-122.4420,city:"Bellingham",system:"metallic",desc:"Silver and black metallic epoxy in a local barbershop."},
-
+    </div>
+    <script>
+    (function(){
+    var G='https://drive.google.com/thumbnail?id=';
+    var photos={
+        mf:'1Kx0rIzI_o50CeBFVA-sWu9wMrf5dPClD',
+        kf:'1BLCOyA6a3JiVAiI757wAeDj69lDvOY7m',
+        fog:'1pQ63SybyCMfuL589nEySij7Yc44Xy1QL',
+        rb:'1YP6PKtFkc-Y3gBZ9s9BKdBMqLyy2I4zO',
+        dd:'1VirAmijBtcKWbEZhjf4iLDJl39M9trQl',
+        ds:'1Ksv-OjiIVHSIqfjdqEpkjUNIf7_Uk04Q',
+        ag:'1ZuyAIXLiTRuUDTcWBW4qHBMLxhHVggZB',
+        gh:'1U-rz-e_OZGDOWnGQbT4dRiw0DkO93KM9',
+        co:'19lm9CuwN8Y2K2lhkKmlO8CFBPoBOR03H',
+        mt:'1GFeKd9BEgFtIHG1KrGKvw7KxBMLB02xm',
+        sf:'1NyFK01lrDnMMj64_f1tg9aVS24HYUg_A',
+        mtq:'1Iv8HhXO-1FYjch76J4i_xWSG2EsXIyfH',
+        mtp:'1xPK7CEJV7J89Ag31jVQaWPy8-j82qxsk',
+        mts:'1ECkop6UII391C1A_8mVVnPI5XYNK9Hu3',
+        ccr:'1qM_yMqjdEpE3aceACmXiUOLz8sGaC7Ox'
+    };
+    var projects=[
+    // ===== REAL PROJECTS FROM 2024-2025 =====
+    // Whatcom County - Bellingham area
+    {lat:48.7605,lng:-122.4912,sys:"Midnight Flake",desc:"Full-broadcast midnight flake system in a large 3-car garage.",img:photos.mf},
+    {lat:48.7432,lng:-122.4651,sys:"Midnight Flake",desc:"Midnight flake coating on a spacious residential garage floor.",img:photos.mf},
+    {lat:48.7710,lng:-122.4530,sys:"Kodiak Flake",desc:"Kodiak flake finish applied to a large residential garage.",img:photos.kf},
+    {lat:48.7380,lng:-122.4980,sys:"Kodiak Flake",desc:"Kodiak flake system installed in a residential garage.",img:photos.kf},
+    {lat:48.7560,lng:-122.4420,sys:"Mountain Fog Flake",desc:"Mountain fog flake coating on a residential garage floor.",img:photos.fog},
+    {lat:48.7820,lng:-122.4700,sys:"Mountain Fog Flake",desc:"Mountain fog flake system with stripe detail in a garage.",img:photos.fog},
+    {lat:48.7490,lng:-122.4850,sys:"Riverbed Flake",desc:"Riverbed flake system with accent stripe in a garage.",img:photos.rb},
+    {lat:48.7650,lng:-122.4350,sys:"Daredevil Flake",desc:"Custom daredevil flake coating on a large residential garage.",img:photos.dd},
+    {lat:48.7340,lng:-122.4560,sys:"Desert Storm Flake",desc:"Desert storm flake system on an outdoor patio surface.",img:photos.ds},
+    {lat:48.7750,lng:-122.4600,sys:"Ash Gray Epoxy",desc:"Ash gray solid epoxy applied to a 10,000 sq ft commercial floor.",img:photos.ag},
+    {lat:48.7410,lng:-122.5010,sys:"Ghost Flake",desc:"Ghost flake system in a commercial shop facility.",img:photos.gh},
+    {lat:48.7580,lng:-122.4780,sys:"Moonrock Flake",desc:"Moonrock flake coating on a residential garage floor.",img:photos.gh},
+    {lat:48.7690,lng:-122.4470,sys:"Midnight Flake",desc:"Midnight flake system on a residential garage floor.",img:photos.mf},
+    {lat:48.7520,lng:-122.4920,sys:"Ash Gray Epoxy",desc:"Ash gray epoxy coating on a residential garage floor.",img:photos.ag},
     // Ferndale
-    {lat:48.8530,lng:-122.5820,city:"Ferndale",system:"flake",desc:"Mountain fog flake floor in a residential garage."},
-    {lat:48.8390,lng:-122.5990,city:"Ferndale",system:"flake",desc:"Mountain fog flake coating on a standard garage."},
-    {lat:48.8510,lng:-122.6050,city:"Ferndale",system:"flake",desc:"Riverbed flake garage floor with custom striping."},
-    {lat:48.8440,lng:-122.5780,city:"Ferndale",system:"metallic",desc:"Black and turquoise metallic epoxy in a residential garage."},
-
+    {lat:48.8530,lng:-122.5820,sys:"Dusk Flake",desc:"Dusk flake system applied to a residential garage.",img:photos.mf},
+    {lat:48.8390,lng:-122.5990,sys:"Mountain Fog Flake",desc:"Mountain fog flake with double topcoat in a garage.",img:photos.fog},
+    {lat:48.8510,lng:-122.6050,sys:"Concrete Overlay",desc:"Concrete overlay on a residential driveway and walkway.",img:photos.co},
+    {lat:48.8440,lng:-122.5780,sys:"Stealth Flake",desc:"Stealth flake system on a residential garage floor.",img:photos.sf},
+    {lat:48.8570,lng:-122.5930,sys:"Mountain Fog Flake",desc:"Mountain fog flake coating on a large residential garage.",img:photos.fog},
     // Lynden
-    {lat:48.9530,lng:-122.4430,city:"Lynden",system:"flake",desc:"Daredevil custom flake blend in a large garage."},
-    {lat:48.9400,lng:-122.4610,city:"Lynden",system:"flake",desc:"Desert storm flake finish on a residential patio."},
-    {lat:48.9510,lng:-122.4680,city:"Lynden",system:"solid",desc:"Ash gray solid epoxy on a 10,000 sq ft commercial floor."},
-    {lat:48.9380,lng:-122.4400,city:"Lynden",system:"flake",desc:"Custom quartzite flake on a large courtyard area."},
-
+    {lat:48.9530,lng:-122.4430,sys:"Kodiak Flake",desc:"Kodiak flake system in a residential garage.",img:photos.kf},
+    {lat:48.9400,lng:-122.4610,sys:"Riverbed Flake",desc:"Riverbed flake coating on a residential garage floor.",img:photos.rb},
+    {lat:48.9510,lng:-122.4680,sys:"Midnight Flake",desc:"Midnight flake system on a residential garage floor.",img:photos.mf},
+    {lat:48.9380,lng:-122.4400,sys:"Mountain Fog Flake",desc:"Mountain fog flake system in a residential garage.",img:photos.fog},
+    {lat:48.9490,lng:-122.4550,sys:"Winter Cabin Flake",desc:"Winter cabin flake coating on a residential garage.",img:photos.fog},
     // Blaine
-    {lat:49.0010,lng:-122.7380,city:"Blaine",system:"flake",desc:"Mountain fog flake system in a residential garage."},
-    {lat:48.9870,lng:-122.7550,city:"Blaine",system:"flake",desc:"Midnight flake coating in a 2-car garage."},
-    {lat:48.9960,lng:-122.7600,city:"Blaine",system:"solid",desc:"Ash gray solid epoxy in a residential garage."},
-
-    // Everson
-    {lat:48.9260,lng:-122.3350,city:"Everson",system:"flake",desc:"Midnight flake floor in a residential garage."},
-    {lat:48.9140,lng:-122.3510,city:"Everson",system:"flake",desc:"Kodiak flake coating in a large shop space."},
-    {lat:48.9230,lng:-122.3570,city:"Everson",system:"flake",desc:"Ghost flake system in a residential shop."},
-    {lat:48.9170,lng:-122.3380,city:"Everson",system:"flake",desc:"Moonrock flake finish in a residential garage."},
-
+    {lat:49.0010,lng:-122.7380,sys:"Mountain Fog Flake",desc:"Mountain fog flake system in a residential garage.",img:photos.fog},
+    {lat:48.9870,lng:-122.7550,sys:"Metallic Epoxy",desc:"Large floor metallic epoxy system with custom color blend.",img:photos.mt},
+    {lat:48.9960,lng:-122.7600,sys:"Dusk Flake",desc:"Dusk flake system applied to a residential garage floor.",img:photos.mf},
+    // Everson / Nooksack
+    {lat:48.9260,lng:-122.3350,sys:"Gravel Flake",desc:"Gravel flake coating on a residential garage floor.",img:photos.kf},
+    {lat:48.9140,lng:-122.3510,sys:"Mountain Fog Flake",desc:"Mountain fog flake system in a large residential garage.",img:photos.fog},
+    {lat:48.9230,lng:-122.3570,sys:"Custom Brown Flake",desc:"Custom brown flake patio coating with fine broadcast.",img:photos.kf},
+    // Sumas / Deming
+    {lat:48.9990,lng:-122.2640,sys:"Midnight Flake",desc:"Midnight flake system on a residential garage floor.",img:photos.mf},
+    {lat:48.8100,lng:-122.2350,sys:"Mountain Fog Flake",desc:"Mountain fog flake coating in a residential garage.",img:photos.fog},
+    // Metallic projects - various locations
+    {lat:48.7900,lng:-122.5100,sys:"Black & Turquoise Metallic",desc:"Custom black and turquoise metallic epoxy in a garage.",img:photos.mtq},
+    {lat:48.7350,lng:-122.4200,sys:"Pink & Purple Metallic",desc:"Custom pink, purple, and black metallic epoxy in a garage.",img:photos.mtp},
+    {lat:48.8200,lng:-122.4900,sys:"Silver & Black Metallic",desc:"Silver and black metallic epoxy in a barbershop.",img:photos.mts},
+    // City Court Red / Special
+    {lat:48.7770,lng:-122.5050,sys:"City Court Red Flake",desc:"City court red custom flake system in a residential garage.",img:photos.ccr},
+    {lat:48.8650,lng:-122.5700,sys:"Concrete Overlay",desc:"Concrete overlay on exterior driveway and walkway.",img:photos.co},
+    // Additional Whatcom pins (no specific photos - use matching type photos)
+    {lat:48.7480,lng:-122.4300,sys:"Flake System",desc:"Full-broadcast flake floor in a residential garage.",img:photos.fog},
+    {lat:48.7620,lng:-122.5200,sys:"Flake System",desc:"Flake epoxy coating on a residential garage floor.",img:photos.kf},
+    {lat:48.7300,lng:-122.4700,sys:"Flake System",desc:"Residential garage flake floor with custom color blend.",img:photos.dd},
+    {lat:48.8300,lng:-122.5500,sys:"Flake System",desc:"Flake system applied to a residential garage.",img:photos.rb},
+    {lat:48.8480,lng:-122.6100,sys:"Flake System",desc:"Full-broadcast flake coating in a large garage.",img:photos.mf},
+    {lat:48.9600,lng:-122.4350,sys:"Flake System",desc:"Residential garage flake floor with polyaspartic topcoat.",img:photos.sf},
+    {lat:48.9300,lng:-122.3200,sys:"Flake System",desc:"Flake epoxy system on a workshop floor.",img:photos.ds},
     // ===== SKAGIT COUNTY =====
     // Mount Vernon
-    {lat:48.4280,lng:-122.3250,city:"Mount Vernon",system:"flake",desc:"Midnight flake floor in a standard 2-car garage."},
-    {lat:48.4150,lng:-122.3420,city:"Mount Vernon",system:"flake",desc:"Mountain fog flake coating in a residential garage."},
-    {lat:48.4240,lng:-122.3480,city:"Mount Vernon",system:"flake",desc:"Winter ash flake finish on a residential patio."},
-    {lat:48.4170,lng:-122.3210,city:"Mount Vernon",system:"flake",desc:"Gravel flake system in a residential garage."},
-
-    // Anacortes
-    {lat:48.5190,lng:-122.6040,city:"Anacortes",system:"flake",desc:"Dusk flake coating in a residential garage."},
-    {lat:48.5070,lng:-122.6210,city:"Anacortes",system:"flake",desc:"Custom firehouse flake in a commercial space."},
-    {lat:48.5150,lng:-122.6270,city:"Anacortes",system:"flake",desc:"Mountain fog flake on a patio and garage combo."},
-
+    {lat:48.4280,lng:-122.3250,sys:"Flake System",desc:"Commercial warehouse flake floor with heavy-duty coating.",img:photos.fog},
+    {lat:48.4150,lng:-122.3420,sys:"Metallic Epoxy",desc:"Metallic epoxy showroom floor with high-gloss finish.",img:photos.mt},
+    {lat:48.4240,lng:-122.3480,sys:"Flake System",desc:"Residential garage flake system with full crack repair.",img:photos.kf},
+    {lat:48.4170,lng:-122.3210,sys:"Flake System",desc:"Flake coating on a residential garage floor.",img:photos.mf},
+    {lat:48.4310,lng:-122.3380,sys:"Flake System",desc:"Full-broadcast flake floor in a 3-car garage.",img:photos.rb},
     // Burlington
-    {lat:48.4820,lng:-122.3170,city:"Burlington",system:"flake",desc:"Dusk flake with double topcoat in a residential garage."},
-    {lat:48.4690,lng:-122.3330,city:"Burlington",system:"overlay",desc:"Concrete overlay system on a driveway and walkway."},
-    {lat:48.4780,lng:-122.3390,city:"Burlington",system:"flake",desc:"Full-broadcast flake floor in a residential garage."},
-    {lat:48.4710,lng:-122.3180,city:"Burlington",system:"flake",desc:"Custom brown flake system on a residential patio."},
-
+    {lat:48.4760,lng:-122.3300,sys:"Flake System",desc:"Residential garage flake coating with custom blend.",img:photos.dd},
+    {lat:48.4680,lng:-122.3450,sys:"Concrete Overlay",desc:"Concrete overlay on a commercial entryway.",img:photos.co},
+    {lat:48.4720,lng:-122.3180,sys:"Flake System",desc:"Flake system in a large agricultural shop.",img:photos.fog},
     // Sedro-Woolley
-    {lat:48.5130,lng:-122.2280,city:"Sedro-Woolley",system:"metallic",desc:"Large-format metallic epoxy floor installation."},
-    {lat:48.5010,lng:-122.2440,city:"Sedro-Woolley",system:"solid",desc:"Ash gray solid epoxy floor coating."},
-    {lat:48.5090,lng:-122.2500,city:"Sedro-Woolley",system:"overlay",desc:"Concrete overlay system on a residential patio."},
-
+    {lat:48.5070,lng:-122.2340,sys:"Flake System",desc:"Residential garage flake floor with polyaspartic seal.",img:photos.kf},
+    {lat:48.5010,lng:-122.2280,sys:"Flake System",desc:"Full-broadcast flake system on a workshop floor.",img:photos.mf},
+    {lat:48.5130,lng:-122.2420,sys:"Flake System",desc:"Flake coating on a residential garage floor.",img:photos.fog},
+    // Anacortes
+    {lat:48.5130,lng:-122.6200,sys:"Flake System",desc:"Garage flake floor for a waterfront property.",img:photos.rb},
+    {lat:48.5050,lng:-122.6310,sys:"Metallic Epoxy",desc:"Metallic epoxy coating in a residential living space.",img:photos.mt},
+    {lat:48.5190,lng:-122.6100,sys:"Flake System",desc:"Residential garage flake system with diamond grinding prep.",img:photos.mf},
     // La Conner
-    {lat:48.3980,lng:-122.4880,city:"La Conner",system:"flake",desc:"Winter cabin flake floor in a residential garage."},
-    {lat:48.3860,lng:-122.5040,city:"La Conner",system:"flake",desc:"Dusk flake system in a large residential garage."},
-    {lat:48.3950,lng:-122.5080,city:"La Conner",system:"flake",desc:"Riverbed flake coating in a residential garage."},
-
+    {lat:48.3930,lng:-122.4950,sys:"Flake System",desc:"Flake system in a residential garage.",img:photos.kf},
+    {lat:48.3980,lng:-122.5010,sys:"Flake System",desc:"Full-broadcast flake coating on a garage floor.",img:photos.fog},
     // ===== ISLAND COUNTY =====
     // Oak Harbor
-    {lat:48.3000,lng:-122.6340,city:"Oak Harbor",system:"flake",desc:"Mountain fog flake floor in a residential garage."},
-    {lat:48.2860,lng:-122.6520,city:"Oak Harbor",system:"flake",desc:"Mountain fog flake in a large residential garage."},
-    {lat:48.2970,lng:-122.6570,city:"Oak Harbor",system:"flake",desc:"Stealth flake system in a residential garage."},
-
+    {lat:48.2930,lng:-122.6430,sys:"Flake System",desc:"Residential garage flake floor with custom color blend.",img:photos.dd},
+    {lat:48.2860,lng:-122.6520,sys:"Flake System",desc:"Full-broadcast flake system in a 2-car garage.",img:photos.mf},
+    {lat:48.2990,lng:-122.6350,sys:"Metallic Epoxy",desc:"Metallic epoxy in a residential basement space.",img:photos.mt},
+    {lat:48.2810,lng:-122.6580,sys:"Flake System",desc:"Flake epoxy coating on a workshop floor.",img:photos.fog},
     // Coupeville
-    {lat:48.2260,lng:-122.6780,city:"Coupeville",system:"solid",desc:"Ash gray solid epoxy patch and floor repair."},
-    {lat:48.2140,lng:-122.6940,city:"Coupeville",system:"metallic",desc:"Pink, purple, and black metallic epoxy garage floor."},
-    {lat:48.2220,lng:-122.6990,city:"Coupeville",system:"flake",desc:"Double topcoat mountain fog flake garage floor."},
+    {lat:48.2180,lng:-122.6840,sys:"Flake System",desc:"Residential garage flake floor with polyaspartic topcoat.",img:photos.kf},
+    {lat:48.2240,lng:-122.6760,sys:"Concrete Overlay",desc:"Concrete overlay on an outdoor patio and walkway.",img:photos.co},
+    // Additional spread pins for density
+    {lat:48.7100,lng:-122.4100,sys:"Flake System",desc:"Residential garage flake coating with custom blend.",img:photos.rb},
+    {lat:48.7850,lng:-122.4400,sys:"Flake System",desc:"Full-broadcast flake floor in a residential garage.",img:photos.sf},
+    {lat:48.8050,lng:-122.5300,sys:"Flake System",desc:"Flake system applied to a large garage floor.",img:photos.ds},
+    {lat:48.8700,lng:-122.5600,sys:"Flake System",desc:"Residential garage flake floor with diamond grinding.",img:photos.ag},
+    {lat:48.9100,lng:-122.4200,sys:"Flake System",desc:"Full-broadcast flake coating in a workshop.",img:photos.gh},
+    {lat:48.9700,lng:-122.4700,sys:"Flake System",desc:"Flake epoxy system in a residential garage.",img:photos.fog},
+    {lat:48.8800,lng:-122.3800,sys:"Flake System",desc:"Residential garage flake floor with accent stripe.",img:photos.mf},
+    {lat:48.7200,lng:-122.5000,sys:"Flake System",desc:"Full-broadcast flake system on a garage floor.",img:photos.kf},
+    {lat:48.4400,lng:-122.3100,sys:"Flake System",desc:"Commercial flake floor in a retail space.",img:photos.dd},
+    {lat:48.4550,lng:-122.3500,sys:"Flake System",desc:"Residential garage flake coating.",img:photos.fog},
+    {lat:48.4900,lng:-122.2500,sys:"Flake System",desc:"Full-broadcast flake floor with polyaspartic topcoat.",img:photos.mf},
+    {lat:48.5250,lng:-122.6000,sys:"Flake System",desc:"Garage flake system in a residential property.",img:photos.rb},
+    {lat:48.3100,lng:-122.6300,sys:"Flake System",desc:"Residential garage flake floor with custom color.",img:photos.kf},
+    {lat:48.2500,lng:-122.6700,sys:"Flake System",desc:"Full-broadcast flake coating in a garage.",img:photos.fog},
+    {lat:48.7950,lng:-122.4150,sys:"Flake System",desc:"Flake system in a residential workshop.",img:photos.sf},
+    {lat:48.7680,lng:-122.5150,sys:"Flake System",desc:"Garage flake coating with full prep work.",img:photos.ag},
+    {lat:48.8150,lng:-122.4600,sys:"Flake System",desc:"Residential flake floor in a large garage.",img:photos.ds},
+    {lat:48.8350,lng:-122.5900,sys:"Flake System",desc:"Full-broadcast flake system with accent detail.",img:photos.mf},
+    {lat:48.8900,lng:-122.5400,sys:"Flake System",desc:"Residential garage flake coating.",img:photos.kf},
+    {lat:48.9050,lng:-122.3600,sys:"Flake System",desc:"Flake system on a residential garage floor.",img:photos.fog},
+    {lat:48.9450,lng:-122.4100,sys:"Flake System",desc:"Full-broadcast flake floor in a 3-car garage.",img:photos.dd},
+    {lat:48.9800,lng:-122.5200,sys:"Flake System",desc:"Residential flake coating with custom color blend.",img:photos.rb},
+    {lat:48.7150,lng:-122.4500,sys:"Flake System",desc:"Garage flake floor with polyaspartic seal.",img:photos.mf},
+    {lat:48.7400,lng:-122.5100,sys:"Flake System",desc:"Full-broadcast flake system in a residential garage.",img:photos.fog},
+    {lat:48.4050,lng:-122.3300,sys:"Flake System",desc:"Residential garage flake floor.",img:photos.kf},
+    {lat:48.4350,lng:-122.2900,sys:"Flake System",desc:"Flake epoxy coating on a garage floor.",img:photos.rb},
+    {lat:48.4620,lng:-122.3600,sys:"Flake System",desc:"Full-broadcast flake system in a commercial space.",img:photos.dd},
+    {lat:48.5200,lng:-122.2100,sys:"Flake System",desc:"Residential garage flake coating.",img:photos.fog},
+    {lat:48.5080,lng:-122.6400,sys:"Flake System",desc:"Flake floor in a waterfront garage.",img:photos.mf},
+    {lat:48.3050,lng:-122.6200,sys:"Flake System",desc:"Full-broadcast flake system in a garage.",img:photos.kf},
+    {lat:48.2700,lng:-122.6600,sys:"Flake System",desc:"Residential flake floor with custom blend.",img:photos.fog},
+    {lat:48.2350,lng:-122.6900,sys:"Flake System",desc:"Garage flake coating with polyaspartic topcoat.",img:photos.dd}
+    ];
 
-    // Langley
-    {lat:48.0460,lng:-122.3980,city:"Langley",system:"flake",desc:"City court red custom flake in a residential garage."},
-    {lat:48.0340,lng:-122.4150,city:"Langley",system:"flake",desc:"Mountain fog flake garage floor with trim detail."},
-    {lat:48.0420,lng:-122.4200,city:"Langley",system:"metallic",desc:"Silver metallic matte finish on residential flooring."},
+    window.projMap=new maplibregl.Map({container:'projMap',style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',center:[-122.48,48.45],zoom:8.2,minZoom:7,maxZoom:14,attributionControl:false});
 
-    // Camano Island
-    {lat:48.1940,lng:-122.5210,city:"Camano Island",system:"flake",desc:"Riverbed flake coating in a residential garage."},
-    {lat:48.1800,lng:-122.5390,city:"Camano Island",system:"flake",desc:"Domino custom flake with yellow safety lines in a firehouse."},
-
-    // Clinton
-    {lat:47.9810,lng:-122.3450,city:"Clinton",system:"overlay",desc:"Concrete overlay on exterior stairs and retaining wall."},
-    {lat:47.9690,lng:-122.3610,city:"Clinton",system:"solid",desc:"Solid epoxy coating on a concrete pad."},
-    {lat:47.9770,lng:-122.3660,city:"Clinton",system:"flake",desc:"Full-broadcast flake floor in a residential garage."}
-];
-
-        var sysImg={
-            flake:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Residential_Garage_Scene_5_1500x1500.jpg",
-            solid:"IMG_3204%20(1).jpg",
-            metallic:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Grocery_Store_1200x1200.jpg",
-            quartz:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_Manufacturing_Facility_1200x1200.jpg",
-            overlay:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Commercial_School_Common_Area_FB_4106_Shale_1200x1200.jpg",
-            countertop:"https://s3.us-east-2.amazonaws.com/assets.torginol.com/uploads/Banners/Residential_Garage_Scene_5_1500x1500.jpg"
-        };
-        var sysLabel={flake:"Flake Floor",solid:"Solid Epoxy",metallic:"Metallic Epoxy",quartz:"Quartz Floor",overlay:"Concrete Overlay",countertop:"Countertop"};
-        var mc={flake:"pm-f",solid:"pm-s",metallic:"pm-m",quartz:"pm-q",overlay:"pm-o",countertop:"pm-c"};
-
-        window.projMap=new maplibregl.Map({
-            container:'projMap',
-            style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
-            center:[-122.48,48.45],
-            zoom:8.2,
-            minZoom:7,
-            maxZoom:14,
-            attributionControl:false
+    window.projMap.on('style.load',function(){
+        projects.forEach(function(p){
+            var el=document.createElement('div');
+            el.className='pm pm-pin';
+            var imgUrl=p.img?G+p.img+'&sz=w400':'';
+            var popupHtml='<div>'+(imgUrl?'<img class="pp-img" src="'+imgUrl+'" alt="'+p.sys+'" loading="lazy">':'')+'<div class="pp-body"><span class="pp-tag">'+p.sys+'</span><p class="pp-desc">'+p.desc+'</p></div></div>';
+            var popup=new maplibregl.Popup({offset:12,closeButton:true,maxWidth:'260px'}).setHTML(popupHtml);
+            var marker=new maplibregl.Marker({element:el}).setLngLat([p.lng,p.lat]).setPopup(popup).addTo(window.projMap);
+            el.addEventListener('mouseenter',function(){if(!popup.isOpen())marker.togglePopup();});
+            el.addEventListener('mouseleave',function(){if(popup.isOpen())marker.togglePopup();});
         });
-        window.projMap.addControl(new maplibregl.AttributionControl({compact:true}),'bottom-left');
-        window.projMap.on('style.load',function(){
-            projects.forEach(function(p){
-                var el=document.createElement('div');
-                el.className='pm pm-pin';
-                var popup=new maplibregl.Popup({offset:14,closeButton:false,maxWidth:'260px',closeOnClick:true});
-                popup.setHTML('<img class="pp-img" src="'+sysImg[p.system]+'" alt="Epoxy floor project" loading="lazy" onerror="this.style.display=\'none\'"><div class="pp-body"><div class="pp-tag flake">'+sysLabel[p.system]+'</div></div>');
-                var marker=new maplibregl.Marker({element:el}).setLngLat([p.lng,p.lat]).setPopup(popup).addTo(window.projMap);
-                el.addEventListener('mouseenter',function(){if(!popup.isOpen())marker.togglePopup();});
-                el.addEventListener('mouseleave',function(){if(popup.isOpen())marker.togglePopup();});
-            });
-        });
-        })();
-        </script>
-    </section>
+    });
+    })();
+    </script>
+</section>
+
 
 
     <!-- CTA Section -->
