@@ -2307,8 +2307,7 @@
             var popupHtml='<div>'+(imgUrl?'<img class="pp-img" src="'+imgUrl+'" alt="'+p.sys+'" loading="lazy">':'')+'<div class="pp-body"><span class="pp-tag">'+p.sys+'</span><p class="pp-desc">'+p.desc+'</p></div></div>';
             var popup=new maplibregl.Popup({offset:12,closeButton:true,maxWidth:'260px'}).setHTML(popupHtml);
             var marker=new maplibregl.Marker({element:el}).setLngLat([p.lng,p.lat]).setPopup(popup).addTo(window.projMap);
-            el.addEventListener('mouseenter',function(){if(!popup.isOpen())marker.togglePopup();});
-            el.addEventListener('mouseleave',function(){if(popup.isOpen())marker.togglePopup();});
+            var isTouch='ontouchstart' in window||navigator.maxTouchPoints>0;if(isTouch){el.addEventListener('click',function(e){e.stopPropagation();if(window._openPopup&&window._openPopup!==popup){window._openPopup.remove();window._openPopup=null;}if(!popup.isOpen()){marker.togglePopup();window._openPopup=popup;}else{marker.togglePopup();window._openPopup=null;}});}else{el.addEventListener('mouseenter',function(){if(!popup.isOpen())marker.togglePopup();});el.addEventListener('mouseleave',function(){if(popup.isOpen())marker.togglePopup();});}
         });
     });
     })();
