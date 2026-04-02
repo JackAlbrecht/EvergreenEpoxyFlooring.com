@@ -2159,147 +2159,111 @@
     <script>
     (function(){
     var G='https://drive.google.com/thumbnail?id=';
-    var photos={
-        mf:'1Kx0rIzI_o50CeBFVA-sWu9wMrf5dPClD',
-        kf:'1BLCOyA6a3JiVAiI757wAeDj69lDvOY7m',
-        fog:'1pQ63SybyCMfuL589nEySij7Yc44Xy1QL',
-        rb:'1YP6PKtFkc-Y3gBZ9s9BKdBMqLyy2I4zO',
-        dd:'1VirAmijBtcKWbEZhjf4iLDJl39M9trQl',
-        ds:'1Ksv-OjiIVHSIqfjdqEpkjUNIf7_Uk04Q',
-        ag:'1ZuyAIXLiTRuUDTcWBW4qHBMLxhHVggZB',
-        gh:'1U-rz-e_OZGDOWnGQbT4dRiw0DkO93KM9',
-        co:'19lm9CuwN8Y2K2lhkKmlO8CFBPoBOR03H',
-        mt:'1GFeKd9BEgFtIHG1KrGKvw7KxBMLB02xm',
-        sf:'1NyFK01lrDnMMj64_f1tg9aVS24HYUg_A',
-        mtq:'1Iv8HhXO-1FYjch76J4i_xWSG2EsXIyfH',
-        mtp:'1xPK7CEJV7J89Ag31jVQaWPy8-j82qxsk',
-        mts:'1ECkop6UII391C1A_8mVVnPI5XYNK9Hu3',
-        ccr:'1qM_yMqjdEpE3aceACmXiUOLz8sGaC7Ox'
-    };
     var projects=[
-    // ===== REAL PROJECTS FROM 2024-2025 =====
-    // Whatcom County - Bellingham area
-    {lat:48.7605,lng:-122.4912,sys:"Midnight Flake",desc:"Full-broadcast midnight flake system in a large 3-car garage.",img:photos.mf},
-    {lat:48.7432,lng:-122.4651,sys:"Midnight Flake",desc:"Midnight flake coating on a spacious residential garage floor.",img:photos.mf},
-    {lat:48.7710,lng:-122.4530,sys:"Kodiak Flake",desc:"Kodiak flake finish applied to a large residential garage.",img:photos.kf},
-    {lat:48.7380,lng:-122.4980,sys:"Kodiak Flake",desc:"Kodiak flake system installed in a residential garage.",img:photos.kf},
-    {lat:48.7560,lng:-122.4420,sys:"Mountain Fog Flake",desc:"Mountain fog flake coating on a residential garage floor.",img:photos.fog},
-    {lat:48.7820,lng:-122.4700,sys:"Mountain Fog Flake",desc:"Mountain fog flake system with stripe detail in a garage.",img:photos.fog},
-    {lat:48.7490,lng:-122.4850,sys:"Riverbed Flake",desc:"Riverbed flake system with accent stripe in a garage.",img:photos.rb},
-    {lat:48.7650,lng:-122.4350,sys:"Daredevil Flake",desc:"Custom daredevil flake coating on a large residential garage.",img:photos.dd},
-    {lat:48.7340,lng:-122.4560,sys:"Desert Storm Flake",desc:"Desert storm flake system on an outdoor patio surface.",img:photos.ds},
-    {lat:48.7750,lng:-122.4600,sys:"Ash Gray Epoxy",desc:"Ash gray solid epoxy applied to a 10,000 sq ft commercial floor.",img:photos.ag},
-    {lat:48.7410,lng:-122.5010,sys:"Ghost Flake",desc:"Ghost flake system in a commercial shop facility.",img:photos.gh},
-    {lat:48.7580,lng:-122.4780,sys:"Moonrock Flake",desc:"Moonrock flake coating on a residential garage floor.",img:photos.gh},
-    {lat:48.7690,lng:-122.4470,sys:"Midnight Flake",desc:"Midnight flake system on a residential garage floor.",img:photos.mf},
-    {lat:48.7520,lng:-122.4920,sys:"Ash Gray Epoxy",desc:"Ash gray epoxy coating on a residential garage floor.",img:photos.ag},
-    // Ferndale
-    {lat:48.8530,lng:-122.5820,sys:"Dusk Flake",desc:"Dusk flake system applied to a residential garage.",img:photos.mf},
-    {lat:48.8390,lng:-122.5990,sys:"Mountain Fog Flake",desc:"Mountain fog flake with double topcoat in a garage.",img:photos.fog},
-    {lat:48.8510,lng:-122.6050,sys:"Concrete Overlay",desc:"Concrete overlay on a residential driveway and walkway.",img:photos.co},
-    {lat:48.8440,lng:-122.5780,sys:"Stealth Flake",desc:"Stealth flake system on a residential garage floor.",img:photos.sf},
-    {lat:48.8570,lng:-122.5930,sys:"Mountain Fog Flake",desc:"Mountain fog flake coating on a large residential garage.",img:photos.fog},
-    // Lynden
-    {lat:48.9530,lng:-122.4430,sys:"Kodiak Flake",desc:"Kodiak flake system in a residential garage.",img:photos.kf},
-    {lat:48.9400,lng:-122.4610,sys:"Riverbed Flake",desc:"Riverbed flake coating on a residential garage floor.",img:photos.rb},
-    {lat:48.9510,lng:-122.4680,sys:"Midnight Flake",desc:"Midnight flake system on a residential garage floor.",img:photos.mf},
-    {lat:48.9380,lng:-122.4400,sys:"Mountain Fog Flake",desc:"Mountain fog flake system in a residential garage.",img:photos.fog},
-    {lat:48.9490,lng:-122.4550,sys:"Winter Cabin Flake",desc:"Winter cabin flake coating on a residential garage.",img:photos.fog},
-    // Blaine
-    {lat:49.0010,lng:-122.7380,sys:"Mountain Fog Flake",desc:"Mountain fog flake system in a residential garage.",img:photos.fog},
-    {lat:48.9870,lng:-122.7550,sys:"Metallic Epoxy",desc:"Large floor metallic epoxy system with custom color blend.",img:photos.mt},
-    {lat:48.9960,lng:-122.7600,sys:"Dusk Flake",desc:"Dusk flake system applied to a residential garage floor.",img:photos.mf},
-    // Everson / Nooksack
-    {lat:48.9260,lng:-122.3350,sys:"Gravel Flake",desc:"Gravel flake coating on a residential garage floor.",img:photos.kf},
-    {lat:48.9140,lng:-122.3510,sys:"Mountain Fog Flake",desc:"Mountain fog flake system in a large residential garage.",img:photos.fog},
-    {lat:48.9230,lng:-122.3570,sys:"Custom Brown Flake",desc:"Custom brown flake patio coating with fine broadcast.",img:photos.kf},
-    // Sumas / Deming
-    {lat:48.9990,lng:-122.2640,sys:"Midnight Flake",desc:"Midnight flake system on a residential garage floor.",img:photos.mf},
-    {lat:48.8100,lng:-122.2350,sys:"Mountain Fog Flake",desc:"Mountain fog flake coating in a residential garage.",img:photos.fog},
-    // Metallic projects - various locations
-    {lat:48.7900,lng:-122.5100,sys:"Black & Turquoise Metallic",desc:"Custom black and turquoise metallic epoxy in a garage.",img:photos.mtq},
-    {lat:48.7350,lng:-122.4200,sys:"Pink & Purple Metallic",desc:"Custom pink, purple, and black metallic epoxy in a garage.",img:photos.mtp},
-    {lat:48.8200,lng:-122.4900,sys:"Silver & Black Metallic",desc:"Silver and black metallic epoxy in a barbershop.",img:photos.mts},
-    // City Court Red / Special
-    {lat:48.7770,lng:-122.5050,sys:"City Court Red Flake",desc:"City court red custom flake system in a residential garage.",img:photos.ccr},
-    {lat:48.8650,lng:-122.5700,sys:"Concrete Overlay",desc:"Concrete overlay on exterior driveway and walkway.",img:photos.co},
-    // Additional Whatcom pins (no specific photos - use matching type photos)
-    {lat:48.7480,lng:-122.4300,sys:"Flake System",desc:"Full-broadcast flake floor in a residential garage.",img:photos.fog},
-    {lat:48.7620,lng:-122.5200,sys:"Flake System",desc:"Flake epoxy coating on a residential garage floor.",img:photos.kf},
-    {lat:48.7300,lng:-122.4700,sys:"Flake System",desc:"Residential garage flake floor with custom color blend.",img:photos.dd},
-    {lat:48.8300,lng:-122.5500,sys:"Flake System",desc:"Flake system applied to a residential garage.",img:photos.rb},
-    {lat:48.8480,lng:-122.6100,sys:"Flake System",desc:"Full-broadcast flake coating in a large garage.",img:photos.mf},
-    {lat:48.9600,lng:-122.4350,sys:"Flake System",desc:"Residential garage flake floor with polyaspartic topcoat.",img:photos.sf},
-    {lat:48.9300,lng:-122.3200,sys:"Flake System",desc:"Flake epoxy system on a workshop floor.",img:photos.ds},
-    // ===== SKAGIT COUNTY =====
-    // Mount Vernon
-    {lat:48.4280,lng:-122.3250,sys:"Flake System",desc:"Commercial warehouse flake floor with heavy-duty coating.",img:photos.fog},
-    {lat:48.4150,lng:-122.3420,sys:"Metallic Epoxy",desc:"Metallic epoxy showroom floor with high-gloss finish.",img:photos.mt},
-    {lat:48.4240,lng:-122.3480,sys:"Flake System",desc:"Residential garage flake system with full crack repair.",img:photos.kf},
-    {lat:48.4170,lng:-122.3210,sys:"Flake System",desc:"Flake coating on a residential garage floor.",img:photos.mf},
-    {lat:48.4310,lng:-122.3380,sys:"Flake System",desc:"Full-broadcast flake floor in a 3-car garage.",img:photos.rb},
-    // Burlington
-    {lat:48.4760,lng:-122.3300,sys:"Flake System",desc:"Residential garage flake coating with custom blend.",img:photos.dd},
-    {lat:48.4680,lng:-122.3450,sys:"Concrete Overlay",desc:"Concrete overlay on a commercial entryway.",img:photos.co},
-    {lat:48.4720,lng:-122.3180,sys:"Flake System",desc:"Flake system in a large agricultural shop.",img:photos.fog},
-    // Sedro-Woolley
-    {lat:48.5070,lng:-122.2340,sys:"Flake System",desc:"Residential garage flake floor with polyaspartic seal.",img:photos.kf},
-    {lat:48.5010,lng:-122.2280,sys:"Flake System",desc:"Full-broadcast flake system on a workshop floor.",img:photos.mf},
-    {lat:48.5130,lng:-122.2420,sys:"Flake System",desc:"Flake coating on a residential garage floor.",img:photos.fog},
-    // Anacortes
-    {lat:48.5130,lng:-122.6200,sys:"Flake System",desc:"Garage flake floor for a waterfront property.",img:photos.rb},
-    {lat:48.5050,lng:-122.6310,sys:"Metallic Epoxy",desc:"Metallic epoxy coating in a residential living space.",img:photos.mt},
-    {lat:48.5190,lng:-122.6100,sys:"Flake System",desc:"Residential garage flake system with diamond grinding prep.",img:photos.mf},
-    // La Conner
-    {lat:48.3930,lng:-122.4950,sys:"Flake System",desc:"Flake system in a residential garage.",img:photos.kf},
-    {lat:48.3980,lng:-122.5010,sys:"Flake System",desc:"Full-broadcast flake coating on a garage floor.",img:photos.fog},
-    // ===== ISLAND COUNTY =====
-    // Oak Harbor
-    {lat:48.2930,lng:-122.6430,sys:"Flake System",desc:"Residential garage flake floor with custom color blend.",img:photos.dd},
-    {lat:48.2860,lng:-122.6520,sys:"Flake System",desc:"Full-broadcast flake system in a 2-car garage.",img:photos.mf},
-    {lat:48.2990,lng:-122.6350,sys:"Metallic Epoxy",desc:"Metallic epoxy in a residential basement space.",img:photos.mt},
-    {lat:48.2810,lng:-122.6580,sys:"Flake System",desc:"Flake epoxy coating on a workshop floor.",img:photos.fog},
-    // Coupeville
-    {lat:48.2180,lng:-122.6840,sys:"Flake System",desc:"Residential garage flake floor with polyaspartic topcoat.",img:photos.kf},
-    {lat:48.2240,lng:-122.6760,sys:"Concrete Overlay",desc:"Concrete overlay on an outdoor patio and walkway.",img:photos.co},
-    // Additional spread pins for density
-    {lat:48.7100,lng:-122.4100,sys:"Flake System",desc:"Residential garage flake coating with custom blend.",img:photos.rb},
-    {lat:48.7850,lng:-122.4400,sys:"Flake System",desc:"Full-broadcast flake floor in a residential garage.",img:photos.sf},
-    {lat:48.8050,lng:-122.5300,sys:"Flake System",desc:"Flake system applied to a large garage floor.",img:photos.ds},
-    {lat:48.8700,lng:-122.5600,sys:"Flake System",desc:"Residential garage flake floor with diamond grinding.",img:photos.ag},
-    {lat:48.9100,lng:-122.4200,sys:"Flake System",desc:"Full-broadcast flake coating in a workshop.",img:photos.gh},
-    {lat:48.9700,lng:-122.4700,sys:"Flake System",desc:"Flake epoxy system in a residential garage.",img:photos.fog},
-    {lat:48.8800,lng:-122.3800,sys:"Flake System",desc:"Residential garage flake floor with accent stripe.",img:photos.mf},
-    {lat:48.7200,lng:-122.5000,sys:"Flake System",desc:"Full-broadcast flake system on a garage floor.",img:photos.kf},
-    {lat:48.4400,lng:-122.3100,sys:"Flake System",desc:"Commercial flake floor in a retail space.",img:photos.dd},
-    {lat:48.4550,lng:-122.3500,sys:"Flake System",desc:"Residential garage flake coating.",img:photos.fog},
-    {lat:48.4900,lng:-122.2500,sys:"Flake System",desc:"Full-broadcast flake floor with polyaspartic topcoat.",img:photos.mf},
-    {lat:48.5250,lng:-122.6000,sys:"Flake System",desc:"Garage flake system in a residential property.",img:photos.rb},
-    {lat:48.3100,lng:-122.6300,sys:"Flake System",desc:"Residential garage flake floor with custom color.",img:photos.kf},
-    {lat:48.2500,lng:-122.6700,sys:"Flake System",desc:"Full-broadcast flake coating in a garage.",img:photos.fog},
-    {lat:48.7950,lng:-122.4150,sys:"Flake System",desc:"Flake system in a residential workshop.",img:photos.sf},
-    {lat:48.7680,lng:-122.5150,sys:"Flake System",desc:"Garage flake coating with full prep work.",img:photos.ag},
-    {lat:48.8150,lng:-122.4600,sys:"Flake System",desc:"Residential flake floor in a large garage.",img:photos.ds},
-    {lat:48.8350,lng:-122.5900,sys:"Flake System",desc:"Full-broadcast flake system with accent detail.",img:photos.mf},
-    {lat:48.8900,lng:-122.5400,sys:"Flake System",desc:"Residential garage flake coating.",img:photos.kf},
-    {lat:48.9050,lng:-122.3600,sys:"Flake System",desc:"Flake system on a residential garage floor.",img:photos.fog},
-    {lat:48.9450,lng:-122.4100,sys:"Flake System",desc:"Full-broadcast flake floor in a 3-car garage.",img:photos.dd},
-    {lat:48.9800,lng:-122.5200,sys:"Flake System",desc:"Residential flake coating with custom color blend.",img:photos.rb},
-    {lat:48.7150,lng:-122.4500,sys:"Flake System",desc:"Garage flake floor with polyaspartic seal.",img:photos.mf},
-    {lat:48.7400,lng:-122.5100,sys:"Flake System",desc:"Full-broadcast flake system in a residential garage.",img:photos.fog},
-    {lat:48.4050,lng:-122.3300,sys:"Flake System",desc:"Residential garage flake floor.",img:photos.kf},
-    {lat:48.4350,lng:-122.2900,sys:"Flake System",desc:"Flake epoxy coating on a garage floor.",img:photos.rb},
-    {lat:48.4620,lng:-122.3600,sys:"Flake System",desc:"Full-broadcast flake system in a commercial space.",img:photos.dd},
-    {lat:48.5200,lng:-122.2100,sys:"Flake System",desc:"Residential garage flake coating.",img:photos.fog},
-    {lat:48.5080,lng:-122.6400,sys:"Flake System",desc:"Flake floor in a waterfront garage.",img:photos.mf},
-    {lat:48.3050,lng:-122.6200,sys:"Flake System",desc:"Full-broadcast flake system in a garage.",img:photos.kf},
-    {lat:48.2700,lng:-122.6600,sys:"Flake System",desc:"Residential flake floor with custom blend.",img:photos.fog},
-    {lat:48.2350,lng:-122.6900,sys:"Flake System",desc:"Garage flake coating with polyaspartic topcoat.",img:photos.dd}
+    {lat:48.7605,lng:-122.4912,sys:"Midnight Flake",desc:"Full-broadcast midnight flake system in a large 3-car garage.",img:"1Kx0rIzI_o50CeBFVA-sWu9wMrf5dPClD"},
+    {lat:48.7432,lng:-122.4651,sys:"Midnight Flake",desc:"Midnight flake coating on a spacious residential garage floor.",img:"1ecKDCcVAjVJ9kVlGPqsmmqYbcUzVGuSH"},
+    {lat:48.771,lng:-122.453,sys:"Kodiak Flake",desc:"Kodiak flake finish applied to a large residential garage.",img:"1uOaAcdhoQzC9LhnXNjKilpesAf7FCrfg"},
+    {lat:48.738,lng:-122.498,sys:"Kodiak Flake",desc:"Kodiak flake system installed in a residential garage.",img:"1kfmtYUCc6QjP_8aLi5Sd5vW_nEoZxX33"},
+    {lat:48.756,lng:-122.442,sys:"Mountain Fog Flake",desc:"Mountain fog flake coating on a residential garage floor.",img:"1pqVU5vtJZbxHPuh2AE7xQpQ77P0Xi8m_"},
+    {lat:48.782,lng:-122.47,sys:"Mountain Fog Flake",desc:"Mountain fog flake system with stripe detail in a garage.",img:"1amImrd2-gcIx5p1EtgcPtSP_aFOk4Aou"},
+    {lat:48.749,lng:-122.485,sys:"Riverbed Flake",desc:"Riverbed flake system with accent stripe in a garage.",img:"1m2ZUYk7O9l5ukUxR3uaeqfu1E5Fatngr"},
+    {lat:48.765,lng:-122.435,sys:"Daredevil Flake",desc:"Custom daredevil flake coating on a large residential garage.",img:"1Jk-ullk5IZ-cx9VSiZoIPyl2RCVC2lm1"},
+    {lat:48.734,lng:-122.456,sys:"Desert Storm Flake",desc:"Desert storm flake system on an outdoor patio surface.",img:"1pCqB5rXvURFr6ItaVLLXceM7HJc2Odpt"},
+    {lat:48.775,lng:-122.46,sys:"Ash Gray Epoxy",desc:"Ash gray solid epoxy applied to a 10,000 sq ft commercial floor.",img:"1t6V1jT75L4VM6RRaEYPQ57lKUSEQCOhX"},
+    {lat:48.741,lng:-122.501,sys:"Ghost Flake",desc:"Ghost flake system in a commercial shop facility.",img:"1sH4UEDxMLSCO1wrJM0zSoZPcPDlQVqH2"},
+    {lat:48.758,lng:-122.478,sys:"Moonrock Flake",desc:"Moonrock flake coating on a residential garage floor.",img:"1U9q00C_qcsVf0RWYwyDx6ev8HMojSmZS"},
+    {lat:48.769,lng:-122.447,sys:"Midnight Flake",desc:"Midnight flake system on a residential garage floor.",img:"17r4B-98w6uQP3YX5C8GyAphkGawa5aAk"},
+    {lat:48.752,lng:-122.492,sys:"Ash Gray Epoxy",desc:"Ash gray epoxy coating on a residential garage floor.",img:"1r4QJYQqS3NcX6AIUA66eWqP9B6lBfAkn"},
+    {lat:48.853,lng:-122.582,sys:"Dusk Flake",desc:"Dusk flake system applied to a residential garage.",img:"1pFO9vI66W47ia6XXi8QeAcWLc-RqFI7_"},
+    {lat:48.839,lng:-122.599,sys:"Mountain Fog Flake",desc:"Mountain fog flake with double topcoat in a garage.",img:"1EPcTzQ_O0piYpbBjLLS-2ju8zE6gl3Oe"},
+    {lat:48.851,lng:-122.605,sys:"Concrete Overlay",desc:"Concrete overlay on a residential driveway and walkway.",img:"1QoPxtgjqZ_CigcrPZ8gO6N-rYnwwaPWp"},
+    {lat:48.844,lng:-122.578,sys:"Stealth Flake",desc:"Stealth flake system on a residential garage floor.",img:"1Dqfx1HfuiJkIXdsPTxdY8cHmCa2VJKFK"},
+    {lat:48.857,lng:-122.593,sys:"Mountain Fog Flake",desc:"Mountain fog flake coating on a large residential garage.",img:"1mZh2bCFqkcuIyxmit8uklL7Z53jKCIUB"},
+    {lat:48.953,lng:-122.443,sys:"Kodiak Flake",desc:"Kodiak flake system in a residential garage.",img:"1_L--rV-g1VGHGixQ1FkSSsAN9fTB0WDr"},
+    {lat:48.94,lng:-122.461,sys:"Riverbed Flake",desc:"Riverbed flake coating on a residential garage floor.",img:"11ggfKa7FNeKPZPyXPzD2Kc_DxN_pkArZ"},
+    {lat:48.951,lng:-122.468,sys:"Midnight Flake",desc:"Midnight flake system on a residential garage floor.",img:"1ca8sZEpCSbPObSGK5wuwl1dSKwXpZ8g-"},
+    {lat:48.938,lng:-122.44,sys:"Mountain Fog Flake",desc:"Mountain fog flake system in a residential garage.",img:"1APJdi5Q-KGEto3RdoDsGYjVvCbzmgTTE"},
+    {lat:48.949,lng:-122.455,sys:"Winter Cabin Flake",desc:"Winter cabin flake coating on a residential garage.",img:"160ZeOlAdUF5HBP84rfWxT8trG5NN8pJR"},
+    {lat:49.001,lng:-122.738,sys:"Mountain Fog Flake",desc:"Mountain fog flake system in a residential garage.",img:"1owXTGS7NcgoY_deFWFwG3H-AwlOaZkpi"},
+    {lat:48.987,lng:-122.755,sys:"Metallic Epoxy",desc:"Large floor metallic epoxy system with custom color blend.",img:"1ygHbXBdIt8NAQlX3Ixdrw5jGLpDvYiJo"},
+    {lat:48.996,lng:-122.76,sys:"Dusk Flake",desc:"Dusk flake system applied to a residential garage floor.",img:"1YwlMEPkVhK25QgxK3Bb-JMnkGsx9vhcn"},
+    {lat:48.926,lng:-122.335,sys:"Gravel Flake",desc:"Gravel flake coating on a residential garage floor.",img:"1KdQxQ8CgL1iB10ue55WPInIvqDxV7t6M"},
+    {lat:48.914,lng:-122.351,sys:"Mountain Fog Flake",desc:"Mountain fog flake system in a large residential garage.",img:"1G8m_Sn1FkfzKvG7Y5gOU4npZxgLVRQmu"},
+    {lat:48.923,lng:-122.357,sys:"Custom Brown Flake",desc:"Custom brown flake patio coating with fine broadcast.",img:"15ZzpNe7HrcMSoozWVpqkOegbtyh3Xg0P"},
+    {lat:48.999,lng:-122.264,sys:"Midnight Flake",desc:"Midnight flake system on a residential garage floor.",img:"1ap3PwoLZggftJ3BvzY62sGfJ-DaOHMuW"},
+    {lat:48.81,lng:-122.235,sys:"Mountain Fog Flake",desc:"Mountain fog flake coating in a residential garage.",img:"10smPoFMkwgw2bZe6P1mqHnzPzfCrnS40"},
+    {lat:48.79,lng:-122.51,sys:"Black & Turquoise Metallic",desc:"Custom black and turquoise metallic epoxy in a garage.",img:"128QKe7IC8FOj_hnYyY7Smiw-FyJYEVSj"},
+    {lat:48.735,lng:-122.42,sys:"Pink & Purple Metallic",desc:"Custom pink, purple, and black metallic epoxy in a garage.",img:"1qWalUarmOun8IyZv1Ru5S2dxtzxL5Snl"},
+    {lat:48.82,lng:-122.49,sys:"Silver & Black Metallic",desc:"Silver and black metallic epoxy in a barbershop.",img:"1Pi2E4_8jQ56DAM_ctMknGDb05iQfSOTP"},
+    {lat:48.777,lng:-122.505,sys:"City Court Red Flake",desc:"City court red custom flake system in a residential garage.",img:"1TRQfCehyqPssQhqzNAlhuYj5OwxzsMpL"},
+    {lat:48.865,lng:-122.57,sys:"Concrete Overlay",desc:"Concrete overlay on exterior driveway and walkway.",img:"1JB034UNwWK_GITrDqvpr-kFqI1neF02U"},
+    {lat:48.748,lng:-122.43,sys:"Flake System",desc:"Full-broadcast flake floor in a residential garage.",img:"1zg-9vn3z0c7okoNWpqKkal8Y52k9Aouh"},
+    {lat:48.762,lng:-122.52,sys:"Flake System",desc:"Flake epoxy coating on a residential garage floor.",img:"1CyORdSMofJFwoGdDREddzs7AZ4UyVoW4"},
+    {lat:48.73,lng:-122.47,sys:"Flake System",desc:"Residential garage flake floor with custom color blend.",img:"1M0nWFqfr7Gmh8DBEmAvkfgolyq30ZkG8"},
+    {lat:48.83,lng:-122.55,sys:"Flake System",desc:"Flake system applied to a residential garage.",img:"1VYriEi2-hXjH9OTpOMQnmWg83IDR8ZOX"},
+    {lat:48.848,lng:-122.61,sys:"Flake System",desc:"Full-broadcast flake coating in a large garage.",img:"1XGV8NKm7eu7Lm4m9n9zgxQ0yvSRwYVe6"},
+    {lat:48.96,lng:-122.435,sys:"Flake System",desc:"Residential garage flake floor with polyaspartic topcoat.",img:"1QkfmTZz7fDIF_ZlNjieKQMsOlMq9Yv-z"},
+    {lat:48.93,lng:-122.32,sys:"Flake System",desc:"Flake epoxy system on a workshop floor.",img:"1rGhyxr66G6t0Szd9nG9IsNuUr1GYUm9K"},
+    {lat:48.428,lng:-122.325,sys:"Flake System",desc:"Commercial warehouse flake floor with heavy-duty coating.",img:"1C-aLl5sNhM_is2gHwey5Xg5zJmQfhhdl"},
+    {lat:48.415,lng:-122.342,sys:"Metallic Epoxy",desc:"Metallic epoxy showroom floor with high-gloss finish.",img:"1ZP9W6cxhV8lHTEXlUdXC3ET0Kk1dr92U"},
+    {lat:48.424,lng:-122.348,sys:"Flake System",desc:"Residential garage flake system with full crack repair.",img:"1fG513-15Hi-VqYih2UvZoRXlfAL0JT2x"},
+    {lat:48.417,lng:-122.321,sys:"Flake System",desc:"Flake coating on a residential garage floor.",img:"1Mwb3qohmIT7LvCSWjO-RzWMB8HrXkL_o"},
+    {lat:48.431,lng:-122.338,sys:"Flake System",desc:"Full-broadcast flake floor in a 3-car garage.",img:"15oxQbp8RFKTTOSRADDMXQ8305-gTGk2r"},
+    {lat:48.476,lng:-122.33,sys:"Flake System",desc:"Residential garage flake coating with custom blend.",img:"1k1k7aYQ9HdPXCJpLWB9Ew3WmXNc9GdHF"},
+    {lat:48.468,lng:-122.345,sys:"Concrete Overlay",desc:"Concrete overlay on a commercial entryway.",img:"1_xaT8bYvMbanWWbmKZf1DLKzeceEabib"},
+    {lat:48.472,lng:-122.318,sys:"Flake System",desc:"Flake system in a large agricultural shop.",img:"1mSyRcyBuDQ5Iqdt4RxLSPWRvdBjJafvi"},
+    {lat:48.507,lng:-122.234,sys:"Flake System",desc:"Residential garage flake floor with polyaspartic seal.",img:"11-MEInuxOudh5TPVFbWavPTemMZ-MpS3"},
+    {lat:48.501,lng:-122.228,sys:"Flake System",desc:"Full-broadcast flake system on a workshop floor.",img:"19aPrsHPvvnrYItUbhDjlmMHrs-HnA2Yv"},
+    {lat:48.513,lng:-122.242,sys:"Flake System",desc:"Flake coating on a residential garage floor.",img:"1vj-sT5TZNp3vfBVtAJpQz-13i105sD3r"},
+    {lat:48.513,lng:-122.62,sys:"Flake System",desc:"Garage flake floor for a waterfront property.",img:"1ueJDlS_8rjR-jtWxHDmNnPqKWkeLdKC9"},
+    {lat:48.505,lng:-122.631,sys:"Metallic Epoxy",desc:"Metallic epoxy coating in a residential living space.",img:"1x1f4Q5_Wa9L7qBvzL6CuYVKqqgk0odty"},
+    {lat:48.519,lng:-122.61,sys:"Flake System",desc:"Residential garage flake system with diamond grinding prep.",img:"1oEbGJ0w6eeJgdi4lKJF4Z1ZZ7MYqc0A-"},
+    {lat:48.393,lng:-122.495,sys:"Flake System",desc:"Flake system in a residential garage.",img:"1HgTmje87ZfZCycu-epdmBiPUiX8dEc4E"},
+    {lat:48.398,lng:-122.501,sys:"Flake System",desc:"Full-broadcast flake coating on a garage floor.",img:"1qUhGiEX98UOuHiVaXF_FmR7uITRoXswh"},
+    {lat:48.293,lng:-122.643,sys:"Flake System",desc:"Residential garage flake floor with custom color blend.",img:"1twZYCuhhb6tSm_v6bh5GBM6DxsTAsxjR"},
+    {lat:48.286,lng:-122.652,sys:"Flake System",desc:"Full-broadcast flake system in a 2-car garage.",img:"1l7jGX2ck7e0wryl2dMMdkWYU92eBotBM"},
+    {lat:48.299,lng:-122.635,sys:"Metallic Epoxy",desc:"Metallic epoxy in a residential basement space.",img:"1X-uaLKL37_N3ZlzRuaj3-L_1Haoavs6X"},
+    {lat:48.281,lng:-122.658,sys:"Flake System",desc:"Flake epoxy coating on a workshop floor.",img:"1uBrAwoLO4PH3Ttys-rSJ4ArOdTRjWiUg"},
+    {lat:48.218,lng:-122.684,sys:"Flake System",desc:"Residential garage flake floor with polyaspartic topcoat.",img:"1O8AcyA_aTsooADAIUrL-iQK2de_0JMkq"},
+    {lat:48.224,lng:-122.676,sys:"Concrete Overlay",desc:"Concrete overlay on an outdoor patio and walkway.",img:"1Rrpeh8WKKbdDzljqzozcL_DhvRWMziOj"},
+    {lat:48.71,lng:-122.41,sys:"Flake System",desc:"Residential garage flake coating with custom blend.",img:"1TkvIj3tKBQJxxyngcxDnVI82Nd4FVnbR"},
+    {lat:48.785,lng:-122.44,sys:"Flake System",desc:"Full-broadcast flake floor in a residential garage.",img:"1mcakZXqA8JYD0SMJR9O1EFLqCAAVhVQ-"},
+    {lat:48.805,lng:-122.53,sys:"Flake System",desc:"Flake system applied to a large garage floor.",img:"1ZVwpeL2UnJJVsHSoPy16hw5W-VdpXR47"},
+    {lat:48.87,lng:-122.56,sys:"Flake System",desc:"Residential garage flake floor with diamond grinding.",img:"1T9uYhXTzzYFzhVKHbe93tyhdZ6mAJcI7"},
+    {lat:48.91,lng:-122.42,sys:"Flake System",desc:"Full-broadcast flake coating in a workshop.",img:"1SOYf4qLhkeaGojvp5vNEliNty7fGOaG_"},
+    {lat:48.97,lng:-122.47,sys:"Flake System",desc:"Flake epoxy system in a residential garage.",img:"15X4DJ_d_nOY9Q8FOYw95biT6E2migsAw"},
+    {lat:48.88,lng:-122.38,sys:"Flake System",desc:"Residential garage flake floor with accent stripe.",img:"1BLCOyA6a3JiVAiI757wAeDj69lDvOY7m"},
+    {lat:48.72,lng:-122.5,sys:"Flake System",desc:"Full-broadcast flake system on a garage floor.",img:"1F-qhE1MvE7dHhT-a6nvBJy3cGM0e9gPj"},
+    {lat:48.44,lng:-122.31,sys:"Flake System",desc:"Commercial flake floor in a retail space.",img:"1h4foYkiMveZhGGMjJvSUAvgu89n7p0Pr"},
+    {lat:48.455,lng:-122.35,sys:"Flake System",desc:"Residential garage flake coating.",img:"1wAQuo-aM54pVtcYy26sSSVBgBc1I2pSS"},
+    {lat:48.49,lng:-122.25,sys:"Flake System",desc:"Full-broadcast flake floor with polyaspartic topcoat.",img:"1DE-FKgafUqE_qXkdunG3cI3xSZ3ihpBX"},
+    {lat:48.525,lng:-122.6,sys:"Flake System",desc:"Garage flake system in a residential property.",img:"1iRD7ZRY0565evoXbFBJIDvgVV92mYT2Y"},
+    {lat:48.31,lng:-122.63,sys:"Flake System",desc:"Residential garage flake floor with custom color.",img:"136Cx18MCp5HMeKoNDhwlpKvQ4xkT7Fkk"},
+    {lat:48.25,lng:-122.67,sys:"Flake System",desc:"Full-broadcast flake coating in a garage.",img:"15oHZq5X1_ARypo1t5IlfSlVy7cF4SThV"},
+    {lat:48.795,lng:-122.415,sys:"Flake System",desc:"Flake system in a residential workshop.",img:"1TKpvPHpfOKhAg5B8SRwSC9lPi4P9snAI"},
+    {lat:48.768,lng:-122.515,sys:"Flake System",desc:"Garage flake coating with full prep work.",img:"1qY1prT7b1IBbtIio_KVGWM8Dy3ARyHGg"},
+    {lat:48.815,lng:-122.46,sys:"Flake System",desc:"Residential flake floor in a large garage.",img:"1DZ_Ns_uZ8VIMXPvY7Pwwj4x22opezkc7"},
+    {lat:48.835,lng:-122.59,sys:"Flake System",desc:"Full-broadcast flake system with accent detail.",img:"1nLfhONLzYsSWbkV3kkk3WQwwQDisks57"},
+    {lat:48.89,lng:-122.54,sys:"Flake System",desc:"Residential garage flake coating.",img:"1y6HwwnHuheEsBbDuxeinOUkNOThYakhs"},
+    {lat:48.905,lng:-122.36,sys:"Flake System",desc:"Flake system on a residential garage floor.",img:"1WGRgE5gWdIRuozHX9WvnIzAsS7xiOgSW"},
+    {lat:48.945,lng:-122.41,sys:"Flake System",desc:"Full-broadcast flake floor in a 3-car garage.",img:"1PbLTJSLK8Mc6zKKKCxZmUtlZBz9X7X_I"},
+    {lat:48.98,lng:-122.52,sys:"Flake System",desc:"Residential flake coating with custom color blend.",img:"1_WtaW4-xcNTeX7JDkzp_OSPWTS8CefWO"},
+    {lat:48.715,lng:-122.45,sys:"Flake System",desc:"Garage flake floor with polyaspartic seal.",img:"1fyqKtVXd-s_CDYFlZiLcZnno-swvEvoL"},
+    {lat:48.74,lng:-122.51,sys:"Flake System",desc:"Full-broadcast flake system in a residential garage.",img:"1ncjHtwu8z-82z08AbRISxeKT18c9UP6f"},
+    {lat:48.405,lng:-122.33,sys:"Flake System",desc:"Residential garage flake floor.",img:"1ZuyAIXLiTRuUDTcWBW4qHBMLxhHVggZB"},
+    {lat:48.435,lng:-122.29,sys:"Flake System",desc:"Flake epoxy coating on a garage floor.",img:"1SKuj3AROCsuHdvIKwIz1rc5AdLAUeqa6"},
+    {lat:48.462,lng:-122.36,sys:"Flake System",desc:"Full-broadcast flake system in a commercial space.",img:"1PEGZoNrtpJinV9cgkwWUUmGpsstzMgKt"},
+    {lat:48.52,lng:-122.21,sys:"Flake System",desc:"Residential garage flake coating.",img:"1CowB09nK_6q-_cJc0p5atcn07h2SuhYD"},
+    {lat:48.508,lng:-122.64,sys:"Flake System",desc:"Flake floor in a waterfront garage.",img:"1U-rz-e_OZGDOWnGQbT4dRiw0DkO93KM9"},
+    {lat:48.305,lng:-122.62,sys:"Flake System",desc:"Full-broadcast flake system in a garage.",img:"1sH6-PnmhSer5B6_WZJdjJmDqAyPxV1QC"},
+    {lat:48.27,lng:-122.66,sys:"Flake System",desc:"Residential flake floor with custom blend.",img:"1oxpBM1r6R9fgOEEyEQIxg7QxGSD3tUN8"},
+    {lat:48.235,lng:-122.69,sys:"Flake System",desc:"Garage flake coating with polyaspartic topcoat.",img:"1CcV1aThB8TZETV-tkxfLtWsz3UoMLBMt"}
     ];
 
     window.projMap=new maplibregl.Map({container:'projMap',style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',center:[-122.48,48.45],zoom:8.2,minZoom:7,maxZoom:14,attributionControl:false});
 
     window.projMap.on('style.load',function(){
+        var isTouch='ontouchstart' in window||navigator.maxTouchPoints>0;
         projects.forEach(function(p){
             var el=document.createElement('div');
             el.className='pm pm-pin';
@@ -2307,7 +2271,17 @@
             var popupHtml='<div>'+(imgUrl?'<img class="pp-img" src="'+imgUrl+'" alt="'+p.sys+'" loading="lazy">':'')+'<div class="pp-body"><span class="pp-tag">'+p.sys+'</span><p class="pp-desc">'+p.desc+'</p></div></div>';
             var popup=new maplibregl.Popup({offset:12,closeButton:true,maxWidth:'260px'}).setHTML(popupHtml);
             var marker=new maplibregl.Marker({element:el}).setLngLat([p.lng,p.lat]).setPopup(popup).addTo(window.projMap);
-            var isTouch='ontouchstart' in window||navigator.maxTouchPoints>0;if(isTouch){el.addEventListener('click',function(e){e.stopPropagation();if(window._openPopup&&window._openPopup!==popup){window._openPopup.remove();window._openPopup=null;}if(!popup.isOpen()){marker.togglePopup();window._openPopup=popup;}else{marker.togglePopup();window._openPopup=null;}});}else{el.addEventListener('mouseenter',function(){if(!popup.isOpen())marker.togglePopup();});el.addEventListener('mouseleave',function(){if(popup.isOpen())marker.togglePopup();});}
+            if(isTouch){
+                el.addEventListener('click',function(e){
+                    e.stopPropagation();
+                    if(window._openPopup&&window._openPopup!==popup){window._openPopup.remove();window._openPopup=null;}
+                    if(!popup.isOpen()){marker.togglePopup();window._openPopup=popup;}
+                    else{marker.togglePopup();window._openPopup=null;}
+                });
+            }else{
+                el.addEventListener('mouseenter',function(){if(!popup.isOpen())marker.togglePopup();});
+                el.addEventListener('mouseleave',function(){if(popup.isOpen())marker.togglePopup();});
+            }
         });
     });
     })();
