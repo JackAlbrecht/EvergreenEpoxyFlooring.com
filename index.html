@@ -2157,9 +2157,9 @@
         </div>
     </div>
     <script>
-    (function(){
-    var G='https://drive.google.com/thumbnail?id=';
-    var projects=[
+(function(){
+var G='https://drive.google.com/thumbnail?id=';
+var projects=[
     {lat:48.7605,lng:-122.4912,sys:"Midnight Flake",desc:"Full-broadcast midnight flake system in a large 3-car garage.",img:"1Kx0rIzI_o50CeBFVA-sWu9wMrf5dPClD"},
     {lat:48.7432,lng:-122.4651,sys:"Midnight Flake",desc:"Midnight flake coating on a spacious residential garage floor.",img:"1ecKDCcVAjVJ9kVlGPqsmmqYbcUzVGuSH"},
     {lat:48.771,lng:-122.453,sys:"Kodiak Flake",desc:"Kodiak flake finish applied to a large residential garage.",img:"1uOaAcdhoQzC9LhnXNjKilpesAf7FCrfg"},
@@ -2259,33 +2259,38 @@
     {lat:48.27,lng:-122.66,sys:"Flake System",desc:"Residential flake floor with custom blend.",img:"1oxpBM1r6R9fgOEEyEQIxg7QxGSD3tUN8"},
     {lat:48.235,lng:-122.69,sys:"Flake System",desc:"Garage flake coating with polyaspartic topcoat.",img:"1CcV1aThB8TZETV-tkxfLtWsz3UoMLBMt"}
     ];
-
-    window.projMap=new maplibregl.Map({container:'projMap',style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',center:[-122.48,48.45],zoom:8.2,minZoom:7,maxZoom:14,attributionControl:false});
-
-    window.projMap.on('style.load',function(){
-        var isTouch='ontouchstart' in window||navigator.maxTouchPoints>0;
-        projects.forEach(function(p){
-            var el=document.createElement('div');
-            el.className='pm pm-pin';
-            var imgUrl=p.img?G+p.img+'&sz=w400':'';
-            var popupHtml='<div>'+(imgUrl?'<img class="pp-img" src="'+imgUrl+'" alt="'+p.sys+'" loading="lazy">':'')+'<div class="pp-body"><span class="pp-tag">'+p.sys+'</span><p class="pp-desc">'+p.desc+'</p></div></div>';
-            var popup=new maplibregl.Popup({offset:12,closeButton:true,maxWidth:'260px'}).setHTML(popupHtml);
-            var marker=new maplibregl.Marker({element:el}).setLngLat([p.lng,p.lat]).setPopup(popup).addTo(window.projMap);
-            if(isTouch){
-                el.addEventListener('click',function(e){
-                    e.stopPropagation();
-                    if(window._openPopup&&window._openPopup!==popup){window._openPopup.remove();window._openPopup=null;}
-                    if(!popup.isOpen()){marker.togglePopup();window._openPopup=popup;}
-                    else{marker.togglePopup();window._openPopup=null;}
-                });
-            }else{
-                el.addEventListener('mouseenter',function(){if(!popup.isOpen())marker.togglePopup();});
-                el.addEventListener('mouseleave',function(){if(popup.isOpen())marker.togglePopup();});
-            }
-        });
-    });
-    })();
-    </script>
+var geojson={type:'FeatureCollection',features:projects.map(function(p,i){
+return{type:'Feature',geometry:{type:'Point',coordinates:[p.lng,p.lat]},properties:{idx:i,sys:p.sys,desc:p.desc,img:p.img}};
+})};
+window.projMap=new maplibregl.Map({container:'project-map',style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',center:[-120.5,47.5],zoom:6.3,minZoom:5,maxZoom:14,attributionControl:false});
+window.projMap.on('style.load',function(){
+var map=window.projMap;
+map.addSource('projects',{type:'geojson',data:geojson});
+map.addLayer({id:'project-pins',type:'circle',source:'projects',paint:{'circle-radius':['interpolate',['linear'],['zoom'],5,5,10,8,14,12],'circle-color':'#2ecc40','circle-stroke-width':2,'circle-stroke-color':'#1a1a2e','circle-opacity':0.92}});
+map.addLayer({id:'project-pins-hover',type:'circle',source:'projects',paint:{'circle-radius':['interpolate',['linear'],['zoom'],5,7,10,11,14,16],'circle-color':'#5dff6a','circle-stroke-width':2.5,'circle-stroke-color':'#fff','circle-opacity':0.95},filter:['==',['get','idx'],-1]});
+var popup=new maplibregl.Popup({offset:12,closeButton:true,maxWidth:'260px'});
+var isTouch='ontouchstart' in window||navigator.maxTouchPoints>0;
+function showPopup(f){
+var p=f.properties;var imgUrl=p.img?G+p.img+'&sz=w400':'';
+var h='<div>'+(imgUrl?'<img class="pp-img" src="'+imgUrl+'" alt="'+p.sys+'" loading="lazy">':'')+'<div class="pp-body"><span class="pp-tag">'+p.sys+'</span><p class="pp-desc">'+p.desc+'</p></div></div>';
+popup.setLngLat(f.geometry.coordinates).setHTML(h).addTo(map);
+}
+map.on('click','project-pins',function(e){if(e.features.length>0)showPopup(e.features[0]);});
+if(!isTouch){
+map.on('mouseenter','project-pins',function(e){
+map.getCanvas().style.cursor='pointer';
+if(e.features.length>0){
+map.setFilter('project-pins-hover',['==',['get','idx'],e.features[0].properties.idx]);
+showPopup(e.features[0]);
+}});
+map.on('mouseleave','project-pins',function(){
+map.getCanvas().style.cursor='';
+map.setFilter('project-pins-hover',['==',['get','idx'],-1]);
+popup.remove();
+});}
+});
+})();
+</script>
 </section>
 
 
@@ -2302,7 +2307,7 @@
             <p style="color: #4ade80; font-size: 0.85rem; margin-top: 1rem; font-weight: 600;">We respond within 24 hours &nbsp;•&nbsp; Licensed & bonded &nbsp;•&nbsp; No obligation</p>
         </div>
         <div class="cta-right">
-            <img src="IMG_9797%20(3)%20(1).jpeg" alt="Beautiful Epoxy Floor Installation">
+            <img src="https://drive.google.com/thumbnail?id=1Kx0rIzI_o50CeBFVA-sWu9wMrf5dPClD&sz=w800" alt="Beautiful Epoxy Floor Installation">
         </div>
     </section>
 
