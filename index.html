@@ -2262,7 +2262,7 @@ var projects=[
 var geojson={type:'FeatureCollection',features:projects.map(function(p,i){
 return{type:'Feature',geometry:{type:'Point',coordinates:[p.lng,p.lat]},properties:{idx:i,sys:p.sys,desc:p.desc,img:p.img}};
 })};
-window.projMap=new maplibregl.Map({container:'project-map',style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',center:[-120.5,47.5],zoom:6.3,minZoom:5,maxZoom:14,attributionControl:false});
+window.projMap=new maplibregl.Map({container:'projMap',style:'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',center:[-120.5,47.5],zoom:6.3,minZoom:5,maxZoom:14,attributionControl:false});
 window.projMap.on('style.load',function(){
 var map=window.projMap;
 map.addSource('projects',{type:'geojson',data:geojson});
