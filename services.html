@@ -907,7 +907,7 @@
                 if (hash === '#') return;
                 const pagePart = href.substring(0, hashIdx);
                 if (pagePart && !window.location.pathname.endsWith(pagePart)) return;
-                const target = document.querySelector(hash);
+                const _el = document.querySelector(hash); const target = _el && (_el.querySelector('h2') || _el);
                 if (target) {
                     e.preventDefault();
                     var navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 70;
