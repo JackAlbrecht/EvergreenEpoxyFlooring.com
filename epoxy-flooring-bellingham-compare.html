@@ -92,8 +92,12 @@
         }
 
         html {
-            scroll-padding-top: 80px;
+            scroll-padding-top: 100px;
             scroll-behavior: smooth;
+        }
+
+        [id] {
+            scroll-margin-top: 100px;
         }
 
         body {
@@ -1232,9 +1236,11 @@
                 if (href !== '#' && document.querySelector(href)) {
                     e.preventDefault();
                     const target = document.querySelector(href);
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    var navHeight = document.querySelector('nav') ? document.querySelector('nav').offsetHeight : 70;
+                    var targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
