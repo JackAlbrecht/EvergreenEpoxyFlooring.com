@@ -1,0 +1,18 @@
+/* Evergreen Epoxy — minimal motion layer */
+
+/* -- LOADER -- */
+.eef-loader{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:grid;place-items:center;transition:opacity .6s ease .15s,visibility .6s ease .15s}
+.eef-loader.gone{opacity:0;visibility:hidden;pointer-events:none}
+.eef-loader-inner{position:relative;width:120px;height:120px;display:grid;place-items:center;animation:eef-pulse 1.6s ease-in-out infinite}
+.eef-loader-inner img{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 0 20px rgba(255,255,255,.15))}
+.eef-loader-ring{position:absolute;inset:-14px;border-radius:50%;border:2px solid transparent;border-top-color:#2d7d3a;border-right-color:#97b86a;animation:eef-spin 1.3s linear infinite}
+@keyframes eef-spin{to{transform:rotate(360deg)}}
+@keyframes eef-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+/* -- SCROLL REVEAL -- */
+[data-eef-reveal]{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .85s cubic-bezier(.2,.85,.25,1),transform .85s cubic-bezier(.2,.85,.25,1),filter .85s ease;will-change:opacity,transform,filter}
+[data-eef-reveal].eef-visible{opacity:1;transform:translateY(0);filter:blur(0)}
+
+/* -- CLICK RIPPLE -- */
+@keyframes eef-ripple{to{transform:scale(1);opacity:0}}
+.eef-ripple{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(45,125,58,.45),transparent 60%);pointer-events:none;transform:scale(0);animation:eef-ripple .6s ease-out forwards;z-index:20;mix-blend-mode:screen}
