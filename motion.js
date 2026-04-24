@@ -22,21 +22,29 @@
     if(l){ l.classList.remove('gone'); }
   });
 
-  // SCROLL REVEAL — auto-tag content elements (not lists — those broke layout)
+  // SCROLL REVEAL — tag ONLY mid-level content (never parent sections/hero/article)
+  // This avoids cascading invisibility that caused hero overlap
   function autoTag(){
-    var sels = ['section', 'article', '.hero', 'h1', 'h2', 'h3', '.service', '.testimonial', '.project', '.team', 'figure', 'blockquote', '.card', '.service-card', '.testimonial-card', '.project-card'];
+    var sels = ['h2', 'h3', '.card', '.service-card', '.testimonial-card', '.project-card', '.service', '.testimonial', '.project', '.team', 'figure', 'blockquote'];
     sels.forEach(function(s){
       try{
         document.querySelectorAll(s).forEach(function(el){
-          if(!el.hasAttribute('data-eef-reveal') && !el.closest('.eef-loader') && !el.closest('header') && !el.closest('nav')){
-            el.setAttribute('data-eef-reveal','');
-          }
+          // Skip: already tagged; inside loader; inside header/nav; or IS a section/hero/article
+          if (el.hasAttribute('data-eef-reveal')) return;
+          if (el.closest('.eef-loader')) return;
+          if (el.closest('header')) return;
+          if (el.closest('nav')) return;
+          if (el.closest('.hero')) return;           // skip anything inside hero
+          if (el.tagName === 'SECTION') return;
+          if (el.tagName === 'ARTICLE') return;
+          el.setAttribute('data-eef-reveal','');
         });
       }catch(e){}
     });
   }
   autoTag();
 
+  // Above-the-fold first pass
   function firstReveal(){
     document.querySelectorAll('[data-eef-reveal]').forEach(function(el){
       var r = el.getBoundingClientRect();
