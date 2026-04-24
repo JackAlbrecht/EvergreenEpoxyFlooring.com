@@ -83,16 +83,39 @@
   }, true);
 })();
 
-/* Shine hover — auto-tag any Estimate/Quote/Call button by text content */
+/* Shine hover — auto-tag any green button (by text, inline bg, or computed bg color) */
 (function(){
   function ready(fn){ if (document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  function isGreen(rgbStr){
+    if (!rgbStr) return false;
+    var m = rgbStr.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+    if (!m) return false;
+    var r = +m[1], g = +m[2], b = +m[3];
+    // green-dominant: g noticeably greater than r & b, and not near-white/near-black
+    return (g > r + 20) && (g > b + 20) && (g > 70) && (r + g + b < 600);
+  }
   ready(function(){
-    var needles = /free\s*estimate|free\s*quote|get\s*quote|get\s*a\s*(free\s*)?(quote|estimate)|call\s*now|call\s*us|call\s*\(360\)|📞|\(360\)\s*220/i;
-    document.querySelectorAll('a, button').forEach(function(el){
-      var txt = (el.textContent || '').trim();
-      if (needles.test(txt) && txt.length < 80) {
+    var textNeedles = /free\s*estimate|free\s*quote|get\s*quote|get\s*a\s*(free\s*)?(quote|estimate)|call\s*now|call\s*us|call\s*\(360\)|📞|\(360\)\s*220|begin\s*now|see\s*colors?|color\s*palette|view\s*gallery|learn\s*more|explore|see\s*more/i;
+    document.querySelectorAll('a, button, input[type="submit"], input[type="button"]').forEach(function(el){
+      var txt = (el.textContent || el.value || '').trim();
+      // Add if text matches triggers
+      if (textNeedles.test(txt) && txt.length < 80) {
         el.classList.add('eef-shine-btn');
+        return;
       }
+      // Or if inline style has a green-ish background
+      var inline = (el.getAttribute('style') || '').toLowerCase();
+      if (/background[^;]*#(1db954|22c55e|4ade80|16a34a|15803d|2d7d3a|97b86a|34d399|10b981)/i.test(inline)) {
+        el.classList.add('eef-shine-btn');
+        return;
+      }
+      // Or if computed background color reads as green
+      try {
+        var cs = getComputedStyle(el);
+        if (isGreen(cs.backgroundColor) || isGreen(cs.background)) {
+          el.classList.add('eef-shine-btn');
+        }
+      } catch(e){}
     });
   });
 })();

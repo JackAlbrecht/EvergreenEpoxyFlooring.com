@@ -24,13 +24,13 @@ html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
 ::selection{background:#2d7d3a;color:#fff}
 ::-moz-selection{background:#2d7d3a;color:#fff}
 
-/* -- SHINE HOVER on Free Estimate + Call buttons (21st.dev pattern, vanilla CSS) -- */
-.btn-cta, .btn-primary, .btn-outline, .cta-btn, .sticky-cta-btn, .sticky-cta-quote, .eef-shine-btn{
+/* -- SHINE HOVER on all buttons (21st.dev pattern, vanilla CSS) -- */
+.btn, .btn-cta, .btn-cta-outline, .btn-primary, .btn-secondary, .btn-outline, .cta-btn, .cta-btn-secondary, .sticky-cta-btn, .sticky-cta-quote, .sticky-cta-call, .nav-cta, .hero-cta, .blog-cta, .phone-btn, .calc-btn-primary, .calc-option-btn, .space-card-cta, .eef-shine-btn{
   position:relative !important;
   overflow:hidden !important;
   isolation:isolate;
 }
-.btn-cta::before, .btn-primary::before, .btn-outline::before, .cta-btn::before, .sticky-cta-btn::before, .sticky-cta-quote::before, .eef-shine-btn::before{
+.btn::before, .btn-cta::before, .btn-cta-outline::before, .btn-primary::before, .btn-secondary::before, .btn-outline::before, .cta-btn::before, .cta-btn-secondary::before, .sticky-cta-btn::before, .sticky-cta-quote::before, .sticky-cta-call::before, .nav-cta::before, .hero-cta::before, .blog-cta::before, .phone-btn::before, .calc-btn-primary::before, .calc-option-btn::before, .space-card-cta::before, .eef-shine-btn::before{
   content:"";
   position:absolute;
   inset:0;
@@ -43,14 +43,11 @@ html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-r
   pointer-events:none;
   z-index:1;
 }
-.btn-cta:hover::before, .btn-primary:hover::before, .btn-outline:hover::before, .cta-btn:hover::before, .sticky-cta-btn:hover::before, .sticky-cta-quote:hover::before, .eef-shine-btn:hover::before{
+.btn:hover::before, .btn-cta:hover::before, .btn-cta-outline:hover::before, .btn-primary:hover::before, .btn-secondary:hover::before, .btn-outline:hover::before, .cta-btn:hover::before, .cta-btn-secondary:hover::before, .sticky-cta-btn:hover::before, .sticky-cta-quote:hover::before, .sticky-cta-call:hover::before, .nav-cta:hover::before, .hero-cta:hover::before, .blog-cta:hover::before, .phone-btn:hover::before, .calc-btn-primary:hover::before, .calc-option-btn:hover::before, .space-card-cta:hover::before, .eef-shine-btn:hover::before{
   background-position:-100% 0;
 }
-/* Make sure button text stays above the shine layer */
-.btn-cta, .btn-primary, .btn-outline, .cta-btn, .sticky-cta-btn, .sticky-cta-quote, .eef-shine-btn{
-  z-index:0;
-}
-.btn-cta > *, .btn-primary > *, .btn-outline > *, .cta-btn > *, .sticky-cta-btn > *, .sticky-cta-quote > *, .eef-shine-btn > *{
+/* Keep button text above the shine layer */
+.btn > *, .btn-cta > *, .btn-cta-outline > *, .btn-primary > *, .btn-secondary > *, .btn-outline > *, .cta-btn > *, .cta-btn-secondary > *, .sticky-cta-btn > *, .sticky-cta-quote > *, .sticky-cta-call > *, .nav-cta > *, .hero-cta > *, .blog-cta > *, .phone-btn > *, .calc-btn-primary > *, .calc-option-btn > *, .space-card-cta > *, .eef-shine-btn > *{
   position:relative;
   z-index:2;
 }
