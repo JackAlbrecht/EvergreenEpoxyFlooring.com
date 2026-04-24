@@ -23,3 +23,34 @@
 html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
 ::selection{background:#2d7d3a;color:#fff}
 ::-moz-selection{background:#2d7d3a;color:#fff}
+
+/* -- SHINE HOVER on Free Estimate + Call buttons (21st.dev pattern, vanilla CSS) -- */
+.btn-cta, .btn-primary, .btn-outline, .cta-btn, .sticky-cta-btn, .sticky-cta-quote, .eef-shine-btn{
+  position:relative !important;
+  overflow:hidden !important;
+  isolation:isolate;
+}
+.btn-cta::before, .btn-primary::before, .btn-outline::before, .cta-btn::before, .sticky-cta-btn::before, .sticky-cta-quote::before, .eef-shine-btn::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:linear-gradient(45deg,transparent 25%,rgba(255,255,255,.7) 50%,transparent 75%,transparent 100%);
+  background-size:250% 250%;
+  background-position:200% 0;
+  background-repeat:no-repeat;
+  transition:background-position 1s ease;
+  pointer-events:none;
+  z-index:1;
+}
+.btn-cta:hover::before, .btn-primary:hover::before, .btn-outline:hover::before, .cta-btn:hover::before, .sticky-cta-btn:hover::before, .sticky-cta-quote:hover::before, .eef-shine-btn:hover::before{
+  background-position:-100% 0;
+}
+/* Make sure button text stays above the shine layer */
+.btn-cta, .btn-primary, .btn-outline, .cta-btn, .sticky-cta-btn, .sticky-cta-quote, .eef-shine-btn{
+  z-index:0;
+}
+.btn-cta > *, .btn-primary > *, .btn-outline > *, .cta-btn > *, .sticky-cta-btn > *, .sticky-cta-quote > *, .eef-shine-btn > *{
+  position:relative;
+  z-index:2;
+}

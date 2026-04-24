@@ -82,3 +82,17 @@
     setTimeout(function(){ if(rip.parentNode) rip.parentNode.removeChild(rip); el.style.overflow = prev; }, 620);
   }, true);
 })();
+
+/* Shine hover — auto-tag any Estimate/Quote/Call button by text content */
+(function(){
+  function ready(fn){ if (document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    var needles = /free\s*estimate|free\s*quote|get\s*quote|get\s*a\s*(free\s*)?(quote|estimate)|call\s*now|call\s*us|call\s*\(360\)|📞|\(360\)\s*220/i;
+    document.querySelectorAll('a, button').forEach(function(el){
+      var txt = (el.textContent || '').trim();
+      if (needles.test(txt) && txt.length < 80) {
+        el.classList.add('eef-shine-btn');
+      }
+    });
+  });
+})();
