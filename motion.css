@@ -1,7 +1,7 @@
-/* Evergreen Epoxy — minimal motion layer */
+/* Evergreen Epoxy — motion layer (non-invasive, additive only) */
 
-/* -- LOADER -- */
-.eef-loader{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:grid;place-items:center;transition:opacity .6s ease .15s,visibility .6s ease .15s}
+/* -- LOADER (contained circle with logo) -- */
+.eef-loader{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:grid;place-items:center;transition:opacity .55s cubic-bezier(.22,.8,.36,1) .1s,visibility .55s cubic-bezier(.22,.8,.36,1) .1s}
 .eef-loader.gone{opacity:0;visibility:hidden;pointer-events:none}
 .eef-loader-stack{position:relative;width:240px;height:240px;display:grid;place-items:center;animation:eef-pulse 2s ease-in-out infinite}
 .eef-loader-stack img{width:170px;height:170px;object-fit:contain;display:block;filter:drop-shadow(0 0 30px rgba(151,184,106,.45))}
@@ -14,118 +14,25 @@
   .eef-loader-stack img{width:140px;height:140px}
 }
 
-/* -- SCROLL REVEAL -- */
-[data-eef-reveal]{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity .85s cubic-bezier(.2,.85,.25,1),transform .85s cubic-bezier(.2,.85,.25,1),filter .85s ease;will-change:opacity,transform,filter}
-[data-eef-reveal].eef-visible{opacity:1;transform:translateY(0);filter:blur(0)}
-
-/* -- CLICK RIPPLE -- */
+/* -- CLICK RIPPLE (additive, doesn't affect layout) -- */
 @keyframes eef-ripple{to{transform:scale(1);opacity:0}}
 .eef-ripple{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(45,125,58,.45),transparent 60%);pointer-events:none;transform:scale(0);animation:eef-ripple .6s ease-out forwards;z-index:20;mix-blend-mode:screen}
 
-/* ==============================================================
-   POLISH PASS — subtle, non-invasive refinements
-   ============================================================== */
-
-/* Smooth font rendering across the board */
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
-
-/* Brand-colored text selection */
-::selection{background:#2d7d3a;color:#fff}
-::-moz-selection{background:#2d7d3a;color:#fff}
-
-/* Nicer focus rings for accessibility */
-:focus-visible{outline:2px solid #97b86a;outline-offset:3px;border-radius:4px;transition:outline-offset .15s}
-button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid #97b86a;outline-offset:3px}
-
-/* Subtle button lift on hover — works for any <button>, .btn, and pill/rounded buttons */
-button:not([disabled]):not(.eef-loader button),.btn,[role="button"]{transition:transform .2s cubic-bezier(.2,.85,.25,1),box-shadow .25s cubic-bezier(.2,.85,.25,1),filter .25s ease}
-button:not([disabled]):not(.eef-loader button):hover,.btn:hover,[role="button"]:hover{transform:translateY(-2px);filter:brightness(1.05)}
-button:not([disabled]):not(.eef-loader button):active,.btn:active,[role="button"]:active{transform:translateY(0);filter:brightness(.97)}
-
-/* Link transitions */
-a{transition:color .2s ease,opacity .2s ease}
-
-/* Image subtle hover — scale & slight saturation */
-img:not(.eef-loader-stack img):not([class*="logo"]):not([src*="logo"]){transition:transform .7s cubic-bezier(.2,.85,.25,1),filter .4s ease}
-figure:hover img,.gallery img:hover,.hero img:hover,picture:hover img{transform:scale(1.02);filter:saturate(1.08)}
-
-/* Gradient divider for <hr> elements */
-hr{height:1px;border:0;background:linear-gradient(90deg,transparent 0%, rgba(45,125,58,.35) 30%, rgba(151,184,106,.6) 50%, rgba(45,125,58,.35) 70%, transparent 100%);margin:32px 0}
-
-/* Smooth card shadows on any element with a box-shadow baseline — progressive */
-[class*="card"]:not(.rev-card):not(.q-card),.service,.project,.testimonial,.post,.team-member{transition:transform .3s cubic-bezier(.2,.85,.25,1),box-shadow .3s cubic-bezier(.2,.85,.25,1)}
-[class*="card"]:not(.rev-card):not(.q-card):hover,.service:hover,.project:hover,.testimonial:hover,.post:hover,.team-member:hover{transform:translateY(-3px)}
-
-/* Subtle section reveal enhancement - add a gentle shadow underneath headings */
-h1,h2,h3{text-rendering:optimizeLegibility;letter-spacing:-.005em}
-h1{letter-spacing:-.02em}
-h2{letter-spacing:-.015em}
-
-/* Nicer form inputs globally — no override of colors, just crisper focus */
-input:focus,textarea:focus,select:focus{transition:border-color .2s ease,box-shadow .2s ease,outline .2s ease}
-
-/* Smoother reveal easing — lighter blur than motion.css default so polish feels crisper */
-[data-eef-reveal]{transition-timing-function:cubic-bezier(.16,.84,.32,1) !important;transition-duration:.75s !important}
-
-/* Make the loader fade out even smoother */
-.eef-loader{transition:opacity .55s cubic-bezier(.22,.8,.36,1) .1s,visibility .55s cubic-bezier(.22,.8,.36,1) .1s}
-
-/* Tighten body spacing rhythm without overriding content */
-p{text-rendering:optimizeLegibility}
-
-/* Rippel interaction on MORE elements — add to nav, header CTAs, service cards */
-nav a,header a{position:relative}
-
-/* ==============================================================
-   21st.dev-inspired motion + UI — cooler touches
-   ============================================================== */
-
-/* Scroll progress bar at top */
+/* -- SCROLL PROGRESS BAR (fixed at top, overlays nothing) -- */
 .eef-scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;pointer-events:none}
 .eef-scroll-progress .eef-bar{height:100%;width:var(--eefp,0%);background:linear-gradient(90deg,#2d7d3a 0%, #97b86a 50%, #2d7d3a 100%);box-shadow:0 0 12px rgba(151,184,106,.6),0 0 30px rgba(45,125,58,.35);transition:width .08s linear}
 
-/* Subtle cursor spotlight follow — soft green halo */
+/* -- CURSOR SPOTLIGHT (desktop only, pure overlay) -- */
 .eef-cursor-glow{position:fixed;top:0;left:0;width:380px;height:380px;pointer-events:none;z-index:95;border-radius:50%;background:radial-gradient(circle at center, rgba(151,184,106,.13) 0%, transparent 55%);transform:translate(-50%,-50%);mix-blend-mode:screen;opacity:0;transition:opacity .3s}
 .eef-cursor-glow.eef-active{opacity:1}
 @media (hover:none){.eef-cursor-glow{display:none !important}}
 
-/* Shimmer sweep on primary buttons */
-a.btn,button.btn,a[class*="cta"],a[class*="quote"],button[class*="cta"],button[type="submit"]{position:relative;overflow:hidden;isolation:isolate}
-a.btn::before,button.btn::before,a[class*="cta"]::before,a[class*="quote"]::before,button[class*="cta"]::before,button[type="submit"]::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%, rgba(255,255,255,.35) 50%, transparent 100%);transform:translateX(-100%);transition:transform .8s cubic-bezier(.2,.85,.25,1);z-index:-1;pointer-events:none}
-a.btn:hover::before,button.btn:hover::before,a[class*="cta"]:hover::before,a[class*="quote"]:hover::before,button[class*="cta"]:hover::before,button[type="submit"]:hover::before{transform:translateX(100%)}
+/* -- GLOBAL POLISH (tiny non-invasive refinements) -- */
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+::selection{background:#2d7d3a;color:#fff}
+::-moz-selection{background:#2d7d3a;color:#fff}
+:focus-visible{outline:2px solid #97b86a;outline-offset:3px;border-radius:4px}
 
-/* Underline slide on nav anchors */
-nav a:not(.eef-nolink){position:relative}
-nav a:not(.eef-nolink)::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:2px;background:linear-gradient(90deg,#97b86a 0%, #2d7d3a 100%);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.85,.25,1);border-radius:2px}
-nav a:not(.eef-nolink):hover::after{transform:scaleX(1)}
-
-/* Subtle aurora gradient background for any section tagged data-eef-aurora */
-[data-eef-aurora]{position:relative;overflow:hidden;isolation:isolate}
-[data-eef-aurora]::before{content:"";position:absolute;inset:-20%;background:radial-gradient(600px circle at 10% 20%, rgba(45,125,58,.10), transparent 50%), radial-gradient(500px circle at 90% 80%, rgba(151,184,106,.12), transparent 50%);pointer-events:none;z-index:-1;animation:eef-aurora 22s ease-in-out infinite}
-@keyframes eef-aurora{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.05)}66%{transform:translate(-20px,30px) scale(.95)}}
-
-/* Floating micro-animation for hero elements */
-[data-eef-float]{animation:eef-float 5s ease-in-out infinite}
-@keyframes eef-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-
-/* Shine border on any featured card */
-.eef-shine{position:relative;isolation:isolate}
-.eef-shine::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--eef-a,0deg), transparent 0deg, #97b86a 60deg, transparent 120deg, transparent 240deg, #2d7d3a 300deg, transparent 360deg);-webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:eef-shine-rot 6s linear infinite;pointer-events:none;z-index:1}
-@property --eef-a{syntax:'<angle>';inherits:false;initial-value:0deg}
-@keyframes eef-shine-rot{to{--eef-a:360deg}}
-
-/* Text gradient shimmer on headings with data-eef-gradient */
-[data-eef-gradient]{background:linear-gradient(120deg,#2d7d3a 0%, #97b86a 30%, #e8d87a 50%, #97b86a 70%, #2d7d3a 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:eef-text-shimmer 6s ease-in-out infinite}
-@keyframes eef-text-shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-
-/* Scroll-reveal stagger variant — parent with data-eef-stagger, children fade up in sequence */
-[data-eef-stagger] > *{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,.84,.32,1),transform .7s cubic-bezier(.16,.84,.32,1);filter:blur(4px)}
-[data-eef-stagger].eef-visible > *{opacity:1;transform:translateY(0);filter:blur(0)}
-[data-eef-stagger].eef-visible > *:nth-child(1){transition-delay:.05s}
-[data-eef-stagger].eef-visible > *:nth-child(2){transition-delay:.15s}
-[data-eef-stagger].eef-visible > *:nth-child(3){transition-delay:.25s}
-[data-eef-stagger].eef-visible > *:nth-child(4){transition-delay:.35s}
-[data-eef-stagger].eef-visible > *:nth-child(5){transition-delay:.45s}
-[data-eef-stagger].eef-visible > *:nth-child(6){transition-delay:.55s}
-[data-eef-stagger].eef-visible > *:nth-child(7){transition-delay:.65s}
-[data-eef-stagger].eef-visible > *:nth-child(8){transition-delay:.75s}
+/* -- BUTTON HOVER (only subtle lift, no transforms that break layout) -- */
+a[class*="btn"],button[class*="btn"],a[class*="cta"],button[class*="cta"],a[class*="quote"],button[type="submit"]{transition:transform .2s cubic-bezier(.2,.85,.25,1),box-shadow .25s cubic-bezier(.2,.85,.25,1),filter .25s ease}
+a[class*="btn"]:hover,button[class*="btn"]:hover,a[class*="cta"]:hover,button[class*="cta"]:hover,a[class*="quote"]:hover,button[type="submit"]:hover{filter:brightness(1.05)}
