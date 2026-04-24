@@ -76,3 +76,73 @@
     setTimeout(function(){ if(rip.parentNode) rip.parentNode.removeChild(rip); el.style.overflow = prev; }, 620);
   }, true);
 })();
+
+/* ==============================================================
+   21st.dev-inspired interactions
+   ============================================================== */
+(function(){
+  function ready(fn){ if (document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  ready(function(){
+    // 1. Scroll progress bar
+    if (!document.querySelector('.eef-scroll-progress')) {
+      var sp = document.createElement('div');
+      sp.className = 'eef-scroll-progress';
+      sp.innerHTML = '<div class="eef-bar"></div>';
+      document.body.appendChild(sp);
+      var bar = sp.querySelector('.eef-bar');
+      window.addEventListener('scroll', function(){
+        var h = document.documentElement;
+        var p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+        bar.style.setProperty('--eefp', p + '%');
+      }, { passive: true });
+    }
+
+    // 2. Cursor glow (desktop only)
+    if (window.matchMedia('(hover:hover)').matches && !document.querySelector('.eef-cursor-glow')) {
+      var cg = document.createElement('div');
+      cg.className = 'eef-cursor-glow';
+      document.body.appendChild(cg);
+      var cx=0, cy=0, tx=0, ty=0;
+      window.addEventListener('mousemove', function(e){ tx=e.clientX; ty=e.clientY; cg.classList.add('eef-active'); });
+      window.addEventListener('mouseout', function(e){ if (!e.relatedTarget) cg.classList.remove('eef-active'); });
+      (function raf(){ cx += (tx-cx)*0.16; cy += (ty-cy)*0.16; cg.style.transform = 'translate('+cx+'px,'+cy+'px) translate(-50%,-50%)'; requestAnimationFrame(raf); })();
+    }
+
+    // 3. Magnetic buttons (CTA + primary btns + submit)
+    var magnetSel = 'a.btn, button.btn, a[class*="cta"], a[class*="quote"], button[type="submit"]';
+    document.querySelectorAll(magnetSel).forEach(function(b){
+      b.addEventListener('mousemove', function(ev){
+        var r = b.getBoundingClientRect();
+        var dx = (ev.clientX - (r.left + r.width/2)) * 0.15;
+        var dy = (ev.clientY - (r.top + r.height/2)) * 0.15;
+        b.style.transform = 'translate('+dx+'px,'+dy+'px)';
+      });
+      b.addEventListener('mouseleave', function(){ b.style.transform = ''; });
+    });
+
+    // 4. Auto-stagger any ul/ol with > 3 children and any grid/flex container with data-eef-stagger
+    // Apply stagger reveal to lists of items on the page
+    document.querySelectorAll('ul, ol').forEach(function(list){
+      if (list.children.length >= 3 && !list.hasAttribute('data-eef-stagger') && !list.closest('nav') && !list.closest('footer')) {
+        list.setAttribute('data-eef-stagger', '');
+      }
+    });
+
+    // Observe stagger elements
+    if ('IntersectionObserver' in window) {
+      var sio = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('eef-visible'); sio.unobserve(e.target); } });
+      }, { rootMargin:'-4% 0px -2% 0px', threshold: 0.05 });
+      document.querySelectorAll('[data-eef-stagger]').forEach(function(el){ sio.observe(el); });
+    } else {
+      document.querySelectorAll('[data-eef-stagger]').forEach(function(el){ el.classList.add('eef-visible'); });
+    }
+
+    // 5. Auto-aurora: add data-eef-aurora to every <section> or <main>-child that doesn't have it yet
+    document.querySelectorAll('section, main > div, .hero, [class*="hero"]').forEach(function(el){
+      if (!el.hasAttribute('data-eef-aurora') && el.getBoundingClientRect().height > 200) {
+        el.setAttribute('data-eef-aurora', '');
+      }
+    });
+  });
+})();
