@@ -1,38 +1,25 @@
-/* Evergreen Epoxy — motion layer (non-invasive, additive only) */
+/* Evergreen Epoxy — minimal motion layer */
 
-/* -- LOADER (contained circle with logo) -- */
+/* -- LOADER (contained circle) -- */
 .eef-loader{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:grid;place-items:center;transition:opacity .55s cubic-bezier(.22,.8,.36,1) .1s,visibility .55s cubic-bezier(.22,.8,.36,1) .1s}
 .eef-loader.gone{opacity:0;visibility:hidden;pointer-events:none}
 .eef-loader-stack{position:relative;width:240px;height:240px;display:grid;place-items:center;animation:eef-pulse 2s ease-in-out infinite}
 .eef-loader-stack img{width:170px;height:170px;object-fit:contain;display:block;filter:drop-shadow(0 0 30px rgba(151,184,106,.45))}
 .eef-loader-stack::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid transparent;border-top-color:#2d7d3a;border-right-color:#97b86a;animation:eef-spin 1.4s linear infinite;box-shadow:0 0 40px rgba(45,125,58,.25)}
-.eef-loader-bar{display:none}
+.eef-loader-bar,.eef-loader-ring,.eef-loader-inner{display:none}
 @keyframes eef-spin{to{transform:rotate(360deg)}}
 @keyframes eef-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.03);opacity:.95}}
-@media (max-width:640px){
-  .eef-loader-stack{width:200px;height:200px}
-  .eef-loader-stack img{width:140px;height:140px}
-}
+@media (max-width:640px){.eef-loader-stack{width:200px;height:200px}.eef-loader-stack img{width:140px;height:140px}}
 
-/* -- CLICK RIPPLE (additive, doesn't affect layout) -- */
+/* -- SCROLL REVEAL -- */
+[data-eef-reveal]{opacity:0;transform:translateY(20px);filter:blur(5px);transition:opacity .7s cubic-bezier(.16,.84,.32,1),transform .7s cubic-bezier(.16,.84,.32,1),filter .7s ease;will-change:opacity,transform,filter}
+[data-eef-reveal].eef-visible{opacity:1;transform:translateY(0);filter:blur(0)}
+
+/* -- CLICK RIPPLE -- */
 @keyframes eef-ripple{to{transform:scale(1);opacity:0}}
 .eef-ripple{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(45,125,58,.45),transparent 60%);pointer-events:none;transform:scale(0);animation:eef-ripple .6s ease-out forwards;z-index:20;mix-blend-mode:screen}
 
-/* -- SCROLL PROGRESS BAR (fixed at top, overlays nothing) -- */
-.eef-scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;pointer-events:none}
-.eef-scroll-progress .eef-bar{height:100%;width:var(--eefp,0%);background:linear-gradient(90deg,#2d7d3a 0%, #97b86a 50%, #2d7d3a 100%);box-shadow:0 0 12px rgba(151,184,106,.6),0 0 30px rgba(45,125,58,.35);transition:width .08s linear}
-
-/* -- CURSOR SPOTLIGHT (desktop only, pure overlay) -- */
-.eef-cursor-glow{position:fixed;top:0;left:0;width:380px;height:380px;pointer-events:none;z-index:95;border-radius:50%;background:radial-gradient(circle at center, rgba(151,184,106,.13) 0%, transparent 55%);transform:translate(-50%,-50%);mix-blend-mode:screen;opacity:0;transition:opacity .3s}
-.eef-cursor-glow.eef-active{opacity:1}
-@media (hover:none){.eef-cursor-glow{display:none !important}}
-
-/* -- GLOBAL POLISH (tiny non-invasive refinements) -- */
+/* -- Lightweight polish (no layout side-effects) -- */
 html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
 ::selection{background:#2d7d3a;color:#fff}
 ::-moz-selection{background:#2d7d3a;color:#fff}
-:focus-visible{outline:2px solid #97b86a;outline-offset:3px;border-radius:4px}
-
-/* -- BUTTON HOVER (only subtle lift, no transforms that break layout) -- */
-a[class*="btn"],button[class*="btn"],a[class*="cta"],button[class*="cta"],a[class*="quote"],button[type="submit"]{transition:transform .2s cubic-bezier(.2,.85,.25,1),box-shadow .25s cubic-bezier(.2,.85,.25,1),filter .25s ease}
-a[class*="btn"]:hover,button[class*="btn"]:hover,a[class*="cta"]:hover,button[class*="cta"]:hover,a[class*="quote"]:hover,button[type="submit"]:hover{filter:brightness(1.05)}

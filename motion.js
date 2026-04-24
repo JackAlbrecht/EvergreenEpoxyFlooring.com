@@ -1,4 +1,4 @@
-/* Evergreen Epoxy — motion layer (non-invasive) */
+/* Evergreen Epoxy — minimal motion layer */
 (function(){
   // LOADER DISMISS
   function dismiss(){
@@ -11,7 +11,7 @@
   else window.addEventListener('load', function(){ setTimeout(dismiss, 300); });
   setTimeout(dismiss, 3200);
 
-  // Re-show loader on internal nav clicks for smooth transition
+  // Re-show loader on internal navigation
   document.addEventListener('click', function(ev){
     var a = ev.target.closest && ev.target.closest('a');
     if(!a) return;
@@ -22,38 +22,43 @@
     if(l){ l.classList.remove('gone'); }
   });
 
-  // SCROLL PROGRESS BAR
-  if (!document.querySelector('.eef-scroll-progress')) {
-    var sp = document.createElement('div');
-    sp.className = 'eef-scroll-progress';
-    sp.innerHTML = '<div class="eef-bar"></div>';
-    document.addEventListener('DOMContentLoaded', function(){
-      document.body.appendChild(sp);
-      var bar = sp.querySelector('.eef-bar');
-      window.addEventListener('scroll', function(){
-        var h = document.documentElement;
-        var p = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-        bar.style.setProperty('--eefp', p + '%');
-      }, { passive: true });
+  // SCROLL REVEAL — auto-tag content elements (not lists — those broke layout)
+  function autoTag(){
+    var sels = ['section', 'article', '.hero', 'h1', 'h2', 'h3', '.service', '.testimonial', '.project', '.team', 'figure', 'blockquote', '.card', '.service-card', '.testimonial-card', '.project-card'];
+    sels.forEach(function(s){
+      try{
+        document.querySelectorAll(s).forEach(function(el){
+          if(!el.hasAttribute('data-eef-reveal') && !el.closest('.eef-loader') && !el.closest('header') && !el.closest('nav')){
+            el.setAttribute('data-eef-reveal','');
+          }
+        });
+      }catch(e){}
     });
   }
+  autoTag();
 
-  // CURSOR GLOW (desktop only)
-  if (window.matchMedia && window.matchMedia('(hover:hover)').matches) {
-    document.addEventListener('DOMContentLoaded', function(){
-      if (document.querySelector('.eef-cursor-glow')) return;
-      var cg = document.createElement('div');
-      cg.className = 'eef-cursor-glow';
-      document.body.appendChild(cg);
-      var cx=0, cy=0, tx=0, ty=0;
-      window.addEventListener('mousemove', function(e){ tx=e.clientX; ty=e.clientY; cg.classList.add('eef-active'); });
-      (function raf(){ cx += (tx-cx)*0.16; cy += (ty-cy)*0.16; cg.style.transform = 'translate('+cx+'px,'+cy+'px) translate(-50%,-50%)'; requestAnimationFrame(raf); })();
+  function firstReveal(){
+    document.querySelectorAll('[data-eef-reveal]').forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight * 0.95) el.classList.add('eef-visible');
     });
   }
+  requestAnimationFrame(function(){ requestAnimationFrame(firstReveal); });
 
-  // CLICK RIPPLE on buttons/links/submits
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('eef-visible'); io.unobserve(e.target); }
+      });
+    }, { rootMargin:'-6% 0px -4% 0px', threshold: 0.01 });
+    document.querySelectorAll('[data-eef-reveal]').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('[data-eef-reveal]').forEach(function(el){ el.classList.add('eef-visible'); });
+  }
+
+  // CLICK RIPPLE
   document.addEventListener('click', function(ev){
-    var el = ev.target.closest && ev.target.closest('a, button, [class*="btn"], [class*="cta"], input[type="submit"]');
+    var el = ev.target.closest && ev.target.closest('a, button, .btn, [role="button"], input[type="submit"]');
     if(!el) return;
     var r = el.getBoundingClientRect();
     if(r.width < 10 || r.height < 10) return;
