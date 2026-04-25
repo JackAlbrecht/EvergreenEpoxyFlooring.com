@@ -54,12 +54,13 @@
 
         /* === Masonry Gallery === */
         .gallery-section{padding:4rem 2rem 5rem;max-width:1380px;margin:0 auto}
-        .gallery-grid{column-count:3;column-gap:1.5rem}
-        @media(max-width:980px){.gallery-grid{column-count:2;column-gap:1.25rem}}
-        @media(max-width:640px){.gallery-grid{column-count:1}.gallery-section{padding:2.5rem 1rem 3rem}}
+        .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;align-items:start}
+        .gallery-col{display:flex;flex-direction:column;gap:1.5rem}
+        @media(max-width:980px){.gallery-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem}.gallery-col{gap:1.25rem}.gallery-col:nth-child(3){display:contents}.gallery-col:nth-child(3) .gallery-item{grid-column:auto}}
+        @media(max-width:640px){.gallery-grid{grid-template-columns:1fr}.gallery-col{display:contents}.gallery-section{padding:2.5rem 1rem 3rem}}
 
         .gallery-item{
-            display:block;margin:0 0 1.5rem;break-inside:avoid;
+            display:block;break-inside:avoid;
             position:relative;border-radius:14px;overflow:hidden;
             background:#111;border:1px solid #1e3a1e;cursor:zoom-in;
         }
@@ -70,6 +71,35 @@
         }
         .gallery-item.in-view img{opacity:1;transform:translateY(0) scale(1)}
         .gallery-item:hover img{filter:brightness(1.04);transform:scale(1.012)}
+
+        /* Hover caption overlay */
+        .gi-caption{
+            position:absolute;left:0;right:0;bottom:0;
+            padding:.95rem 1.1rem;padding-top:2.4rem;
+            background:linear-gradient(180deg,transparent,rgba(0,0,0,.88));
+            color:#fff;font-size:.95rem;font-weight:600;letter-spacing:.01em;
+            transform:translateY(18%);opacity:0;
+            transition:transform .35s ease,opacity .35s ease;
+            pointer-events:none;
+        }
+        .gallery-item:hover .gi-caption,
+        .gallery-item:focus-visible .gi-caption{
+            transform:translateY(0);opacity:1;
+        }
+        .gi-caption .gi-eyebrow{
+            display:block;font-size:.65rem;font-weight:700;letter-spacing:.18em;
+            text-transform:uppercase;color:#4ade80;margin-bottom:.3rem;
+        }
+
+        /* Lightbox caption */
+        .lb-caption{
+            position:absolute;left:50%;bottom:2.5rem;transform:translateX(-50%);
+            background:rgba(10,10,10,.78);color:#fff;
+            padding:.7rem 1.4rem;border-radius:999px;
+            font-size:.95rem;font-weight:600;letter-spacing:.01em;
+            backdrop-filter:blur(8px);
+            border:1px solid rgba(74,222,128,.25);
+        }
 
         /* === Lightbox === */
         .lightbox{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;padding:2rem;cursor:zoom-out;backdrop-filter:blur(8px)}
@@ -165,7 +195,7 @@
 </section>
 
 <section class="gallery-section">
-    <div class="gallery-grid" id="galleryGrid"></div>
+    <div class="gallery-grid" id="galleryGrid"><div class="gallery-col"><figure class="gallery-item" onclick="openLightbox('gallery/img_2718.jpg', 'Dusk Flake w/ Custom Yellow Lines')"><img src="gallery/img_2718.jpg" alt="Dusk Flake w/ Custom Yellow Lines" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Dusk Flake w/ Custom Yellow Lines</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_5500.jpg', 'Midnight Flake')"><img src="gallery/img_5500.jpg" alt="Midnight Flake" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Midnight Flake</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_8778.jpg', 'Light Gray Concrete Overlay')"><img src="gallery/img_8778.jpg" alt="Light Gray Concrete Overlay" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Light Gray Concrete Overlay</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_2746.jpg', 'Mountain Fog Flake')"><img src="gallery/img_2746.jpg" alt="Mountain Fog Flake" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Mountain Fog Flake</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_6501.jpg', 'River Bed Flake w/ Custom Midnight Stripe')"><img src="gallery/img_6501.jpg" alt="River Bed Flake w/ Custom Midnight Stripe" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>River Bed Flake w/ Custom Midnight Stripe</figcaption></figure></div><div class="gallery-col"><figure class="gallery-item" onclick="openLightbox('gallery/img_7077.jpg', 'Midnight Flake')"><img src="gallery/img_7077.jpg" alt="Midnight Flake" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Midnight Flake</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_2752.jpg', 'Dusk Flake w/ Custom Yellow Lines')"><img src="gallery/img_2752.jpg" alt="Dusk Flake w/ Custom Yellow Lines" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Dusk Flake w/ Custom Yellow Lines</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_3092.jpg', 'Daredevil Flake')"><img src="gallery/img_3092.jpg" alt="Daredevil Flake" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Daredevil Flake</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_8688.jpg', 'Mountain Fog Flake')"><img src="gallery/img_8688.jpg" alt="Mountain Fog Flake" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Mountain Fog Flake</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_5737.jpg', 'Midnight Flake')"><img src="gallery/img_5737.jpg" alt="Midnight Flake" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Midnight Flake</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_8728.jpg', 'Mountain Fog Flake')"><img src="gallery/img_8728.jpg" alt="Mountain Fog Flake" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Mountain Fog Flake</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_7026.jpg', 'Dolphin Gray Metallic')"><img src="gallery/img_7026.jpg" alt="Dolphin Gray Metallic" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Dolphin Gray Metallic</figcaption></figure></div><div class="gallery-col"><figure class="gallery-item" onclick="openLightbox('gallery/img_1284.jpg', 'Black Purple Pink Metallic')"><img src="gallery/img_1284.jpg" alt="Black Purple Pink Metallic" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Black Purple Pink Metallic</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_8445.jpg', 'Dusk Flake')"><img src="gallery/img_8445.jpg" alt="Dusk Flake" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Dusk Flake</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_2855.jpg', 'Standard Concrete Overlay')"><img src="gallery/img_2855.jpg" alt="Standard Concrete Overlay" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Standard Concrete Overlay</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_7234.jpg', 'Midnight Flake')"><img src="gallery/img_7234.jpg" alt="Midnight Flake" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Midnight Flake</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_6949.jpg', 'Desert Storm Flake')"><img src="gallery/img_6949.jpg" alt="Desert Storm Flake" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Desert Storm Flake</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_2858.jpg', 'Standard Concrete Overlay')"><img src="gallery/img_2858.jpg" alt="Standard Concrete Overlay" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Standard Concrete Overlay</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_2859.jpg', 'Light Gray Concrete Overlay')"><img src="gallery/img_2859.jpg" alt="Light Gray Concrete Overlay" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Light Gray Concrete Overlay</figcaption></figure><figure class="gallery-item" onclick="openLightbox('gallery/img_1089.jpg', 'Black Silver Metallic w/ Marble Effects')"><img src="gallery/img_1089.jpg" alt="Black Silver Metallic w/ Marble Effects" loading="lazy" /><figcaption class="gi-caption"><span class="gi-eyebrow">Floor Type</span>Black Silver Metallic w/ Marble Effects</figcaption></figure></div></div>
 </section>
 
 <section class="gallery-cta">
@@ -177,6 +207,7 @@
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" onclick="closeLightbox(event)">
     <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
     <img id="lightboxImg" src="" alt="" />
+    <div class="lb-caption" id="lightboxCaption" style="display:none"></div>
 </div>
 
 <footer>
@@ -219,42 +250,6 @@
 </footer>
 
 <script>
-const GALLERY_PHOTOS = [
-    'gallery/img_2718.jpg',
-    'gallery/img_5500.jpg',
-    'gallery/img_8778.jpg',
-    'gallery/img_2746.jpg',
-    'gallery/img_6501.jpg',
-    'gallery/img_7077.jpg',
-    'gallery/img_2752.jpg',
-    'gallery/img_3092.jpg',
-    'gallery/img_8688.jpg',
-    'gallery/img_5737.jpg',
-    'gallery/img_8728.jpg',
-    'gallery/img_7026.jpg',
-    'gallery/img_1284.jpg',
-    'gallery/img_8445.jpg',
-    'gallery/img_2855.jpg',
-    'gallery/img_7234.jpg',
-    'gallery/img_6949.jpg',
-    'gallery/img_2858.jpg',
-    'gallery/img_2859.jpg',
-    'gallery/img_1089.jpg'
-];
-
-const grid = document.getElementById('galleryGrid');
-GALLERY_PHOTOS.forEach((src, i) => {
-    const fig = document.createElement('figure');
-    fig.className = 'gallery-item';
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = '';
-    img.loading = 'lazy';
-    fig.appendChild(img);
-    fig.addEventListener('click', () => openLightbox(src));
-    grid.appendChild(fig);
-});
-
 if ('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries) => {
         entries.forEach(e => {
@@ -266,9 +261,12 @@ if ('IntersectionObserver' in window){
     document.querySelectorAll('.gallery-item').forEach(el => el.classList.add('in-view'));
 }
 
-function openLightbox(src){
+function openLightbox(src, caption){
     const lb = document.getElementById('lightbox');
     document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxImg').alt = caption || '';
+    const cap = document.getElementById('lightboxCaption');
+    if (cap){ cap.textContent = caption || ''; cap.style.display = caption ? 'block' : 'none'; }
     lb.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
