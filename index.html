@@ -1623,72 +1623,189 @@
         }
 
                 /* === Quote Calculator === */
-        .quote-calc { background: linear-gradient(180deg, #0a0a0a 0%, #0d1a0d 100%); padding: 5rem 2rem; border-top: 1px solid #1e3a1e; border-bottom: 1px solid #1e3a1e; }
-        .calc-container { max-width: 900px; margin: 0 auto; }
-        .calc-header { text-align: center; margin-bottom: 2.5rem; }
-        .calc-header h2 { color: #f0f0f0; font-size: 2.2rem; font-weight: 700; margin-bottom: 0.75rem; }
-        .calc-subtitle { color: #aaa; font-size: 1rem; max-width: 600px; margin: 0 auto; }
-        .calc-step-label { color: #4ade80; font-size: 0.85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.25rem; text-align: center; }
-        .calc-option-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-        .calc-option-btn { background: #111; border: 1px solid #1e3a1e; border-radius: 10px; overflow: hidden; cursor: pointer; transition: all 0.25s ease; text-align: center; }
-        .calc-option-btn:hover { border-color: #4ade80; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(74, 222, 128, 0.1); }
-        .calc-option-btn.active { border-color: #4ade80; box-shadow: 0 0 0 2px #4ade80; }
-        .calc-option-img { width: 100%; height: 120px; object-fit: cover; display: block; }
-        .calc-option-label { padding: 0.75rem 0.5rem; color: #f0f0f0; font-size: 0.95rem; font-weight: 600; }
-        .calc-selected-info { text-align: center; color: #4ade80; font-weight: 600; font-size: 1.05rem; margin-bottom: 1.5rem; }
-        .sqft-input-row { display: flex; gap: 1rem; justify-content: center; align-items: center; max-width: 500px; margin: 0 auto; }
-        .sqft-input-wrap { position: relative; flex: 1; }
-        .calc-input { width: 100%; padding: 1rem 1.25rem; background: #111; border: 1px solid #1e3a1e; border-radius: 8px; color: #f0f0f0; font-size: 1.05rem; outline: none; transition: border-color 0.2s; box-sizing: border-box; }
-        .calc-input:focus { border-color: #4ade80; }
-        .calc-input::placeholder { color: #555; }
-        .sqft-unit { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: #666; font-size: 0.9rem; pointer-events: none; }
-        .calc-btn-primary { background: #16a34a; color: #fff; border: none; border-radius: 8px; padding: 1rem 2rem; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.1s; white-space: nowrap; }
-        .calc-btn-primary:hover { background: #22c55e; transform: translateY(-1px); }
-        .calc-back-btn { display: block; margin: 1.5rem auto 0; background: none; border: none; color: #666; font-size: 0.85rem; cursor: pointer; transition: color 0.2s; }
-        .calc-back-btn:hover { color: #4ade80; }
-        .calc-result-card { background: #111; border: 1px solid #1e3a1e; border-radius: 12px; padding: 2.5rem; text-align: center; margin-bottom: 2rem; }
-        .calc-result-label { color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
-        .calc-result-price { color: #4ade80; font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.5rem; }
-        .calc-result-details { color: #ccc; font-size: 1rem; margin-bottom: 1rem; }
-        .calc-result-note { color: #666; font-size: 0.8rem; font-style: italic; }
-        .calc-lead-form { background: #111; border: 1px solid #1e3a1e; border-radius: 12px; padding: 2rem; }
-        .calc-lead-header { color: #f0f0f0; font-size: 1.1rem; font-weight: 600; text-align: center; margin-bottom: 1.25rem; }
-        .calc-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-        .calc-submit-btn { grid-column: 1 / -1; padding: 1.1rem; font-size: 1.05rem; }
-        .calc-thankyou { text-align: center; padding: 2rem; }
-        .calc-thankyou-icon { width: 64px; height: 64px; background: #16a34a; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff; margin-bottom: 1.25rem; }
-        .calc-thankyou h3 { color: #f0f0f0; font-size: 1.6rem; margin-bottom: 0.75rem; }
-        .calc-thankyou p { color: #aaa; font-size: 1rem; max-width: 480px; margin: 0 auto; line-height: 1.6; }
-        @media (max-width: 768px) {
-            .quote-calc { padding: 2.5rem 1rem; }
-            .calc-header h2 { font-size: 1.5rem; }
-            .calc-subtitle { font-size: 0.9rem; }
-            .calc-step-label { font-size: 0.8rem !important; letter-spacing: 1px !important; margin-bottom: 1rem; }
-            .calc-option-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-            .calc-option-btn { border-radius: 8px; }
-            .calc-option-img { height: 80px; }
-            .calc-option-label { padding: 0.5rem 0.25rem; font-size: 0.85rem; }
-            .sqft-input-row { flex-direction: column; align-items: stretch; gap: 0.75rem; }
-            .sqft-input-wrap { width: 100%; }
-            .calc-input { font-size: 16px !important; padding: 0.9rem 1rem; -webkit-appearance: none; appearance: none; border-radius: 8px; }
-            .sqft-unit { right: 0.75rem; font-size: 0.85rem; }
-            .calc-btn-primary { width: 100%; padding: 0.9rem 1.5rem; font-size: 1rem; min-height: 48px; -webkit-appearance: none; }
-            .calc-selected-info { font-size: 0.95rem; margin-bottom: 1rem; }
-            .calc-back-btn { font-size: 0.9rem; padding: 0.75rem; min-height: 44px; }
-            .calc-form-grid { grid-template-columns: 1fr; gap: 0.75rem; }
-            .calc-form-row { grid-template-columns: 1fr !important; }
-            .calc-phone-input { width: 100% !important; }
-            .calc-result-card { padding: 1.5rem 1rem; }
-            .calc-result-price, #calc-result-price { font-size: 2rem !important; }
-            .calc-result-details { font-size: 0.9rem; }
-            .calc-result-note { font-size: 0.75rem; }
-            .calc-lead-form { padding: 1.25rem; }
-            .calc-lead-header { font-size: 1rem; }
-            .calc-thankyou h3 { font-size: 1.3rem; }
-            .calc-thankyou p { font-size: 0.9rem; }
-            #calc-step-4 h3 { font-size: 1.25rem !important; }
-            #calc-step-5 { padding: 0 0.5rem; }
+        /* === ANIMATED STEPPER — drop-in upgrade for quote calculator === */
+        .quote-calc{ background: linear-gradient(180deg,#0a0a0a 0%,#0d1a0d 100%); padding: 5rem 2rem; border-top: 1px solid #1e3a1e; border-bottom: 1px solid #1e3a1e; }
+        .calc-container{ max-width: 760px; margin: 0 auto; }
+        .calc-header{ text-align: center; margin-bottom: 2rem; }
+        .calc-header h2{ color: #f0f0f0; font-size: clamp(1.8rem, 4.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.6rem; }
+        .calc-subtitle{ color: #aaa; font-size: 1rem; max-width: 580px; margin: 0 auto; line-height: 1.55; }
+
+        /* The card itself — like the React AnimatedStepper container */
+        .stepper-card{
+          background: #0f1610;
+          border: 1px solid #1e3a1e;
+          border-radius: 2rem;
+          box-shadow: 0 40px 100px -20px rgba(0,0,0,0.55), 0 4px 12px rgba(0,0,0,0.25);
+          overflow: hidden;
+          position: relative;
         }
+        .stepper-rail{
+          display: flex; align-items: center; padding: 1.5rem 2rem 1rem;
+          gap: 0;
+          opacity: 1; transition: opacity 0.3s, max-height 0.45s ease;
+          max-height: 80px;
+        }
+        .stepper-rail.hidden{ opacity: 0; max-height: 0; padding: 0; pointer-events: none; }
+        .step-dot{
+          flex: 0 0 auto; width: 2.4rem; height: 2.4rem; border-radius: 999px;
+          display: grid; place-items: center;
+          font-size: 0.85rem; font-weight: 700;
+          background: #16201a; color: #6b8a72; border: 2px solid #1e3a1e;
+          transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+          cursor: pointer; user-select: none;
+          position: relative;
+        }
+        .step-dot.active{
+          background: #0d1a0d; color: #4ade80; border-color: #4ade80;
+        }
+        .step-dot.active::after{
+          content: ''; position: absolute; inset: -4px; border-radius: 999px;
+          background: rgba(74,222,128,0.18); filter: blur(6px); z-index: -1;
+          animation: stepGlow 1.6s ease-in-out infinite alternate;
+        }
+        @keyframes stepGlow{ from{ opacity: 0.4 } to{ opacity: 0.85 } }
+        .step-dot.complete{
+          background: #4ade80; color: #0a0a0a; border-color: #4ade80;
+        }
+        .step-dot.complete .step-num{ display: none; }
+        .step-dot .step-check{ display: none; width: 1.1rem; height: 1.1rem; }
+        .step-dot.complete .step-check{ display: block; }
+        .step-connector{
+          flex: 1; height: 2px; min-width: 0; background: #1e3a1e;
+          margin: 0 0.75rem; border-radius: 99px; position: relative; overflow: hidden;
+        }
+        .step-connector::after{
+          content:''; position: absolute; inset: 0;
+          background: #4ade80; transform-origin: left center;
+          transform: scaleX(0); transition: transform 0.5s cubic-bezier(0.33,1,0.68,1);
+        }
+        .step-connector.complete::after{ transform: scaleX(1); }
+
+        /* The content area that smoothly resizes */
+        .stepper-body{
+          padding: 0 2rem;
+          position: relative; overflow: hidden;
+          transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .stepper-slide{
+          padding: 1.25rem 0 0;
+        }
+        .stepper-slide[data-state="enter-right"]{ animation: slideInRight 0.45s cubic-bezier(0.22,1,0.36,1) both; }
+        .stepper-slide[data-state="enter-left"]{ animation: slideInLeft 0.45s cubic-bezier(0.22,1,0.36,1) both; }
+        @keyframes slideInRight{
+          from{ transform: translateX(20px); opacity: 0; }
+          to{ transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideInLeft{
+          from{ transform: translateX(-20px); opacity: 0; }
+          to{ transform: translateX(0); opacity: 1; }
+        }
+        .stepper-slide h3{
+          color: #f0f0f0; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em;
+          margin-bottom: 0.75rem; line-height: 1.2;
+        }
+        .stepper-slide .step-eyebrow{
+          color: #4ade80; font-size: 0.7rem; font-weight: 600;
+          letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem;
+        }
+        .stepper-slide p.step-help{
+          color: #aaa; font-size: 0.95rem; line-height: 1.55;
+          margin-bottom: 1.5rem;
+        }
+
+        /* Footer with Back / Next */
+        .stepper-footer{
+          display: flex; align-items: center; padding: 1.5rem 2rem 2rem;
+        }
+        .stepper-footer.with-back{ justify-content: space-between; }
+        .stepper-footer.no-back{ justify-content: flex-end; }
+        .stepper-back{
+          background: none; border: none; color: #6b8a72; font-size: 0.9rem;
+          font-weight: 500; cursor: pointer; transition: color 0.25s;
+          font-family: inherit; padding: 0.5rem 0.25rem;
+        }
+        .stepper-back:hover{ color: #4ade80; }
+        .stepper-next{
+          display: inline-flex; align-items: center; height: 44px; padding: 0 1.75rem;
+          border-radius: 999px; background: linear-gradient(135deg, #22c55e, #4ade80);
+          color: #0a0a0a; font-weight: 700; font-size: 0.95rem;
+          border: none; cursor: pointer; font-family: inherit;
+          transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+          box-shadow: 0 4px 14px rgba(74,222,128,0.25);
+        }
+        .stepper-next:hover{ transform: translateY(-1px); box-shadow: 0 8px 22px rgba(74,222,128,0.35); }
+        .stepper-next:active{ transform: scale(0.97); }
+        .stepper-next:disabled{ opacity: 0.5; cursor: not-allowed; transform: none; }
+
+        /* Option grid inside slides */
+        .calc-option-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin-bottom: 0.5rem; }
+        .calc-option-btn{
+          background: #0a1209; border: 1.5px solid #1e3a1e; border-radius: 14px;
+          overflow: hidden; cursor: pointer; transition: all 0.25s ease;
+          text-align: center; font-family: inherit; padding: 0;
+        }
+        .calc-option-btn:hover{
+          border-color: #4ade80; transform: translateY(-2px);
+          box-shadow: 0 4px 20px rgba(74,222,128,0.15);
+        }
+        .calc-option-btn.active{
+          border-color: #4ade80; box-shadow: 0 0 0 2px #4ade80, 0 8px 24px rgba(74,222,128,0.25);
+        }
+        .calc-option-img{ width: 100%; height: 110px; object-fit: cover; display: block; }
+        .calc-option-label{ padding: 0.7rem 0.5rem; color: #f0f0f0; font-size: 0.92rem; font-weight: 600; }
+
+        /* Sq ft input */
+        .calc-selected-info{ text-align: center; color: #4ade80; font-weight: 600; font-size: 1rem; margin-bottom: 1.25rem; }
+        .sqft-input-row{ display: flex; gap: 0.75rem; align-items: stretch; max-width: 460px; margin: 0 auto; }
+        .sqft-input-wrap{ position: relative; flex: 1; }
+        .calc-input{
+          width: 100%; padding: 0.9rem 1.1rem; background: #0a1209;
+          border: 1.5px solid #1e3a1e; border-radius: 12px; color: #f0f0f0;
+          font-size: 1rem; outline: none; transition: border-color 0.2s; box-sizing: border-box;
+          font-family: inherit;
+        }
+        .calc-input:focus{ border-color: #4ade80; }
+        .calc-input::placeholder{ color: #555; }
+        .sqft-unit{ position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: #666; font-size: 0.9rem; pointer-events: none; }
+
+        /* Lead form */
+        .calc-lead-card{ background: rgba(74,222,128,0.04); border: 1px solid #1e3a1e; border-radius: 16px; padding: 1.5rem; }
+        .calc-form-row{ display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+        .calc-consent{ color: #666; font-size: 0.72rem; margin-top: 0.85rem; line-height: 1.5; }
+
+        /* Result step */
+        .calc-result-price{ color: #4ade80; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -0.01em; margin: 0.75rem 0 0.5rem; }
+        .calc-result-details{ color: #ccc; font-size: 1.05rem; margin-bottom: 0.5rem; }
+        .calc-result-note{ color: #777; font-size: 0.85rem; font-style: italic; }
+        .calc-cta-call{
+          display: block; width: 100%; background: linear-gradient(135deg,#22c55e,#4ade80);
+          color: #0a0a0a; text-decoration: none; padding: 1rem; border-radius: 12px;
+          font-size: 1.15rem; font-weight: 700; text-align: center; margin: 1rem 0;
+          transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .calc-cta-call:hover{ transform: translateY(-1px); box-shadow: 0 8px 24px rgba(74,222,128,0.35); }
+
+        /* Begin Now intro */
+        .stepper-intro{ text-align: center; padding: 1.5rem 0 0.5rem; }
+        .stepper-intro h3{ color: #fff; font-size: 1.5rem; font-weight: 800; margin-bottom: 0.75rem; }
+        .stepper-intro p{ color: #aaa; font-size: 0.95rem; max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.55; }
+
+        @media (max-width: 768px){
+          .quote-calc{ padding: 3rem 1rem; }
+          .stepper-rail{ padding: 1.1rem 1.25rem 0.75rem; }
+          .stepper-body{ padding: 0 1.25rem; }
+          .stepper-footer{ padding: 1.25rem 1.25rem 1.5rem; }
+          .step-dot{ width: 2rem; height: 2rem; font-size: 0.78rem; }
+          .step-connector{ margin: 0 0.4rem; }
+          .calc-option-grid{ grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+          .calc-option-img{ height: 80px; }
+          .calc-option-label{ font-size: 0.85rem; padding: 0.55rem 0.3rem; }
+          .calc-form-row{ grid-template-columns: 1fr; }
+          .stepper-slide h3{ font-size: 1.25rem; }
+          .calc-input{ font-size: 16px !important; }
+        }
+
+        
     
 
         /* === Comprehensive Site-Wide Mobile Fixes === */
@@ -1844,83 +1961,117 @@
 
     <!-- Instant Quote Calculator -->
     <section class="quote-calc" id="quote-calculator">
-        <div class="calc-container">
-            <div class="calc-header">
-                <div class="section-label">GET YOUR ESTIMATE IN SECONDS</div>
-                <h2>Instant Epoxy Flooring Price Calculator</h2>
-                <p class="calc-subtitle">Answer a few quick questions and get a ballpark estimate for your project. No commitment, no waiting.</p>
-            </div>
-            <div class="calc-step" id="calc-step-0" style="text-align:center;">
-                <div style="margin-bottom:2rem;">
-                    <p class="calc-step-label" style="margin-bottom:0.5rem;">INSTANT ESTIMATE</p>
-                    <h3 style="color:#fff; font-size:1.5rem; font-weight:700; margin-bottom:1rem;">Get Your Ballpark Price in Under 60 Seconds</h3>
-                    <p style="color:#999; font-size:0.95rem; max-width:500px; margin:0 auto 2rem;">Answer a few quick questions about your project and we'll give you an instant price range. No commitment, no waiting.</p>
-                </div>
-                <button class="calc-btn-primary" onclick="calcShowStep(1)" style="font-size:1.1rem; padding:1rem 3rem;">Begin Now</button>
-            </div>
-            <div class="calc-step" id="calc-step-1" style="display:none;">
-                <div class="calc-step-label">Step 1: What Kind of Space Is This For?</div>
-                <div class="calc-option-grid">
-                    <button class="calc-option-btn calc-space-btn" data-space="Residential"><img src="residential-garage.jpg" alt="Residential" class="calc-option-img" loading="lazy"><div class="calc-option-label">Residential</div></button>
-                    <button class="calc-option-btn calc-space-btn" data-space="Commercial"><img src="commercial-grocery.jpg" alt="Commercial" class="calc-option-img" loading="lazy"><div class="calc-option-label">Commercial</div></button>
-                    <button class="calc-option-btn calc-space-btn" data-space="Industrial"><img src="industrial-manufacturing.jpg" alt="Industrial" class="calc-option-img" loading="lazy"><div class="calc-option-label">Industrial</div></button>
-                    <button class="calc-option-btn calc-space-btn" data-space="Institutional"><img src="institutional-school.jpg" alt="Institutional" class="calc-option-img" loading="lazy"><div class="calc-option-label">Institutional</div></button>
-                    <button class="calc-option-btn calc-space-btn" data-space="Outdoor"><img src="outdoor-patio.jpg" alt="Outdoor" class="calc-option-img" loading="lazy"><div class="calc-option-label">Outdoor</div></button>
-                    <button class="calc-option-btn calc-space-btn" data-space="Government"><img src="img-6677.jpg" alt="Government" class="calc-option-img" loading="lazy"><div class="calc-option-label">Government</div></button>
-                </div>
-                <button class="calc-back-btn" onclick="calcGoBack(0)">&#8592; Back</button>
-            </div>
-            <div class="calc-step" id="calc-step-2" style="display:none">
-                <div class="calc-step-label">Step 2: What Type of Floor System Are You Interested In?</div>
-                <div class="calc-option-grid">
-                    <button class="calc-option-btn" data-type="flake" data-low="6" data-high="10"><img src="flake-floors.jpg" alt="Flake Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Flake Floors</div></button>
-                    <button class="calc-option-btn" data-type="quartz" data-low="12" data-high="16"><img src="quartz-floors.jpg" alt="Quartz Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Quartz Floors</div></button>
-                    <button class="calc-option-btn" data-type="metallic" data-low="14" data-high="25"><img src="metallic-epoxy.jpg" alt="Metallic Epoxy" class="calc-option-img" loading="lazy"><div class="calc-option-label">Metallic Epoxy</div></button>
-                    <button class="calc-option-btn" data-type="solid" data-low="14" data-high="15"><img src="img-3204.jpg" alt="Solid Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Solid Floors</div></button>
-                    <button class="calc-option-btn" data-type="overlay" data-low="4" data-high="7"><img src="img_8778.jpg" alt="Concrete Overlay" class="calc-option-img" loading="lazy"><div class="calc-option-label">Concrete Overlay</div></button>
-                    <button class="calc-option-btn" data-type="countertops" data-low="50" data-high="100"><img src="countertops.jpg" alt="Countertops" class="calc-option-img" loading="lazy"><div class="calc-option-label">Countertops</div></button>
-                </div>
-            </div>
-            <div class="calc-step" id="calc-step-3" style="display:none;">
-                <div class="calc-step-label">Step 3: How many square feet is your space?</div>
-                <div class="calc-selected-info" id="calc-selected-info"></div>
-                <div class="sqft-input-row">
-                    <div class="sqft-input-wrap"><input type="number" id="calc-sqft" class="calc-input" placeholder="e.g. 450" min="1" max="100000" inputmode="numeric"><span class="sqft-unit">sq ft</span></div>
-                    <button class="calc-btn-primary" onclick="calcGoToForm()">Next</button>
-                </div>
-                <button class="calc-back-btn" onclick="calcGoBack(2)">&#8592; Back</button>
-            </div>
-            <div class="calc-step" id="calc-step-4" style="display:none">
-                <div style="text-align:center; margin-bottom:2rem;">
-                    <p class="calc-step-label" style="color:#4ade80; font-size:0.85rem; font-weight:600; letter-spacing:2px; margin-bottom:0.5rem;">ALMOST THERE!</p>
-                    <h3 style="color:#fff; font-size:1.5rem; font-weight:700; margin-bottom:0.5rem;">Your Estimate is Ready</h3>
-                    <p style="color:#999; font-size:0.95rem;">Enter your info below to see your ballpark price range.</p>
-                </div>
-                <div style="background:#111; border:1px solid #1e3a1e; border-radius:12px; padding:2rem; max-width:600px; margin:0 auto;">
-                    <div class="calc-form-row" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
-                        <input type="text" id="calc-name" class="calc-input" placeholder="Your Name" style="background:#0a0a0a; border:1px solid #1e3a1e; color:#fff; padding:0.85rem 1rem; border-radius:8px; font-size:0.95rem; font-family:inherit;">
-                        <input type="email" id="calc-email" class="calc-input" placeholder="Email Address" style="background:#0a0a0a; border:1px solid #1e3a1e; color:#fff; padding:0.85rem 1rem; border-radius:8px; font-size:0.95rem; font-family:inherit;">
-                    </div>
-                    <input type="tel" id="calc-phone" class="calc-input calc-phone-input" placeholder="Phone Number" style="background:#0a0a0a; border:1px solid #1e3a1e; color:#fff; padding:0.85rem 1rem; border-radius:8px; font-size:0.95rem; width:calc(50% - 0.5rem); margin-bottom:1rem; font-family:inherit;">
-                    <button id="calc-submit-btn" onclick="calcSubmitLead()" style="width:100%; background:linear-gradient(135deg,#22c55e,#4ade80); color:#0a0a0a; border:none; padding:1rem; border-radius:8px; font-size:1.1rem; font-weight:700; cursor:pointer; font-family:inherit;">See My Estimate</button>
-                    <p style="color:#666; font-size:0.75rem; margin-top:0.75rem; text-align:center; line-height:1.5;">By submitting your information, you consent to being contacted by Evergreen Epoxy Flooring via phone, email, or text regarding your estimate and our services. We respect your privacy and will never share your information with third parties.</p>
-                </div>
-                <p style="text-align:center; margin-top:1.5rem;"><a href="javascript:void(0)" onclick="calcGoBack(3)" style="color:#4ade80; text-decoration:none; font-size:0.9rem;">&larr; Back</a></p>
-            </div>
-            <div class="calc-step" id="calc-step-5" style="display:none">
-                <div style="text-align:center; margin-bottom:2rem;">
-                    <p class="calc-step-label" style="color:#4ade80; font-size:0.85rem; font-weight:600; letter-spacing:2px; margin-bottom:0.5rem;">YOUR ESTIMATED PRICE RANGE</p>
-                    <p id="calc-result-price" style="font-size:3rem; font-weight:700; color:#4ade80; margin:0.5rem 0;"></p>
-                    <p id="calc-result-details" style="color:#ccc; font-size:1.05rem; margin-bottom:0.5rem;"></p>
-                    <p style="color:#777; font-size:0.85rem; font-style:italic;">This is a ballpark estimate. Final pricing depends on floor condition, prep work needed, and project details.</p>
-                </div>
-                <div style="max-width:500px; margin:0 auto; text-align:center;">
-                    <p style="color:#fff; font-size:1.2rem; font-weight:600; margin-bottom:1rem;">Speak to a Professional</p>
-                    <a href="tel:(360)%20220-7631" style="display:block; width:100%; background:linear-gradient(135deg,#22c55e,#4ade80); color:#0a0a0a; text-decoration:none; padding:1rem; border-radius:8px; font-size:1.2rem; font-weight:700; text-align:center; margin-bottom:1rem;">Call Now: (360) 220-7631</a>
-                    <p style="color:#999; font-size:0.9rem;">We will also follow up with you within 24 hours.</p>
-                </div>
-            </div>
+      <div class="calc-container">
+        <div class="calc-header">
+          <div class="section-label">GET YOUR ESTIMATE IN SECONDS</div>
+          <h2>Instant Epoxy Flooring Price Calculator</h2>
+          <p class="calc-subtitle">Answer a few quick questions and get a ballpark estimate for your project. No commitment, no waiting.</p>
         </div>
+
+        <div class="stepper-card" id="stepperCard">
+          <!-- Step indicator rail -->
+          <div class="stepper-rail" id="stepperRail">
+            <div class="step-dot" data-step="1" onclick="stepperJump(1)"><span class="step-num">1</span><svg class="step-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div class="step-connector" data-conn="1"></div>
+            <div class="step-dot" data-step="2" onclick="stepperJump(2)"><span class="step-num">2</span><svg class="step-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div class="step-connector" data-conn="2"></div>
+            <div class="step-dot" data-step="3" onclick="stepperJump(3)"><span class="step-num">3</span><svg class="step-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+            <div class="step-connector" data-conn="3"></div>
+            <div class="step-dot" data-step="4" onclick="stepperJump(4)"><span class="step-num">4</span><svg class="step-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+          </div>
+
+          <!-- Slides -->
+          <div class="stepper-body" id="stepperBody">
+            <!-- Step 0: intro (rail hidden) -->
+            <div class="stepper-slide" data-slide="0">
+              <div class="stepper-intro">
+                <p class="step-eyebrow">INSTANT ESTIMATE</p>
+                <h3>Get Your Ballpark Price in Under 60 Seconds</h3>
+                <p>Answer a few quick questions about your project and we'll give you an instant price range. No commitment, no waiting.</p>
+              </div>
+            </div>
+
+            <!-- Step 1: Space type -->
+            <div class="stepper-slide" data-slide="1" hidden>
+              <p class="step-eyebrow">Step 1 of 4</p>
+              <h3>What kind of space is this for?</h3>
+              <p class="step-help">Pick the closest match — we'll fine-tune later.</p>
+              <div class="calc-option-grid">
+                <button class="calc-option-btn calc-space-btn" data-space="Residential"><img src="residential-garage.jpg" alt="Residential" class="calc-option-img" loading="lazy"><div class="calc-option-label">Residential</div></button>
+                <button class="calc-option-btn calc-space-btn" data-space="Commercial"><img src="commercial-grocery.jpg" alt="Commercial" class="calc-option-img" loading="lazy"><div class="calc-option-label">Commercial</div></button>
+                <button class="calc-option-btn calc-space-btn" data-space="Industrial"><img src="industrial-manufacturing.jpg" alt="Industrial" class="calc-option-img" loading="lazy"><div class="calc-option-label">Industrial</div></button>
+                <button class="calc-option-btn calc-space-btn" data-space="Institutional"><img src="institutional-school.jpg" alt="Institutional" class="calc-option-img" loading="lazy"><div class="calc-option-label">Institutional</div></button>
+                <button class="calc-option-btn calc-space-btn" data-space="Outdoor"><img src="outdoor-patio.jpg" alt="Outdoor" class="calc-option-img" loading="lazy"><div class="calc-option-label">Outdoor</div></button>
+                <button class="calc-option-btn calc-space-btn" data-space="Government"><img src="img-6677.jpg" alt="Government" class="calc-option-img" loading="lazy"><div class="calc-option-label">Government</div></button>
+              </div>
+            </div>
+
+            <!-- Step 2: Floor type -->
+            <div class="stepper-slide" data-slide="2" hidden>
+              <p class="step-eyebrow">Step 2 of 4</p>
+              <h3>What kind of floor are you after?</h3>
+              <p class="step-help">Tap whichever finish you like best — pricing locks in next.</p>
+              <div class="calc-option-grid">
+                <button class="calc-option-btn calc-type-btn" data-type="flake" data-low="6" data-high="10"><img src="flake-floors.jpg" alt="Flake Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Flake Floors</div></button>
+                <button class="calc-option-btn calc-type-btn" data-type="quartz" data-low="12" data-high="16"><img src="quartz-floors.jpg" alt="Quartz Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Quartz Floors</div></button>
+                <button class="calc-option-btn calc-type-btn" data-type="metallic" data-low="14" data-high="25"><img src="metallic-epoxy.jpg" alt="Metallic Epoxy" class="calc-option-img" loading="lazy"><div class="calc-option-label">Metallic Epoxy</div></button>
+                <button class="calc-option-btn calc-type-btn" data-type="solid" data-low="14" data-high="15"><img src="img-3204.jpg" alt="Solid Floors" class="calc-option-img" loading="lazy"><div class="calc-option-label">Solid Floors</div></button>
+                <button class="calc-option-btn calc-type-btn" data-type="overlay" data-low="4" data-high="7"><img src="img_8778.jpg" alt="Concrete Overlay" class="calc-option-img" loading="lazy"><div class="calc-option-label">Concrete Overlay</div></button>
+                <button class="calc-option-btn calc-type-btn" data-type="countertops" data-low="50" data-high="100"><img src="countertops.jpg" alt="Countertops" class="calc-option-img" loading="lazy"><div class="calc-option-label">Countertops</div></button>
+              </div>
+            </div>
+
+            <!-- Step 3: Square footage -->
+            <div class="stepper-slide" data-slide="3" hidden>
+              <p class="step-eyebrow">Step 3 of 4</p>
+              <h3>How big is your space?</h3>
+              <p class="step-help" id="calc-selected-info">Enter the approximate square footage — close enough is fine.</p>
+              <div class="sqft-input-row">
+                <div class="sqft-input-wrap">
+                  <input type="number" id="calc-sqft" class="calc-input" placeholder="e.g. 450" min="1" max="100000" inputmode="numeric">
+                  <span class="sqft-unit">sq ft</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: Contact info -->
+            <div class="stepper-slide" data-slide="4" hidden>
+              <p class="step-eyebrow">Step 4 of 4 · Almost there</p>
+              <h3>Where should we send your estimate?</h3>
+              <p class="step-help">Add your info and we'll reveal your price range plus a detailed quote within 24 hours.</p>
+              <div class="calc-lead-card">
+                <div class="calc-form-row">
+                  <input type="text" id="calc-name" class="calc-input" placeholder="Your name" autocomplete="name">
+                  <input type="email" id="calc-email" class="calc-input" placeholder="Email" autocomplete="email">
+                </div>
+                <input type="tel" id="calc-phone" class="calc-input" placeholder="Phone number" autocomplete="tel">
+                <p class="calc-consent">By submitting your information, you consent to being contacted by Evergreen Epoxy Flooring via phone, email, or text regarding your estimate. We respect your privacy.</p>
+              </div>
+            </div>
+
+            <!-- Step 5: Result -->
+            <div class="stepper-slide" data-slide="5" hidden>
+              <div style="text-align:center; padding: 0.5rem 0;">
+                <p class="step-eyebrow">Your Estimated Price Range</p>
+                <p class="calc-result-price" id="calc-result-price"></p>
+                <p class="calc-result-details" id="calc-result-details"></p>
+                <p class="calc-result-note">This is a ballpark estimate. Final pricing depends on floor condition, prep work needed, and project details.</p>
+              </div>
+              <div style="max-width: 480px; margin: 1.5rem auto 0; text-align:center;">
+                <p style="color:#fff; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">Speak to a Professional</p>
+                <a href="tel:(360)%20220-7631" class="calc-cta-call">Call Now: (360) 220-7631</a>
+                <p style="color:#999; font-size:0.9rem;">We'll also follow up with you within 24 hours.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer with Back / Continue -->
+          <div class="stepper-footer no-back" id="stepperFooter">
+            <button class="stepper-back" id="stepperBack" onclick="stepperBack()" style="display:none">Back</button>
+            <button class="stepper-next" id="stepperNext" onclick="stepperNext()">Begin Now</button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- About Section -->
@@ -2677,13 +2828,197 @@
 
         // === Instant Quote Calculator ===
         var calcData = {type:'',typeName:'',space:'',low:0,high:0,sqft:0};
-        function calcShowStep(n){for(var i=0;i<=5;i++){var el=document.getElementById('calc-step-'+i);if(el)el.style.display=i===n?'block':'none';}}
-        function calcGoBack(n){calcShowStep(n);}
-        document.querySelectorAll('.calc-space-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.calc-space-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');calcData.space=btn.dataset.space;calcShowStep(2);});});
-        document.querySelectorAll('#calc-step-2 .calc-option-btn').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('#calc-step-2 .calc-option-btn').forEach(function(b){b.classList.remove('active');});btn.classList.add('active');calcData.type=btn.dataset.type;calcData.typeName=btn.querySelector('.calc-option-label').textContent;calcData.low=parseFloat(btn.dataset.low);calcData.high=parseFloat(btn.dataset.high);document.getElementById('calc-selected-info').textContent=calcData.typeName+' for '+calcData.space+' Space';document.getElementById('calc-sqft').value='';calcShowStep(3);document.getElementById('calc-sqft').focus();});});
-        document.getElementById('calc-sqft').addEventListener('keydown',function(e){if(e.key==='Enter')calcGoToForm();});
-        function calcGoToForm(){var sqft=parseInt(document.getElementById('calc-sqft').value);if(!sqft||sqft<1){document.getElementById('calc-sqft').style.borderColor='#ef4444';return;}calcData.sqft=sqft;calcShowStep(4);}
-        function calcSubmitLead(){var name=document.getElementById('calc-name').value.trim();var email=document.getElementById('calc-email').value.trim();var phone=document.getElementById('calc-phone').value.trim();if(!name||!email||!phone){if(!name)document.getElementById('calc-name').style.borderColor='#ef4444';if(!email)document.getElementById('calc-email').style.borderColor='#ef4444';if(!phone)document.getElementById('calc-phone').style.borderColor='#ef4444';return;}var btn=document.getElementById('calc-submit-btn');btn.textContent='Loading...';btn.disabled=true;btn.style.opacity='0.7';var lowTotal=calcData.low*calcData.sqft;var highTotal=calcData.high*calcData.sqft;var fd=new FormData();fd.append('name',name);fd.append('email',email);fd.append('phone',phone);fd.append('source','Calculator Lead');fd.append('floor_type',calcData.typeName);fd.append('space_type',calcData.space);fd.append('square_footage',calcData.sqft);fd.append('estimate_low',String.fromCharCode(36)+lowTotal.toLocaleString());fd.append('estimate_high',String.fromCharCode(36)+highTotal.toLocaleString());fd.append('_subject','CALCULATOR LEAD: '+calcData.typeName+' - '+calcData.space);fd.append('_template','table');fetch('https://formsubmit.co/ajax/evergreenepoxyflooring@gmail.com',{method:'POST',body:fd}).then(function(){document.getElementById('calc-result-price').textContent=String.fromCharCode(36)+lowTotal.toLocaleString()+' - '+String.fromCharCode(36)+highTotal.toLocaleString();document.getElementById('calc-result-details').textContent=calcData.typeName+' for your '+calcData.space+' space';calcShowStep(5);}).catch(function(){document.getElementById('calc-result-price').textContent=String.fromCharCode(36)+lowTotal.toLocaleString()+' - '+String.fromCharCode(36)+highTotal.toLocaleString();document.getElementById('calc-result-details').textContent=calcData.typeName+' for your '+calcData.space+' space';calcShowStep(5);});}
+        
+        /* === ANIMATED STEPPER state machine === */
+        var stepperState = { step: 0, dir: 1, anim: false };
+        var calcData = window.calcData = window.calcData || {};
+
+        function stepperRender(){
+          var card = document.getElementById('stepperCard');
+          var rail = document.getElementById('stepperRail');
+          var body = document.getElementById('stepperBody');
+          var footer = document.getElementById('stepperFooter');
+          var backBtn = document.getElementById('stepperBack');
+          var nextBtn = document.getElementById('stepperNext');
+          if(!card) return;
+
+          // Show/hide rail (only steps 1-4)
+          if (stepperState.step >= 1 && stepperState.step <= 4){
+            rail.classList.remove('hidden');
+          } else {
+            rail.classList.add('hidden');
+          }
+
+          // Update step dots
+          rail.querySelectorAll('.step-dot').forEach(function(d){
+            var num = parseInt(d.dataset.step, 10);
+            d.classList.remove('active','complete');
+            if (num < stepperState.step) d.classList.add('complete');
+            else if (num === stepperState.step) d.classList.add('active');
+          });
+          rail.querySelectorAll('.step-connector').forEach(function(c){
+            var n = parseInt(c.dataset.conn, 10);
+            c.classList.toggle('complete', stepperState.step > n);
+          });
+
+          // Slide visibility + animation
+          var slides = body.querySelectorAll('.stepper-slide');
+          slides.forEach(function(s){
+            var idx = parseInt(s.dataset.slide, 10);
+            if (idx === stepperState.step){
+              s.hidden = false;
+              s.removeAttribute('data-state');
+              // restart animation
+              void s.offsetWidth;
+              s.setAttribute('data-state', stepperState.dir >= 0 ? 'enter-right' : 'enter-left');
+            } else {
+              s.hidden = true;
+            }
+          });
+
+          // Smooth height transition
+          var active = body.querySelector('.stepper-slide:not([hidden])');
+          if (active){
+            requestAnimationFrame(function(){
+              body.style.height = active.scrollHeight + 'px';
+            });
+          }
+
+          // Footer button labels + visibility
+          if (stepperState.step === 0){
+            footer.style.display = 'flex';
+            footer.classList.remove('with-back'); footer.classList.add('no-back');
+            backBtn.style.display = 'none';
+            nextBtn.style.display = 'inline-flex';
+            nextBtn.textContent = 'Begin Now';
+            nextBtn.disabled = false;
+          } else if (stepperState.step >= 1 && stepperState.step <= 2){
+            footer.style.display = 'flex';
+            footer.classList.remove('no-back'); footer.classList.add('with-back');
+            backBtn.style.display = 'inline-flex';
+            // For steps 1 & 2 user clicks an option to advance — hide Next
+            nextBtn.style.display = 'none';
+          } else if (stepperState.step === 3){
+            footer.style.display = 'flex';
+            footer.classList.remove('no-back'); footer.classList.add('with-back');
+            backBtn.style.display = 'inline-flex';
+            nextBtn.style.display = 'inline-flex';
+            nextBtn.textContent = 'Continue';
+            nextBtn.disabled = false;
+          } else if (stepperState.step === 4){
+            footer.style.display = 'flex';
+            footer.classList.remove('no-back'); footer.classList.add('with-back');
+            backBtn.style.display = 'inline-flex';
+            nextBtn.style.display = 'inline-flex';
+            nextBtn.textContent = 'See My Estimate';
+            nextBtn.disabled = false;
+          } else if (stepperState.step === 5){
+            footer.style.display = 'none';
+          }
+        }
+
+        function stepperGo(target){
+          stepperState.dir = (target >= stepperState.step) ? 1 : -1;
+          stepperState.step = target;
+          stepperRender();
+        }
+        function stepperJump(n){
+          // Allow jumping back to a completed step, or stay
+          if (n <= stepperState.step) stepperGo(n);
+        }
+        function stepperBack(){
+          if (stepperState.step > 0) stepperGo(stepperState.step - 1);
+        }
+        function stepperNext(){
+          if (stepperState.step === 0) return stepperGo(1);
+          if (stepperState.step === 3) return stepperGoToForm();
+          if (stepperState.step === 4) return stepperSubmitLead();
+        }
+
+        function stepperGoToForm(){
+          var sqft = parseInt(document.getElementById('calc-sqft').value, 10);
+          if (!sqft || sqft < 1){
+            document.getElementById('calc-sqft').style.borderColor = '#ef4444';
+            return;
+          }
+          calcData.sqft = sqft;
+          stepperGo(4);
+        }
+
+        function stepperSubmitLead(){
+          var name = document.getElementById('calc-name').value.trim();
+          var email = document.getElementById('calc-email').value.trim();
+          var phone = document.getElementById('calc-phone').value.trim();
+          var ok = true;
+          if (!name){ document.getElementById('calc-name').style.borderColor='#ef4444'; ok=false; }
+          if (!email){ document.getElementById('calc-email').style.borderColor='#ef4444'; ok=false; }
+          if (!phone){ document.getElementById('calc-phone').style.borderColor='#ef4444'; ok=false; }
+          if (!ok) return;
+
+          var nextBtn = document.getElementById('stepperNext');
+          nextBtn.disabled = true;
+          nextBtn.textContent = 'Loading...';
+
+          var lowTotal = calcData.low * calcData.sqft;
+          var highTotal = calcData.high * calcData.sqft;
+          var fd = new FormData();
+          fd.append('name', name); fd.append('email', email); fd.append('phone', phone);
+          fd.append('source','Calculator Lead');
+          fd.append('floor_type', calcData.typeName); fd.append('space_type', calcData.space);
+          fd.append('square_footage', calcData.sqft);
+          fd.append('estimate_low', '$'+lowTotal.toLocaleString());
+          fd.append('estimate_high', '$'+highTotal.toLocaleString());
+          fd.append('_subject','CALCULATOR LEAD: '+calcData.typeName+' - '+calcData.space);
+          fd.append('_template','table');
+
+          var done = function(){
+            document.getElementById('calc-result-price').textContent = '$'+lowTotal.toLocaleString()+' - $'+highTotal.toLocaleString();
+            document.getElementById('calc-result-details').textContent = calcData.typeName+' for your '+calcData.space+' space ('+calcData.sqft.toLocaleString()+' sq ft)';
+            stepperGo(5);
+          };
+          fetch('https://formsubmit.co/ajax/evergreenepoxyflooring@gmail.com',{method:'POST',body:fd}).then(done).catch(done);
+        }
+
+        // Wire option buttons (auto-advance on selection)
+        document.addEventListener('DOMContentLoaded', function(){
+          document.querySelectorAll('.calc-space-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              document.querySelectorAll('.calc-space-btn').forEach(function(b){ b.classList.remove('active'); });
+              btn.classList.add('active');
+              calcData.space = btn.dataset.space;
+              setTimeout(function(){ stepperGo(2); }, 220);
+            });
+          });
+          document.querySelectorAll('.calc-type-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              document.querySelectorAll('.calc-type-btn').forEach(function(b){ b.classList.remove('active'); });
+              btn.classList.add('active');
+              calcData.type = btn.dataset.type;
+              calcData.typeName = btn.querySelector('.calc-option-label').textContent;
+              calcData.low = parseFloat(btn.dataset.low);
+              calcData.high = parseFloat(btn.dataset.high);
+              var info = document.getElementById('calc-selected-info');
+              if (info) info.textContent = calcData.typeName + ' for ' + calcData.space + ' space — enter approximate square footage below.';
+              var sq = document.getElementById('calc-sqft'); if (sq){ sq.value=''; }
+              setTimeout(function(){ stepperGo(3); setTimeout(function(){ var s=document.getElementById('calc-sqft'); s&&s.focus(); }, 460); }, 220);
+            });
+          });
+          var sqft = document.getElementById('calc-sqft');
+          if (sqft){
+            sqft.addEventListener('keydown', function(e){
+              if (e.key === 'Enter'){ e.preventDefault(); stepperGoToForm(); }
+            });
+          }
+          // Initial render
+          stepperRender();
+          // Recalc height on resize
+          window.addEventListener('resize', function(){
+            var body = document.getElementById('stepperBody');
+            var active = body && body.querySelector('.stepper-slide:not([hidden])');
+            if (active && body) body.style.height = active.scrollHeight + 'px';
+          });
+        });
+
         document.querySelectorAll('.calc-input').forEach(function(input){input.addEventListener('focus',function(){this.style.borderColor='#4ade80';});input.addEventListener('blur',function(){this.style.borderColor='#1e3a1e';});});
     </script>
 <!-- Sticky Mobile CTA -->
