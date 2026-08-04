@@ -101,7 +101,7 @@
       linear-gradient(90deg, rgba(9,9,11,0.92) 0%, rgba(9,9,11,0.72) 45%, rgba(9,9,11,0.35) 100%),
       linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.35) 40%, rgba(9,9,11,0.92) 82%, var(--bg) 100%);
   }
-  .hero-content { padding: 120px 0 90px; width: 100%; }
+  .hero-content { padding-top: 120px; padding-bottom: 90px; width: 100%; }
   .eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
     font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
@@ -441,6 +441,105 @@
   }
   .btn-dl.ghost:hover { border-color: var(--border-hover); }
 
+  /* ---------- splash intro ---------- */
+  body.locked { overflow: hidden; }
+  #splash {
+    position: fixed; inset: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: center;
+    background: #09090b; overflow: hidden;
+    transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), visibility 0.8s;
+  }
+  #splash.exit { opacity: 0; visibility: hidden; pointer-events: none; }
+  #splash.exit .sp-inner { transform: scale(1.06); }
+  .sp-blob {
+    position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.22;
+    will-change: transform;
+  }
+  .sp-blob.b1 { width: 55vmax; height: 55vmax; background: radial-gradient(circle, #16a34a, transparent 65%); top: -20vmax; right: -15vmax; animation: drift1 14s ease-in-out infinite alternate; }
+  .sp-blob.b2 { width: 50vmax; height: 50vmax; background: radial-gradient(circle, #b87333, transparent 65%); bottom: -18vmax; left: -14vmax; animation: drift2 17s ease-in-out infinite alternate; }
+  @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(-6vmax, 5vmax) scale(1.15); } }
+  @keyframes drift2 { from { transform: translate(0,0) scale(1.1); } to { transform: translate(5vmax, -5vmax) scale(1); } }
+  .sp-inner {
+    position: relative; text-align: center; padding: 32px 24px;
+    transition: transform 0.8s cubic-bezier(0.22,1,0.36,1);
+    max-width: 560px;
+  }
+  .sp-ring {
+    position: absolute; top: 50%; left: 50%; width: 380px; height: 380px;
+    transform: translate(-50%, -50%); border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0%, rgba(74,222,128,0.35) 12%, transparent 28%, transparent 55%, rgba(217,160,91,0.3) 68%, transparent 82%);
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+    animation: spinring 9s linear infinite; pointer-events: none;
+  }
+  @keyframes spinring { to { transform: translate(-50%, -50%) rotate(360deg); } }
+  .sp-logo {
+    height: 128px; width: auto; margin: 0 auto 10px;
+    filter: drop-shadow(0 8px 40px rgba(74,222,128,0.35));
+    animation: splogo 1.1s cubic-bezier(0.22,1,0.36,1) both, spfloat 5s 1.2s ease-in-out infinite alternate;
+  }
+  @keyframes splogo { from { opacity: 0; transform: translateY(26px) scale(0.85); } to { opacity: 1; transform: none; } }
+  @keyframes spfloat { from { transform: translateY(0); } to { transform: translateY(-9px); } }
+  .sp-name {
+    font-weight: 900; font-size: 26px; letter-spacing: 0.3px;
+    animation: fadeUp 0.9s 0.25s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .sp-name span { font-weight: 400; }
+  .sp-sub {
+    margin-top: 6px; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--muted); font-weight: 600;
+    animation: fadeUp 0.9s 0.38s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .sp-div {
+    width: 54px; height: 2px; margin: 22px auto;
+    background: linear-gradient(90deg, transparent, var(--copper), transparent);
+    animation: fadeUp 0.9s 0.5s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .sp-for {
+    font-size: 15px; color: #cfd4da;
+    animation: fadeUp 0.9s 0.6s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .sp-for b { color: var(--text); }
+  .sp-inv {
+    margin-top: 4px; font-size: 12.5px; color: var(--muted);
+    animation: fadeUp 0.9s 0.68s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .sp-btn {
+    position: relative; display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 34px; padding: 17px 42px; border: none; cursor: pointer;
+    border-radius: 999px; font-family: 'Inter', sans-serif;
+    font-weight: 800; font-size: 16px; color: #09090b;
+    background: linear-gradient(135deg, var(--green), #22c55e);
+    box-shadow: 0 8px 34px rgba(74,222,128,0.35);
+    overflow: hidden; isolation: isolate;
+    animation: fadeUp 0.9s 0.8s cubic-bezier(0.22,1,0.36,1) both;
+    transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s;
+  }
+  .sp-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 14px 44px rgba(74,222,128,0.5); }
+  .sp-btn:active { transform: scale(0.98); }
+  .sp-btn::after {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.55) 50%, transparent 70%);
+    transform: translateX(-120%);
+    animation: shimmer 2.6s 1.6s ease-in-out infinite;
+  }
+  @keyframes shimmer { 0% { transform: translateX(-120%); } 55% { transform: translateX(120%); } 100% { transform: translateX(120%); } }
+  .sp-btn .arr { transition: transform 0.25s; }
+  .sp-btn:hover .arr { transform: translateX(4px); }
+  .sp-hint {
+    margin-top: 18px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #566058;
+    animation: fadeUp 0.9s 1s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  @media (max-width: 640px) {
+    .sp-logo { height: 96px; }
+    .sp-name { font-size: 21px; }
+    .sp-ring { width: 300px; height: 300px; }
+    .sp-btn { padding: 16px 36px; font-size: 15px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sp-blob, .sp-ring, .sp-logo, .sp-btn::after { animation: none !important; }
+  }
+
   /* ---------- mobile ---------- */
   @media (max-width: 640px) {
     .wrap { padding: 0 18px; }
@@ -451,7 +550,7 @@
     .nav-brand .nb-sub { font-size: 9px; letter-spacing: 1.1px; }
     .nav-phone { padding: 8px 13px; font-size: 13px; }
     header.hero { min-height: 72vh; }
-    .hero-content { padding: 70px 0 48px; }
+    .hero-content { padding-top: 70px; padding-bottom: 48px; }
     .hero h1 { font-size: clamp(30px, 8.6vw, 40px); letter-spacing: -0.3px; }
     .eyebrow { font-size: 10px; letter-spacing: 2px; }
     .hero p.lede { font-size: 15px; }
@@ -488,7 +587,23 @@
   }
 </style>
 </head>
-<body>
+<body class="locked">
+
+<div id="splash" role="dialog" aria-label="Welcome">
+  <div class="sp-blob b1"></div>
+  <div class="sp-blob b2"></div>
+  <div class="sp-inner">
+    <div class="sp-ring"></div>
+    <img class="sp-logo" src="img/logo.png" alt="Evergreen Epoxy Flooring logo">
+    <div class="sp-name">Evergreen Epoxy Flooring <span>LLC</span></div>
+    <div class="sp-sub">Licensed &middot; Bonded &middot; Insured</div>
+    <div class="sp-div"></div>
+    <div class="sp-for">Prepared exclusively for <b>Cascadia Eye</b></div>
+    <div class="sp-inv">Project Proposal &amp; Invoice #1365 &middot; Mount Vernon, WA</div>
+    <button class="sp-btn" id="viewProposal">View Proposal <span class="arr">→</span></button>
+    <div class="sp-hint">Metallic &amp; Flake Floor Systems &middot; Sept 4&ndash;8, 2026</div>
+  </div>
+</div>
 
 <div class="glow g1"></div>
 <div class="glow g2"></div>
@@ -775,6 +890,16 @@
 <div class="lb" id="lightbox"><img src="" alt="Full size photo"></div>
 
 <script>
+  // splash intro
+  const splash = document.getElementById('splash');
+  const vpBtn = document.getElementById('viewProposal');
+  function exitSplash() {
+    splash.classList.add('exit');
+    document.body.classList.remove('locked');
+    setTimeout(() => splash.remove(), 900);
+  }
+  vpBtn.addEventListener('click', exitSplash);
+
   // reveal on scroll
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
