@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
+<meta name="format-detection" content="telephone=no">
 <title>Cascadia Eye — Project Proposal &amp; Invoice #1365 | Evergreen Epoxy Flooring</title>
 <meta name="description" content="Custom metallic epoxy & flake flooring proposal for Cascadia Eye, Mount Vernon WA — Evergreen Epoxy Flooring LLC.">
 <link rel="icon" href="../favicon-32.png">
@@ -111,7 +112,8 @@
   .hero h1 {
     text-shadow: 0 2px 24px rgba(0,0,0,0.65);
     font-family: 'Playfair Display', serif;
-    font-size: clamp(40px, 6.4vw, 76px);
+    font-size: clamp(36px, 5.8vw, 68px);
+    overflow-wrap: break-word;
     line-height: 1.06; font-weight: 700; margin: 18px 0 20px;
     animation: fadeUp 0.9s 0.12s cubic-bezier(0.22,1,0.36,1) both;
   }
@@ -413,6 +415,32 @@
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
 
+  /* ---------- invoice document ---------- */
+  .doc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 44px; }
+  @media (max-width: 720px) { .doc-grid { grid-template-columns: 1fr; } }
+  .doc-page {
+    border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+    background: #fff; transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s;
+    display: block;
+  }
+  .doc-page:hover { transform: translateY(-5px); box-shadow: 0 22px 55px rgba(0,0,0,0.55); }
+  .doc-page img { width: 100%; display: block; }
+  .doc-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+  .btn-dl {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 26px; border-radius: 12px; text-decoration: none;
+    font-weight: 800; font-size: 15px; color: #09090b;
+    background: linear-gradient(135deg, var(--green), #22c55e);
+    box-shadow: 0 6px 24px rgba(74,222,128,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-dl:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(74,222,128,0.45); }
+  .btn-dl.ghost {
+    color: var(--text); background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border); box-shadow: none;
+  }
+  .btn-dl.ghost:hover { border-color: var(--border-hover); }
+
   /* ---------- mobile ---------- */
   @media (max-width: 640px) {
     .wrap { padding: 0 18px; }
@@ -422,9 +450,11 @@
     .nav-brand .nb-name { font-size: 13px; }
     .nav-brand .nb-sub { font-size: 9px; letter-spacing: 1.1px; }
     .nav-phone { padding: 8px 13px; font-size: 13px; }
-    header.hero { min-height: 78vh; }
-    .hero-content { padding: 80px 0 56px; }
-    .hero p.lede { font-size: 15.5px; }
+    header.hero { min-height: 72vh; }
+    .hero-content { padding: 70px 0 48px; }
+    .hero h1 { font-size: clamp(30px, 8.6vw, 40px); letter-spacing: -0.3px; }
+    .eyebrow { font-size: 10px; letter-spacing: 2px; }
+    .hero p.lede { font-size: 15px; }
     .chip { font-size: 12.5px; padding: 8px 14px; }
     .cred { padding: 16px 10px; }
     .cred .c-top { font-size: 9.5px; letter-spacing: 1.4px; }
@@ -685,6 +715,28 @@
     </div>
     <div class="war-fine reveal">
       <b>Within-reason coverage, in plain English:</b> both warranties cover the floor under normal commercial use and reasonable care. They do not cover damage from abuse or misuse, gouging or impact damage, structural substrate movement or new slab cracking, flooding or moisture events beyond the vapor barrier's rated capacity, or improper cleaning chemicals. Complete terms are detailed in your signed installation agreement — the same document delivered with this invoice, ready for signature.
+    </div>
+  </div>
+</section>
+
+<section id="invoice" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="sec-label copper">The Paperwork</div>
+      <h2 class="sec-title">Official Invoice #1365</h2>
+      <p class="sec-sub">The formal letterhead invoice — the same numbers you see above, ready to print or file. Tap a page to open the full PDF.</p>
+    </div>
+    <div class="doc-grid reveal">
+      <a class="doc-page" href="Evergreen_Epoxy_Invoice_1365.pdf" target="_blank" rel="noopener">
+        <img src="img/invoice-p1.jpg" alt="Invoice #1365 — page 1: scope of work and pricing">
+      </a>
+      <a class="doc-page" href="Evergreen_Epoxy_Invoice_1365.pdf" target="_blank" rel="noopener">
+        <img src="img/invoice-p2.jpg" alt="Invoice #1365 — page 2: installation timeline and finish reference">
+      </a>
+    </div>
+    <div class="doc-actions reveal">
+      <a class="btn-dl" href="Evergreen_Epoxy_Invoice_1365.pdf" download>⬇ &nbsp;Download Invoice (PDF)</a>
+      <a class="btn-dl ghost" href="mailto:sales@evergreenepoxyflooring.com?subject=Invoice%20%231365%20—%20Cascadia%20Eye">Questions? Email us</a>
     </div>
   </div>
 </section>
