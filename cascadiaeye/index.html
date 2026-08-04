@@ -97,7 +97,8 @@
   .hero-bg::after {
     content: ''; position: absolute; inset: 0;
     background:
-      linear-gradient(180deg, rgba(9,9,11,0.72) 0%, rgba(9,9,11,0.25) 40%, rgba(9,9,11,0.88) 82%, var(--bg) 100%);
+      linear-gradient(90deg, rgba(9,9,11,0.92) 0%, rgba(9,9,11,0.72) 45%, rgba(9,9,11,0.35) 100%),
+      linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.35) 40%, rgba(9,9,11,0.92) 82%, var(--bg) 100%);
   }
   .hero-content { padding: 120px 0 90px; width: 100%; }
   .eyebrow {
@@ -108,6 +109,7 @@
   }
   .eyebrow::before { content: ''; width: 34px; height: 2px; background: linear-gradient(90deg, var(--copper), transparent); }
   .hero h1 {
+    text-shadow: 0 2px 24px rgba(0,0,0,0.65);
     font-family: 'Playfair Display', serif;
     font-size: clamp(40px, 6.4vw, 76px);
     line-height: 1.06; font-weight: 700; margin: 18px 0 20px;
@@ -118,7 +120,8 @@
     -webkit-background-clip: text; background-clip: text; color: transparent;
   }
   .hero p.lede {
-    max-width: 620px; color: #d3d8de; font-size: 17.5px;
+    max-width: 620px; color: #e8ecef; font-size: 17.5px;
+    text-shadow: 0 1px 14px rgba(0,0,0,0.75);
     animation: fadeUp 0.9s 0.24s cubic-bezier(0.22,1,0.36,1) both;
   }
   .hero-chips {
@@ -126,7 +129,7 @@
     animation: fadeUp 0.9s 0.36s cubic-bezier(0.22,1,0.36,1) both;
   }
   .chip {
-    background: rgba(255,255,255,0.07); border: 1px solid var(--border);
+    background: rgba(9,9,11,0.65); border: 1px solid var(--border);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     padding: 9px 18px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
   }
@@ -410,6 +413,44 @@
 
   @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
 
+  /* ---------- mobile ---------- */
+  @media (max-width: 640px) {
+    .wrap { padding: 0 18px; }
+    section { padding: 56px 0; }
+    .nav-inner { padding: 10px 14px; }
+    .nav-brand img { height: 38px; }
+    .nav-brand .nb-name { font-size: 13px; }
+    .nav-brand .nb-sub { font-size: 9px; letter-spacing: 1.1px; }
+    .nav-phone { padding: 8px 13px; font-size: 13px; }
+    header.hero { min-height: 78vh; }
+    .hero-content { padding: 80px 0 56px; }
+    .hero p.lede { font-size: 15.5px; }
+    .chip { font-size: 12.5px; padding: 8px 14px; }
+    .cred { padding: 16px 10px; }
+    .cred .c-top { font-size: 9.5px; letter-spacing: 1.4px; }
+    .cred .c-val { font-size: 13.5px; }
+    .scope-body { padding: 20px; }
+    .scope-body h3 { font-size: 19px; }
+    .scope-foot { padding: 14px 20px; }
+    .layers li { font-size: 13.5px; }
+    .l-head, .l-row { padding-left: 16px; padding-right: 16px; }
+    .l-row.total { padding: 16px; }
+    .l-row.total .v { font-size: 21px; }
+    .l-split { grid-template-columns: 1fr; }
+    .l-split > div + div { border-left: none; border-top: 1px solid var(--border); }
+    .pay-card { padding: 22px; }
+    .tl::before { left: 13px; }
+    .tl-item { padding: 0 0 28px 52px; }
+    .tl-dot { left: 0; width: 26px; height: 26px; }
+    .tl-date { font-size: 10.5px; letter-spacing: 1.2px; }
+    .tl-item h4 { font-size: 17px; }
+    .tl-item p { font-size: 13.5px; }
+    .gal-grid { grid-auto-rows: 130px; gap: 10px; }
+    .war-card { padding: 22px; }
+    .war-fine { padding: 16px 18px; font-size: 12.5px; }
+    .foot-brand img { height: 48px; }
+  }
+
   /* ---------- print ---------- */
   @media print {
     .glow, nav .nav-phone, .lb { display: none !important; }
@@ -443,7 +484,7 @@
   <div class="wrap hero-content">
     <span class="eyebrow">Project Proposal &amp; Invoice · Mount Vernon, WA</span>
     <h1>Cascadia Eye,<br>meet your <span class="grad">new floor.</span></h1>
-    <p class="lede">A custom-poured metallic epoxy system in coffee, silver &amp; titanium with brown metallic and copper highlights — designed for your clinic, installed over one weekend, and protected for life.</p>
+    <p class="lede">Everything about your new floor in one place — what we're installing, what it costs, the day-by-day schedule, and the lifetime warranty behind it all.</p>
     <div class="hero-chips">
       <span class="chip">Invoice <b>#1365</b></span>
       <span class="chip copper">Install <b>Sept 4–8, 2026</b></span>
@@ -467,7 +508,7 @@
     <div class="reveal">
       <div class="sec-label">Scope of Work</div>
       <h2 class="sec-title">Two systems, one seamless clinic</h2>
-      <p class="sec-sub">Every price below is turn-key for a commercial installation — all surface prep, materials, labor, and equipment included. No hidden line items.</p>
+      <p class="sec-sub">One price covers everything — prep, materials, labor, and equipment. No hidden line items, no surprises.</p>
     </div>
     <div class="scope-grid">
       <div class="scope-card metallic-card reveal">
@@ -479,10 +520,10 @@
           <h3>Metallic Epoxy Floor</h3>
           <p class="colors">Coffee, Silver &amp; Titanium base · Brown Metallic &amp; Copper highlights — Leggari Signature Series–style finish with copper accent</p>
           <ul class="layers">
-            <li><span class="n">1</span>Diamond grinding &amp; complete removal of the existing coating</li>
-            <li><span class="n">2</span>Moisture vapor barrier base coat — seals the slab for lifetime adhesion</li>
-            <li><span class="n">3</span>Hand-worked decorative metallic coat — each floor is a one-of-a-kind pour</li>
-            <li><span class="n">4</span>High-gloss urethane top coat — the chemical- &amp; scratch-resistant wear layer</li>
+            <li><span class="n">1</span>Grind off the old coating down to clean concrete</li>
+            <li><span class="n">2</span>Seal the slab with a moisture vapor barrier so the floor bonds for life</li>
+            <li><span class="n">3</span>Hand-pour the decorative metallic colors — a one-of-a-kind finish</li>
+            <li><span class="n">4</span>Finish with a high-gloss urethane wear coat that resists scratches &amp; chemicals</li>
           </ul>
           <p class="rooms">Bathroom · Nurse station · Dilation waiting room · Retail/optical room · Exit behind front desk · Front desk area</p>
         </div>
@@ -493,16 +534,16 @@
       </div>
       <div class="scope-card flake-card reveal">
         <div class="scope-img">
-          <img src="img/ex3.jpg" alt="Decorative floor system in exam room areas">
+          <img src="img/nimbus.jpg" alt="Nimbus FB-922 flake blend — actual color sample" style="object-position: center;">
           <span class="tag flake">Flake System</span>
         </div>
         <div class="scope-body">
           <h3>Decorative Flake Floor</h3>
-          <p class="colors">Nimbus FB-922 blend — blue / misty grey &amp; clean white with subtle brown (no pink)</p>
+          <p class="colors">Nimbus FB-922 blend (actual sample shown) — blue / misty grey &amp; clean white with subtle brown</p>
           <ul class="layers">
-            <li><span class="n">1</span>Diamond grinding &amp; complete removal of the existing coating</li>
-            <li><span class="n">2</span>Epoxy base coat with full Nimbus FB-922 flake broadcast</li>
-            <li><span class="n">3</span>Polyaspartic top coat — fast-curing, UV-stable, built for clinical traffic</li>
+            <li><span class="n">1</span>Grind off the old coating down to clean concrete</li>
+            <li><span class="n">2</span>Epoxy base coat with the Nimbus flake blend broadcast into it</li>
+            <li><span class="n">3</span>Polyaspartic top coat — fast-curing and extremely durable</li>
           </ul>
           <p class="rooms">Exam rooms 1–4 · Laser room · Visual fields room</p>
         </div>
@@ -555,7 +596,7 @@
     <div class="reveal">
       <div class="sec-label copper">Installation Timeline</div>
       <h2 class="sec-title">Closed Friday evening.<br>Open Wednesday morning.</h2>
-      <p class="sec-sub">The entire installation is engineered around your clinic schedule — zero lost business days.</p>
+      <p class="sec-sub">The whole job happens while the clinic is closed — you don't lose a single business day.</p>
     </div>
     <div class="tl">
       <div class="tl-item reveal">
@@ -616,7 +657,7 @@
     <div class="reveal">
       <div class="sec-label">Protected for Life</div>
       <h2 class="sec-title">A double lifetime warranty</h2>
-      <p class="sec-sub">Your floor is backed twice — by the manufacturer and by the installer. That's coverage on the product itself and on every hand that touches your project.</p>
+      <p class="sec-sub">Your floor is covered twice: the maker of the product backs the materials, and we back the installation. For life.</p>
     </div>
     <div class="war-grid">
       <div class="war-card leggari reveal">
