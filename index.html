@@ -1965,7 +1965,7 @@
         .ba-section .section-label{font-size:.85rem;font-weight:700;letter-spacing:1px;color:#4ade80;margin-bottom:.5rem}
         .ba-section h2{color:#f0f0f0;font-size:clamp(1.8rem,4.5vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:.6rem}
         .ba-sub{color:#aaa;font-size:1rem;max-width:580px;margin:0 auto 2rem;line-height:1.55}
-        .ba-wrap{position:relative;max-width:620px;margin:0 auto;aspect-ratio:3/4;border-radius:16px;overflow:hidden;border:1px solid #1e3a1e;box-shadow:0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(74,222,128,.08);cursor:ew-resize;touch-action:none;user-select:none;--pos:50%}
+        .ba-wrap{position:relative;max-width:620px;margin:0 auto;aspect-ratio:3/4;border-radius:16px;overflow:hidden;border:1px solid #1e3a1e;box-shadow:0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(74,222,128,.08);cursor:ew-resize;touch-action:pan-y;user-select:none;--pos:50%}
         .ba-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
         .ba-before-layer{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
         .ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:linear-gradient(180deg,#22c55e,#4ade80);transform:translateX(-50%);box-shadow:0 0 12px rgba(74,222,128,.6)}
@@ -1975,7 +1975,7 @@
         .ba-tag-after{right:14px;color:#4ade80;border-color:rgba(74,222,128,.35)}
         .ba-caption{color:#777;font-size:.9rem;margin-top:1rem;font-style:italic}
         .ba-cta{margin-top:1.5rem}
-        @media(max-width:768px){.ba-section{padding:3rem 1rem}.ba-knob{width:44px;height:44px}}
+        @media(max-width:768px){.ba-section{padding:3rem 1rem}.ba-wrap{max-width:84vw}.ba-knob{width:44px;height:44px}}
       </style>
       <div class="section-label">SEE THE TRANSFORMATION</div>
       <h2>Drag To See The Difference</h2>
