@@ -449,6 +449,8 @@
             text-align: center;
         }
 
+        @keyframes statPop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+        .stat-number.pop{animation:statPop .7s cubic-bezier(.22,1,.36,1) both}
         .hero-stat .stat-number {
             font-size: 2rem;
             font-weight: 700;
@@ -1949,15 +1951,15 @@
         </section>
         <div class="hero-stats">
             <div class="hero-stat">
-                <div class="stat-number">200+</div>
+                <div class="stat-number" data-countup data-target="200" data-suffix="+">200+</div>
                 <div class="stat-label">Projects Completed</div>
             </div>
             <div class="hero-stat">
-                <div class="stat-number">👷</div>
+                <div class="stat-number" data-statpop>👷</div>
                 <div class="stat-label">Owner Operated</div>
             </div>
             <div class="hero-stat">
-                <div class="stat-number">4.9★</div>
+                <div class="stat-number" data-countup data-target="4.9" data-decimals="1" data-suffix="★">4.9★</div>
                 <div class="stat-label">Google Rating</div>
             </div>
         </div>
@@ -2466,15 +2468,10 @@
         <div class="reviews-grid">
             <div class="review-card">
                 <div class="review-header">
-                    <div class="reviewer-info">
-                        <span class="review-avatar" style="background:#4285f4">T</span>
-                        <div>
-                            <strong>Tobey Vos</strong>
-                            <span class="review-date">4 days ago</span>
-                        </div>
-                    </div>
-                    <div class="review-stars">★★★★★</div>
+                    <span class="reviewer-name"><span class="review-avatar" style="background: #4285F4;">T</span> Tobey Vos</span>
+                    <span class="review-date">4 days ago</span>
                 </div>
+                <div class="review-rating">★★★★★</div>
                 <p class="review-text">Evergreen Epoxy did a fantastic job on my garage and shop floors. From start to finish they were timely, professional, and it went exactly as they promised. Highly recommend this company for Epoxy floors.</p>
             </div>
             <div class="review-card">
@@ -3110,5 +3107,33 @@ window.addEventListener('message', function(e) {
 });
 </script>
     <script src="/motion.js" defer></script>
+<script>
+(function(){
+  var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('[data-countup],[data-statpop]');
+  if(!els.length) return;
+  function animate(el){
+    if(el.hasAttribute('data-statpop')){ el.classList.add('pop'); return; }
+    var target = parseFloat(el.getAttribute('data-target')) || 0;
+    var dec = parseInt(el.getAttribute('data-decimals')||'0',10);
+    var suffix = el.getAttribute('data-suffix')||'';
+    if(reduced){ el.textContent = target.toFixed(dec) + suffix; return; }
+    var dur = 1400, start = null;
+    function step(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      el.textContent = (target*eased).toFixed(dec) + (p===1 ? suffix : '');
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if(!('IntersectionObserver' in window)){ els.forEach(animate); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ animate(e.target); io.unobserve(e.target); } });
+  }, {threshold: 0.4});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
 </body>
 </html>
